@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SITA, Trapped Between Responsibility and Authority — Runtime State</title>
+  <meta property="og:title" content="SITA, Trapped Between Responsibility and Authority — Runtime State">
+  <meta property="og:description" content="On South Africa's recurring state IT failures, the FDA–SAPS judgment, and what a reformed SITA mandate would actually need to look like.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://runtimestate.com/posts/sita-mandate-analysis">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@OfficialSethu">
+  <link rel="canonical" href="https://runtimestate.com/posts/sita-mandate-analysis">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/article.css">
+  <style>
+    :root {
+      --bg: #030303;
+      --text-main: #FAFAFA;
+      --text-muted: #666;
+      --border: #1A1A1A;
+      --border-strong: #333;
+      --tag-imported: #e86a4a;
+      --tag-adapted: #e8a03a;
+      --tag-grounded: #5fc490;
+      --tag-performative: #c088e0;
+      --tag-ambiguous: #6aa8e0;
+      --tag-unsaid: #8a8579
+    }
+
+    body {
+      overflow-x: hidden
+    }
+
+    body.light-mode {
+      --bg: #FAFAFA;
+      --text-main: #030303;
+      --text-muted: #777;
+      --border: #E5E5E5;
+      --border-strong: #CCC
+    }
+
+    #webgl-canvas {
+      opacity: .4
+    }
+
+    .scrolly-left-inner {
+      position: sticky;
+      top: 10vh
+    }
+
+    .verdict-word {
+      margin-bottom: 1.5rem;
+      line-height: 1.2
+    }
+
+    .verdict-text {
+      font-size: 1.15vw;
+      line-height: 1.6
+    }
+
+    .verdict-text p {
+      margin-bottom: 1.25rem
+    }
+
+    .pillar-card {
+      padding: 12vh 0;
+      opacity: .35;
+      transition: opacity .8s, transform .8s
+    }
+
+    .pillar-levels {
+      grid-template-columns: 140px 1fr
+    }
+
+    .pillar-levels dt {
+      font-size: .72rem
+    }
+
+    body.light-mode .pillar-levels dt {
+      color: #444
+    }
+
+    .section {
+      padding: 15vh 10vw;
+      border-top: 1px solid var(--border);
+      border-bottom: none
+    }
+
+    .section-intro {
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1.4;
+      color: var(--text-main);
+      margin-bottom: 4rem;
+      max-width: 900px;
+      letter-spacing: -.02em
+    }
+
+    .matrix th {
+      font-size: .72rem
+    }
+
+    .matrix td.case-name {
+      color: var(--text-main);
+      font-weight: 400;
+      width: 22%
+    }
+
+    .matrix td.case-period {
+      width: 12%;
+      font-size: .8rem;
+      letter-spacing: .05em;
+      color: var(--text-muted)
+    }
+
+    .matrix td strong {
+      color: var(--text-main);
+      font-weight: 500
+    }
+
+    body.light-mode .matrix th,
+    body.light-mode .matrix td {
+      color: #444
+    }
+
+    .evidence-block {
+      padding: 0 0 0 1.75rem;
+      margin: 3rem 0;
+      font-size: 1.3rem;
+      max-width: 900px
+    }
+
+    body.light-mode .evidence-block {
+      color: #555
+    }
+
+    .reform-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 3rem 0;
+      border-top: 1px solid var(--border);
+      align-items: start
+    }
+
+    .reform-item:last-child {
+      border-bottom: 1px solid var(--border)
+    }
+
+    .reform-num {
+      font-size: 1.1rem;
+      color: var(--tag-grounded);
+      font-weight: 500
+    }
+
+    .reform-item h4 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: .75rem;
+      letter-spacing: -.01em
+    }
+
+    .reform-item p {
+      font-size: 1rem;
+      color: #b3b3b3;
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 700px
+    }
+
+    body.light-mode .reform-item p {
+      color: #555
+    }
+
+    .mandate-quote {
+      font-size: 1.4rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-style: italic;
+      border-left: 2px solid var(--tag-imported);
+      padding: 0 0 0 1.75rem;
+      margin: 0 0 3rem;
+      max-width: 900px;
+      letter-spacing: -.01em
+    }
+
+    .mandate-quote .src {
+      display: block;
+      margin-top: 1rem;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      font-style: normal;
+      color: #555
+    }
+
+    .juxt {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem
+    }
+
+    .juxt-col {
+      padding: 2.5rem 2rem
+    }
+
+    .juxt-col:first-child {
+      border-right: 1px solid var(--border)
+    }
+
+    .juxt-head {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      margin-bottom: 1.5rem;
+      font-weight: 500
+    }
+
+    .juxt-head.claim {
+      color: var(--tag-performative)
+    }
+
+    .juxt-head.reality {
+      color: var(--tag-imported)
+    }
+
+    .juxt-row {
+      padding: 1.75rem 0;
+      border-top: 1px solid var(--border)
+    }
+
+    .juxt-row:first-of-type {
+      border-top: none;
+      padding-top: 0
+    }
+
+    .juxt-label {
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: #888;
+      margin-bottom: .5rem;
+      font-weight: 500
+    }
+
+    .juxt-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      font-weight: 300;
+      color: #b3b3b3
+    }
+
+    .juxt-text strong {
+      color: var(--text-main);
+      font-weight: 500
+    }
+
+    body.light-mode .juxt-text {
+      color: #555
+    }
+
+    .value-block {
+      padding: 3.5rem 0;
+      border-top: 1px solid var(--border);
+      max-width: 880px
+    }
+
+    .value-block:first-of-type {
+      border-top: none;
+      padding-top: 2rem
+    }
+
+    .value-block:last-of-type {
+      border-bottom: 1px solid var(--border)
+    }
+
+    .value-tag {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--tag-performative);
+      margin-bottom: 1.25rem;
+      font-weight: 500
+    }
+
+    .value-tag::after {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--border-strong);
+      vertical-align: middle;
+      margin-left: 1rem;
+      margin-bottom: 3px
+    }
+
+    .value-claim {
+      font-size: 1.35rem;
+      line-height: 1.55;
+      color: var(--text-main);
+      font-weight: 300;
+      font-style: italic;
+      letter-spacing: -.01em;
+      margin-bottom: 2rem;
+      padding-left: 1.25rem;
+      border-left: 1px solid var(--border-strong)
+    }
+
+    .value-prose {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #b3b3b3;
+      font-weight: 300
+    }
+
+    .value-prose p {
+      margin-bottom: 1.25rem
+    }
+
+    .value-prose p:last-child {
+      margin-bottom: 0
+    }
+
+    .value-prose strong {
+      color: var(--text-main);
+      font-weight: 500
+    }
+
+    body.light-mode .value-prose {
+      color: #444
+    }
+
+    .prose-lede {
+      font-size: 1.2rem;
+      line-height: 1.75;
+      color: #c4c4c4;
+      font-weight: 300;
+      max-width: 880px;
+      margin: 2rem 0 3rem
+    }
+
+    .prose-lede p {
+      margin-bottom: 1.5rem
+    }
+
+    .prose-lede strong {
+      color: var(--text-main);
+      font-weight: 500
+    }
+
+    body.light-mode .prose-lede {
+      color: #333
+    }
+
+    .thread-wrap {
+      max-width: 720px;
+      margin: 2rem 0 0;
+      border-left: 1px solid var(--border-strong);
+      padding-left: 2rem;
+      position: relative
+    }
+
+    .thread-meta {
+      font-size: .7rem;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap
+    }
+
+    .thread-meta a {
+      color: var(--tag-ambiguous);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s
+    }
+
+    .thread-meta a:hover {
+      border-bottom-color: var(--tag-ambiguous)
+    }
+
+    .thread-meta .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--text-muted);
+      display: inline-block
+    }
+
+    .tweet {
+      position: relative;
+      padding: 0 0 2.25rem 0;
+      margin-bottom: 0
+    }
+
+    .tweet:last-child {
+      padding-bottom: 0
+    }
+
+    .tweet::before {
+      content: '';
+      position: absolute;
+      left: -2.45rem;
+      top: .55rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1px solid var(--tag-ambiguous)
+    }
+
+    .tweet.first::before {
+      background: var(--tag-ambiguous)
+    }
+
+    .tweet p {
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: var(--text-main);
+      font-weight: 300;
+      letter-spacing: -.005em
+    }
+
+    .tweet p+p {
+      margin-top: .85rem
+    }
+
+    .tweet .stamp {
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      color: #555;
+      margin-top: .75rem;
+      font-weight: 500
+    }
+
+    body.light-mode .tweet p {
+      color: #111
+    }
+
+    body.light-mode .tweet .stamp {
+      color: #888
+    }
+
+    .thread-link {
+      display: inline-block;
+      margin-top: 2.5rem;
+      padding: .7rem 1.25rem;
+      border: 1px solid var(--border-strong);
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .15em;
+      border-radius: 2px;
+      transition: all .3s
+    }
+
+    .thread-link:hover {
+      background: var(--text-main);
+      color: var(--bg)
+    }
+
+    @media(max-width:900px) {
+      h1.hero-title {
+        font-size: 9vw
+      }
+
+      .verdict-word {
+        font-size: 4.5vw
+      }
+
+      .verdict-text {
+        font-size: 1rem
+      }
+
+      .scrolly-container {
+        flex-direction: column;
+        padding: 0 6vw
+      }
+
+      .scrolly-left,
+      .scrolly-right {
+        width: 100%;
+        padding: 8vh 0;
+        border-right: none
+      }
+
+      .scrolly-left {
+        border-bottom: 1px solid var(--border)
+      }
+
+      .scrolly-left-inner {
+        position: static
+      }
+
+      .section {
+        padding: 12vh 6vw
+      }
+
+      .section-intro {
+        font-size: 1.5rem
+      }
+
+      .pillar-card p {
+        font-size: 1.25rem
+      }
+
+      .pillar-levels {
+        grid-template-columns: 1fr
+      }
+
+      .reform-item {
+        grid-template-columns: 1fr;
+        gap: .5rem
+      }
+
+      .tts-subtitles {
+        font-size: 1.1rem;
+        width: 100%
+      }
+
+      .juxt {
+        grid-template-columns: 1fr
+      }
+
+      .juxt-col:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--border)
+      }
+
+      .juxt-col {
+        padding: 2rem 0
+      }
+
+      .mandate-quote {
+        font-size: 1.15rem
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <button class="theme-toggle" id="themeToggle">Light Mode</button>
+  </nav>
+  <canvas id="webgl-canvas"></canvas>
+  <header class="article-header">
+    <div class="kicker">April 2026 &middot; Governance Note</div>
+    <h1 class="hero-title">SITA, Trapped Between Responsibility and Authority.</h1>
+    <p class="subtitle">On South Africa's recurring state IT failures, the FDA&ndash;SAPS judgment, and what a reformed
+      SITA mandate would actually need to look like. Developed out of <a
+        href="https://x.com/OfficialSethu/status/2010832761989251360" target="_blank" rel="noopener">a January 2026
+        thread</a> by <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener">@OfficialSethu</a>.</p>
+    <div class="audio-wrap"><button class="play-audio-btn" id="playAudioBtn"><svg viewBox="0 0 24 24">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg><span>Listen to Summary</span></button>
+      <div id="tts-subtitles" class="tts-subtitles"></div>
+    </div>
+  </header>
+  <section class="scrolly-container">
+    <div class="scrolly-left">
+      <div class="scrolly-left-inner">
+        <div class="verdict-label">The Verdict</div>
+        <div class="verdict-word">A structural trap, not rogue behaviour.</div>
+        <div class="verdict-text">
+          <p>SITA is repeatedly asked to guarantee continuity for systems the state depends on, without being empowered
+            to lawfully <strong>own</strong>, <strong>resolve</strong>, or <strong>terminate</strong> them.</p>
+          <p>FDA&ndash;SAPS is not an aberration. It is the predictable endpoint of a mandate designed for procurement,
+            operating in a world that now runs on infrastructure.</p>
+        </div>
+      </div>
+    </div>
+    <div class="scrolly-right">
+      <div class="pillar-card">
+        <h3>01 &middot; Mandate Mismatch</h3>
+        <p>An operator without ownership. SITA hosts, administers and holds privileged access &mdash; but does not own
+          the IP, the budget, or the procurement decision.</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>It can keep systems alive technically while losing entitlement legally.</dd>
+          <dt>Pattern</dt>
+          <dd>Use continues. Authority doesn't.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>02 &middot; Infrastructure Blindness</h3>
+        <p>Core state systems are still classified as &ldquo;procured IT services&rdquo; even after they become
+          sovereign infrastructure.</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>No doctrine marks the crossing from vendor product to national dependency.</dd>
+          <dt>Pattern</dt>
+          <dd>Procurement logic fails where continuity logic is needed.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>03 &middot; Centralisation Without Tools</h3>
+        <p>Centralisation gives SITA visibility, access and control. It does not give shutdown authority, escrow
+          mandates, or sunset enforcement.</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>SITA inherits risk without instruments.</dd>
+          <dt>Pattern</dt>
+          <dd>Responsibility arrives; authority stays behind.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>04 &middot; Defensive Procurement</h3>
+        <p>In a crisis, SITA retreats to process compliance, &ldquo;awaiting instructions&rdquo; and &ldquo;procurement
+          irregularity.&rdquo;</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>Individuals are protected; the state's legal position deteriorates.</dd>
+          <dt>Pattern</dt>
+          <dd>Courts increasingly reject it as a defence.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>05 &middot; Incentive Asymmetry</h3>
+        <p>Acting decisively carries personal audit exposure. Delaying diffuses responsibility. The system rewards
+          inaction dressed as compliance.</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>Doing the right thing becomes a career risk.</dd>
+          <dt>Pattern</dt>
+          <dd>Delay compounds until litigation forces a move.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>06 &middot; Replacement Fantasy</h3>
+        <p>&ldquo;We'll just build another one.&rdquo; But embedded systems take years to replicate, data gravity is
+          enormous, and users resist.</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>Replacement talk buys time but poisons negotiations.</dd>
+          <dt>Pattern</dt>
+          <dd>Courts read it as bad faith.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>07 &middot; No Stop Rules</h3>
+        <p>No enforced rule says: if a system is mission-critical for X years, the state must own it or escrow it.</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>Disputes drift indefinitely.</dd>
+          <dt>Pattern</dt>
+          <dd>Resolution only arrives when something collapses.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>08 &middot; The Visible Villain</h3>
+        <p>Departments decide. Ministers hesitate. Treasury negotiates. But SITA touches the servers and flips the
+          switches.</p>
+        <dl class="pillar-levels">
+          <dt>Consequence</dt>
+          <dd>When it blows up, the law lands on SITA.</dd>
+          <dt>Pattern</dt>
+          <dd>Structural failure, individual liability.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">The Case That Sits Underneath All of This</div>
+    <p class="section-intro">Before the generalisations, the specific case. The facts below are from a Gauteng High
+      Court judgment I walked through on X in January. The thread is the short-form version; everything else on this
+      page is what follows from it.</p>
+
+    <div class="thread-wrap">
+      <div class="thread-meta">
+        <span>Thread</span><span class="dot"></span>
+        <span>@OfficialSethu</span><span class="dot"></span>
+        <span>12 January 2026</span><span class="dot"></span>
+        <a href="https://x.com/OfficialSethu/status/2010832761989251360" target="_blank" rel="noopener">View on X</a>
+      </div>
+
+      <div class="tweet first">
+        <p>I recently read the Gauteng High Court judgement for the case between the SAPS National Commissioner and a
+          company called Forensic Data Analysts. It's a roller-coaster.</p>
+        <div class="stamp">01 &middot; Jan 12</div>
+      </div>
+
+      <div class="tweet">
+        <p><strong>Summary:</strong> The High Court found the oral agreement for the purchase of mission-critical police
+          systems from Forensic Data Analysts (FDA) by SAPS to be binding. That's a cool ~R644 million without the 12
+          months of unpaid license fees.</p>
+        <div class="stamp">02 &middot; Jan 12</div>
+      </div>
+
+      <div class="tweet">
+        <p>What are these systems? The Firearm Permit System, Property Control &amp; Exhibit Management System and a
+          Visual Analysis System. Custom built for SAPS and deployed nationally.</p>
+        <div class="stamp">03 &middot; Jan 12</div>
+      </div>
+
+      <div class="tweet">
+        <p>They were in use for ~7 years when SCOPA intervened on the contract due to questions about irregularities. So
+          SAPS stops paying but keeps using the systems&hellip;</p>
+        <div class="stamp">04 &middot; Jan 12</div>
+      </div>
+
+      <div class="tweet">
+        <p>The license expired so FDA reached out to SAPS for payment and gets no response. They then reached out to
+          SITA bc they managed the systems but got no response. They then switched it off for non-payment and
+          <strong>SITA fiddled with the source code and switched it back on</strong>. Meanwhile&hellip;</p>
+        <div class="stamp">05 &middot; Jan 12</div>
+      </div>
+
+      <div class="tweet">
+        <p>FDA takes it to court and gets 2 judgements blocking SITA from fiddling with the copyrighted code. In these
+          judgements, evidence shows that <strong>SITA was trying to copy the systems while also holding off on
+            payment</strong>. SAPS/SITA continue to use the systems after these judgements.</p>
+        <div class="stamp">06 &middot; Jan 12</div>
+      </div>
+
+      <div class="tweet">
+        <p>FDA instructs the Sheriff to execute the order to remove the systems completely. Sydney Mufumadi (former
+          Minister and now FDA executive) is asked to meet the National Commissioner. He and the FDA CEO are rushed by
+          blue light motorcade to a Presidential lekgotla. <strong>A price to buy the systems is agreed on but SAPS
+            changes their mind 2 hours later.</strong></p>
+        <div class="stamp">07 &middot; Jan 12</div>
+      </div>
+
+      <div class="tweet">
+        <p>So we add SAPS to SASSA, Home Affairs, DoJ, RTMC and Eskom as institutions that SITA's mandate mismatch
+          (among other things) affected in a hardcore way.</p>
+        <div class="stamp">08 &middot; Jan 12</div>
+      </div>
+
+      <a class="thread-link"
+        href="https://media.lawlibrary.org.za/media/judgment/313928/source_file/8582220c3d1edef1/FORENSIC_DATA_ANALYSTS_PTY_LTD_ao_v_NATIONAL_COMMISIIONER_OF_THE_SOUTH_AFRICAN_POLICE_SERVICE_ao-32643.2021-J_POTTERILL.pdf"
+        target="_blank" rel="noopener">Read the full judgment &rarr;</a>
+    </div>
+
+    <div class="prose-lede" style="margin-top:5rem">
+      <p>Read that sequence twice. Seven years of custom-built mission-critical police infrastructure. A SCOPA
+        intervention. A unilateral decision to stop paying while continuing to use the software. A vendor ignored by
+        both SAPS and SITA when it wrote asking to be paid. A system switched off for non-payment and then
+        <strong>switched back on, by SITA, after SITA modified the source code it had no licence to touch</strong>. Two
+        court interdicts forbidding exactly that conduct. Continued use in defiance of both. A shadow replacement
+        project running in parallel the whole time. A sheriff dispatched to physically remove the systems. A former
+        minister summoned into a blue-light motorcade. A price agreed at a Presidential lekgotla and reversed inside two
+        hours.</p>
+
+      <p>This is not a story about one bad contract or one awkward vendor dispute. It is the organisational reality the
+        About page on the SITA website does not, and structurally cannot, describe. Nothing in the mandate paragraph
+        &mdash; <em>consolidate, coordinate, manage the procurement and delivery process, achieve cost savings through
+          scale</em> &mdash; gives an employee reading it any instrument for dealing with the situation above. There is
+        no clause that says what to do when a system you do not own has been keeping the police force running for seven
+        years and the paperwork has just quietly stopped matching reality. There is no doctrine for the sheriff at the
+        door. There is no protocol for the blue-light motorcade. And so the sequence that unfolds in the judgment is the
+        sequence an organisation improvises when its published self-description has no language for the situation it is
+        actually in.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">How SITA Describes Itself</div>
+    <p class="section-intro">Read alongside the FDA&ndash;SAPS record, SITA's own &ldquo;About&rdquo; page reads less
+      like a mandate and more like a document written by an organisation that does not know what it is for.</p>
+
+    <div class="mandate-quote">&ldquo;SITA's role is to consolidate and coordinate the State's information technology
+      resources to achieve cost savings through scale, increase delivery capabilities and enhance
+      interoperability&hellip; managing the IT procurement and delivery process to ensure that the South African
+      government gets value for money, increased productivity; qualitative solutions, services and products; and uses
+      best practice IT approaches in its modernisation and the delivery of services to all citizens.&rdquo;<span
+        class="src">Source &middot; sita.co.za/page/about</span></div>
+
+    <div class="mandate-quote">&ldquo;To be the leading information and communications technology (ICT) agency in public
+      service delivery.&rdquo;<span class="src">Vision &middot; sita.co.za/page/about</span></div>
+
+    <div class="prose-lede">
+      <p>Every verb in that copy belongs to a procurement agent. <em>Consolidate. Coordinate. Manage the procurement and
+          delivery process. Achieve cost savings through scale.</em> None of them describe the stewardship of
+        infrastructure the state cannot turn off. The word <strong>ownership</strong> does not appear anywhere on the
+        page. Neither does <em>continuity</em>, <em>escrow</em>, <em>sovereignty</em>, <em>lifecycle</em>,
+        <em>sunset</em>, or <em>resolution</em>. The copy is written as if the job ends at the tender award &mdash; as
+        if, once the contract is signed and the servers are humming, SITA's work is done and the rest is someone else's
+        problem.</p>
+
+      <p>That is not a tone problem or a writing problem. It is a <strong>self-understanding</strong> problem. An
+        organisation that describes itself only in the language of acquisition will, when dependency crises arrive,
+        reach for the only instruments it believes it possesses: more procurement, more coordination, more delivery
+        management. None of those instruments resolve the FDA&ndash;SAPS situation. None of them resolve HANIS. None of
+        them resolve eNaTIS. The vocabulary itself forecloses the possibility of a different kind of action, because
+        there is no word for it in the brochure.</p>
+
+      <p>The values published alongside the mandate make the diagnosis sharper, not softer. Each one of them, set
+        against the operational record, reveals a specific way the organisation has quietly stopped being able to
+        recognise itself.</p>
+    </div>
+
+    <div class="value-block">
+      <div class="value-tag">Value 01 &middot; Customer-Centricity</div>
+      <div class="value-claim">&ldquo;Exceed customer expectations by providing the best appropriate services and
+        solutions.&rdquo;</div>
+      <div class="value-prose">
+        <p>The first problem is that the customer, in SITA's model, is the department. Not the pensioner whose grant did
+          not arrive because CPS and SASSA were still arguing about who had lawful authority to run the payment system.
+          Not the new parent whose child's birth registration is trapped inside a HANIS replacement that has been
+          &ldquo;nearly ready&rdquo; for the better part of fifteen years. Not the accused in a criminal matter whose
+          trial is postponed because the digital recording system went down and no one can agree whose contract was
+          supposed to be maintaining it.</p>
+        <p>Customer-centricity, in a procurement frame, means making the departmental client happy in the moment of
+          transaction. Citizen-centricity, which is the thing the Constitution actually asks for, means being
+          accountable for <strong>the continuity of the service the citizen never sees and only notices when it
+            breaks</strong>. SITA's copy cannot tell the difference between those two things, and that confusion is not
+          decorative. It is the reason a payment can lapse, a court recording can stall, a forensic system can sit under
+          interdict, and no one inside the organisation feels that the person at the end of the chain is, strictly
+          speaking, their customer at all.</p>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="value-tag">Value 02 &middot; Innovation</div>
+      <div class="value-claim">&ldquo;Pursue innovation by demonstrating thought leadership and proactive behaviour on
+        the use of ICT to enhance public service delivery.&rdquo;</div>
+      <div class="value-prose">
+        <p>The FDA&ndash;SAPS judgment sits at the exact opposite end of the word &ldquo;innovation&rdquo; from where
+          SITA's About page places it. What the court describes, and what the thread above walks through tweet by tweet,
+          is an organisation whose instinctive answer, when a dependency becomes uncomfortable, is to <strong>modify
+            copyrighted source code it has no licence to touch, switch the system back on in defiance of a vendor
+            cut-off, and then pursue a shadow replacement while denying that the original agreement existed at
+            all</strong>. That is not innovation. It is improvisation under legal duress, dressed up as a roadmap, and
+          it ends with a sheriff at the door and a minister in a motorcade.</p>
+        <p>Real innovation in state IT, in the current moment, would look like things SITA has never publicly proposed.
+          A classification doctrine that distinguishes commodity IT from sovereign infrastructure. A standing escrow
+          regime for any system that crosses the critical threshold. A formal sunset protocol with legal cover for the
+          official who has to sign it. A transition fund. A lifecycle owner. None of these are technically hard. They
+          are institutionally hard, because they require the organisation to stop thinking of itself as a buyer.
+          &ldquo;Thought leadership,&rdquo; as a published value, has produced none of them. What it has produced is the
+          word &ldquo;modernisation&rdquo; deployed as <strong>a negotiating tactic against the vendors of systems the
+            state can no longer operate without</strong>.</p>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="value-tag">Value 03 &middot; Integrity</div>
+      <div class="value-claim">&ldquo;Conduct our business with integrity at all times to inculcate a culture of
+        honesty, respect and accountability among all our employees.&rdquo;</div>
+      <div class="value-prose">
+        <p>There is a specific and uncomfortable sentence in the FDA judgment, and in the judgments that preceded it,
+          where the court makes a finding of <strong>mala fides</strong> &mdash; bad faith &mdash; against the state's
+          conduct in the matter. That is not a procedural irregularity finding. It is not &ldquo;the paperwork was
+          wrong.&rdquo; It is a judge, looking at the record, and saying that over a period of years the state denied
+          arrangements it knew existed, used software it knew it had no lawful right to run, and reactivated systems
+          that had been placed under interdict. Integrity, in the sense the About page uses the word, is a
+          culture-building aspiration. Integrity, in the sense the court uses the word, is a finding about what actually
+          happened.</p>
+        <p>A values statement and a judgment cannot both be true in the same way at the same time. The honest thing to
+          do, if SITA believed its own published value, would be to treat the FDA finding as a constitutional event and
+          rewrite the organisation around preventing it. Instead, the more characteristic response has been to argue
+          that this was one unusual case, one unusual vendor, one unusual set of circumstances. It was not. It is the
+          only case in which a vendor had the resources to litigate far enough for the pattern to become visible on the
+          record.</p>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="value-tag">Value 04 &middot; Agility</div>
+      <div class="value-claim">&ldquo;Be adaptive and responsive in an evolving environment in order to maintain
+        relevance and competitive advantage.&rdquo;</div>
+      <div class="value-prose">
+        <p>eNaTIS has been waiting for a serious replacement conversation since 2007. HANIS has been inside a
+          replacement process whose end date keeps receding since the early 2010s. The PRASA signalling estate degraded
+          visibly for the better part of a decade while the contracts to replace it were fought over. Whatever word one
+          uses to describe an institution whose replacement cycles are measured in decades, <strong>&ldquo;agile&rdquo;
+            is not it</strong>. Neither is &ldquo;adaptive.&rdquo; Neither is &ldquo;responsive.&rdquo;</p>
+        <p>What SITA exhibits, in the judicial record, is something closer to the opposite of agility: a reflexive
+          retreat, in every crisis, to the safest possible bureaucratic posture &mdash; &ldquo;awaiting
+          instructions,&rdquo; &ldquo;procurement irregularity under review,&rdquo; &ldquo;the matter is the subject of
+          legal proceedings.&rdquo; These phrases are not agility. They are the organisational equivalent of freezing.
+          The evolving environment the value statement gestures at is the environment in which embedded systems become
+          national infrastructure within a few years of installation, and no state IT agency in the world can afford to
+          meet that timescale with a decade-long replacement conversation. Relevance and competitive advantage, in that
+          environment, <strong>accrue to the institutions willing to own what they run</strong>. SITA is not yet one of
+          them.</p>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="value-tag">Value 05 &middot; Collaboration</div>
+      <div class="value-claim">&ldquo;Cooperate and support each other in pursuit of our shared goals to achieve
+        synergies and greater productivity.&rdquo;</div>
+      <div class="value-prose">
+        <p>The collaboration value, read against the FDA record, is the one that stings. The court record describes a
+          situation in which the state was actively running a proprietary system under a contractual arrangement it was
+          simultaneously denying in writing, while in parallel commissioning work on a replacement intended to displace
+          the same vendor whose software was still keeping the lights on. That is not collaboration. It is, in the
+          plainest possible terms, <strong>the opposite of collaboration conducted under the heading of
+            collaboration</strong>.</p>
+        <p>The difficult question the value raises is not whether SITA collaborates &mdash; with its staff, with its
+          board, with other departments. It plainly does. The question is whether it can collaborate with the outside
+          parties whose work has become infrastructure for the state, once the commercial relationship becomes
+          inconvenient. The answer, on the record, is that it cannot. And because it cannot, the eventual resolution of
+          every one of these disputes has to arrive through litigation, through Treasury intervention, or through
+          collapse. None of those are collaborative instruments. They are the instruments that activate when
+          collaboration has already failed.</p>
+      </div>
+    </div>
+
+    <div class="value-block">
+      <div class="value-tag">Value 06 &middot; ICT as Game-Changer</div>
+      <div class="value-claim">&ldquo;SITA views ICT's as a national socio-economic game changer; through which ICT
+        investment must be equated with growth, impact and citizen satisfaction.&rdquo;</div>
+      <div class="value-prose">
+        <p>This is the sentence that most completely gives the game away. Read it carefully. <em>ICT investment must be
+            equated with growth, impact and citizen satisfaction.</em> The unit of analysis is investment &mdash; the
+          act of buying. Not operation. Not ownership. Not continuity. The implicit theory of change is that the state
+          procures the right things, and the rest takes care of itself. That is a theory that can only survive in an
+          organisation that has not yet noticed that the hardest part of state IT is <strong>what happens after the
+            money has been spent</strong>.</p>
+        <p>If ICT is genuinely a socio-economic game-changer, then the institution responsible for it cannot also treat
+          it as a procurement line item. Those two framings are mutually exclusive. Infrastructure is not purchased once
+          and then managed through a series of vendor contracts; it is inhabited, maintained, evolved, and occasionally
+          rebuilt from the inside by people who understand it well enough to know when to stop paying a vendor and when
+          not to. SITA's own framing, in this one sentence, <strong>collapses the category the reform depends
+            on</strong>. You cannot be the steward of something you still describe as a purchase. And until the About
+          page is rewritten to describe a different kind of institution, every reform proposal &mdash; including the
+          eight in the section below &mdash; will land on an organisation that does not yet have the vocabulary to
+          receive them.</p>
+      </div>
+    </div>
+
+    <div class="evidence-block">The problem is not that SITA fails to live up to its values. The problem is that its
+      values describe a procurement agent, and its job is infrastructure stewardship. The gap between the two is where
+      the unlawfulness accumulates &mdash; quietly, continuously, and with the paperwork in order.</div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">The Recurring Pattern</div>
+    <p class="section-intro">Across eight documented cases the same sequence plays out: a mission-critical system
+      becomes infrastructure, procurement logic fails, and litigation or collapse forces resolution.</p>
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Case</th>
+            <th>Period</th>
+            <th>Pattern</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="case-name">SASSA / CPS grants</td>
+            <td class="case-period">2012&ndash;2018</td>
+            <td>Contract lapsed; system kept running under <strong>Constitutional Court supervision</strong> to prevent
+              social collapse.</td>
+          </tr>
+          <tr>
+            <td class="case-name">Home Affairs HANIS / ABIS</td>
+            <td class="case-period">2000s&ndash;2020s</td>
+            <td>Biometric backbone. Replacement stalled by procurement disputes; parallel systems, years of limbo.</td>
+          </tr>
+          <tr>
+            <td class="case-name">SARS Modernisation</td>
+            <td class="case-period">2014&ndash;2018</td>
+            <td>Working compliance and investigative IT dismantled under &ldquo;governance correction.&rdquo; Revenue
+              collapsed.</td>
+          </tr>
+          <tr>
+            <td class="case-name">RTMC eNaTIS</td>
+            <td class="case-period">2007&ndash;present</td>
+            <td>Single embedded licensing database. Weak redundancy. Replacement perpetually deferred.</td>
+          </tr>
+          <tr>
+            <td class="case-name">PRASA signalling</td>
+            <td class="case-period">2015&ndash;2022</td>
+            <td>Ageing proprietary rail systems. Replacement contested; safety degraded before transition.</td>
+          </tr>
+          <tr>
+            <td class="case-name">DOJ&amp;CD court recording</td>
+            <td class="case-period">2010s</td>
+            <td>Vendor dependency; disputed contracts; courts reverting to manual. <strong>Legal system exposed to IT
+                fragility.</strong></td>
+          </tr>
+          <tr>
+            <td class="case-name">Eskom IT estate</td>
+            <td class="case-period">2010s&ndash;present</td>
+            <td>Failed ERP transitions; informal maintenance tolerated to avoid outages.</td>
+          </tr>
+          <tr>
+            <td class="case-name">SITA (cross-cutting)</td>
+            <td class="case-period">Ongoing</td>
+            <td>Central procurement without lifecycle governance. Access without ownership clarity.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="evidence-block">FDA&ndash;SAPS fits a national pattern: South Africa repeatedly lets mission-critical IT
+      become infrastructure, then pretends it's still a procurement problem &mdash; until courts or failure intervene.
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-title">A Reformed Mandate</div>
+    <p class="section-intro">The core shift is one sentence: SITA must move from central IT procurement agent to state
+      digital infrastructure steward.</p>
+    <div class="reform-item">
+      <div class="reform-num">01</div>
+      <div>
+        <h4>Infrastructure Classification Power</h4>
+        <p>Statutory authority to issue a Critical Infrastructure Determination that formally distinguishes commodity IT
+          from national digital infrastructure. The determination triggers mandatory downstream obligations.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">02</div>
+      <div>
+        <h4>Mandatory Ownership or Escrow</h4>
+        <p>If the state relies on a system for core sovereign functions beyond a defined threshold, it must either own
+          the IP or hold enforceable source-code escrow with step-in rights, lodged at Treasury.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">03</div>
+      <div>
+        <h4>Full Lifecycle Authority</h4>
+        <p>Not just acquisition and hosting, but exit, sunset, buy-out and forced migration. SITA must be able to impose
+          transition deadlines and escalate unresolved systems to Treasury and Cabinet.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">04</div>
+      <div>
+        <h4>Emergency Continuity Regime</h4>
+        <p>A formal, time-bound continued-use framework with automatic compensation accrual and transparent reporting.
+          Removes the incentive to deny agreements or invent procurement excuses.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">05</div>
+      <div>
+        <h4>Shutdown Authority</h4>
+        <p>Explicit power, with legal protection for the official exercising it, to declare that a system cannot
+          lawfully be used after a specified date unless defined conditions are met.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">06</div>
+      <div>
+        <h4>Replacement Realism Rule</h4>
+        <p>Before SITA may endorse or fund a replacement, it must certify realistic timelines, migration feasibility,
+          data portability and overlap plans. No more &ldquo;we'll build another one&rdquo; as a tactic.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">07</div>
+      <div>
+        <h4>Treasury Resolution Escalator</h4>
+        <p>When a critical system enters frozen-payment, lapsed-contract limbo beyond a fixed window, SITA must trigger
+          a Treasury-led resolution: binding valuation, exit or buy-out, ring-fenced budget.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">08</div>
+      <div>
+        <h4>New Performance Metrics</h4>
+        <p>Stop counting tenders processed. Start measuring the percentage of critical systems with clear ownership,
+          time spent in transition, and the count of systems operating post-contract.</p>
+      </div>
+    </div>
+    <div class="evidence-block">Procurement &rarr; Infrastructure &rarr; Sovereignty. Each phase has different rules.
+      SITA currently pretends they are the same.</div>
+  </section>
+  <footer class="article-footer">
+    <span>Runtime State &middot; 2026</span>
+    <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">@OfficialSethu</a>
+  </footer>
+  <script>
+  window.__TTS_TEXT = "SITA, the State Information Technology Agency, keeps ending up in court for the same reason every time. And it is not because anyone at SITA is acting in bad faith. The pattern is structural. A system gets procured as ordinary IT. Years pass. It quietly becomes national infrastructure. The state cannot function without it. But the paperwork still treats it as a vendor contract. Then something breaks. A contract lapses. A payment freezes. An audit gets nervous. And suddenly the state is using software it no longer has a lawful right to run, because turning it off would mean grants stop, or identity documents stop, or police forensic systems stop. This has happened with SASSA grants. With Home Affairs biometrics. With SARS investigative tools. With eNaTIS licensing. With PRASA signalling. With court recording systems. With Eskom billing. The FDA SAPS judgment is not an anomaly. It is the one case where a vendor had the resources to litigate all the way to a finding. That judgment is worth pausing on, because it is the case the rest of this argument rests on. A company called Forensic Data Analysts built three mission-critical systems for the South African Police Service. A firearm permit system. A property control and exhibit management system. A visual analysis system. Custom built, deployed nationally, in use for about seven years. Then SCOPA raised questions about contract irregularities. SAPS stopped paying. But it kept using the systems. The vendor wrote to SAPS asking to be paid. No response. It wrote to SITA, which was managing the systems. No response. So the vendor switched the systems off for non-payment. And SITA modified the source code it had no licence to touch, and switched them back on. The vendor went to court and won two interdicts forbidding exactly that conduct. The evidence in those judgments showed that SITA had also been trying to copy the systems while still holding off on payment. And after the interdicts, SAPS and SITA continued to use the systems anyway. Eventually the vendor sent a sheriff to physically remove them. A former minister, Sydney Mufumadi, now an executive at the company, was asked to meet the National Commissioner. He and the CEO were rushed by blue-light motorcade to a Presidential lekgotla, where a price was agreed to buy the systems outright. SAPS reversed that decision inside two hours. SITA sits in the middle of all of this. It hosts the servers, administers the systems, holds the keys. But it does not own the intellectual property, does not control the budgets, and does not decide procurement outcomes. It is an operator without ownership. Read SITA's own About page and the problem becomes impossible to miss. Its stated role is to consolidate and coordinate the state's IT resources, to manage the procurement and delivery process, to achieve cost savings through scale. Every single verb is a procurement verb. The word ownership does not appear. Neither does continuity, escrow, sovereignty or lifecycle. Its vision is to be the leading ICT agency in public service delivery, as if delivery were a moment rather than a decade. The values read the same way. Customer-centricity, where the customers are departments and the citizens are the people whose grants stop. Innovation, in an organisation whose instinctive response to every dependency crisis is, we will build a replacement, a phrase the courts now read as bad faith. Integrity, in an institution against which courts have made explicit findings of mala fides. Agility, in an organisation that spends a decade in eNaTIS and HANIS limbo. Collaboration, in a record that shows parallel shadow replacement while vendors were still under contract. The problem is not that SITA fails to live up to its stated values. The problem is that its stated values describe a procurement agent while its actual job is infrastructure stewardship. That gap is where the unlawfulness accumulates. And because SITA's own framing collapses the category the reform depends on, reform has to begin by rewriting how the organisation describes itself. You cannot be the steward of something you still classify as a purchase. The reform is not complicated to describe. SITA needs the authority to formally classify certain systems as critical national infrastructure. Once classified, the state must either own the code or hold it in escrow. SITA needs real lifecycle authority, including the power to sunset systems. It also needs shutdown authority with legal protection for the official who uses it. And a Treasury resolution escalator for the moments when a dispute has frozen everything and no one wants to be the first to move. The underlying shift is a sentence. SITA must move from being a central IT procurement agent to being a steward of state digital infrastructure. Procurement, infrastructure and sovereignty are three different things with three different rule sets. SITA currently pretends they are the same. The courts are starting to say that pretence is no longer available.";
+  </script>
+  <script src="/js/main.js"></script>
+  <script>
+    /* SITA uses 2D canvas particles, not Three.js — already handled by main.js dust */
+  </script>
+</body>
+
+</html>

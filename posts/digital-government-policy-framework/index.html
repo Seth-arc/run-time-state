@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Government Policy Framework — Runtime State</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://runtimestate.com/posts/digital-government-policy-framework">
+  <meta property="og:title" content="Culture, Coordination, and Capability in South Africa's Draft Digital Government Policy Framework — Runtime State">
+  <meta property="og:description" content="A capable technical blueprint missing the cultural and behavioural scaffolding digital transformation actually requires.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://runtimestate.com/posts/digital-government-policy-framework">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@OfficialSethu">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/article.css">
+  <style>
+    :root {
+      --bg: #1f2220;
+      --text-main: #e5e2d2;
+      --text-muted: #9a9a8f;
+      --border: #2e3230;
+      --border-strong: #3e4240;
+
+      --tag-imported: #d4866a;
+      --tag-adapted: #d4a968;
+      --tag-grounded: #8fb58a;
+      --tag-performative: #b89ac4;
+      --tag-ambiguous: #8aadc4;
+      --tag-unsaid: #a6a295;
+    }
+
+    /* LIGHT MODE OVERRIDES - PAPER INVERSE OF THE DOCUMENT PALETTE */
+    body.light-mode {
+      --bg: #e5e2d2;
+      --text-main: #3a3f38;
+      --text-muted: #6a6f64;
+      --border: #cdc9b8;
+      --border-strong: #3a3f38;
+
+      /* Deepen tag colors so they read properly on warm cream */
+      --tag-imported: #b85a2e;
+      --tag-adapted: #a87518;
+      --tag-grounded: #3d7a3a;
+      --tag-performative: #7a4a9a;
+      --tag-ambiguous: #3a6a9a;
+      --tag-unsaid: #5a5a4e;
+    }
+
+    body.light-mode .v-stat {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .verdict-text strong,
+    body.light-mode .prose strong,
+    body.light-mode .prose h3,
+    body.light-mode .tab-btn:hover,
+    body.light-mode .tab-btn.active,
+    body.light-mode .comp-card h4,
+    body.light-mode .silence-card h4,
+    body.light-mode .acc-header,
+    body.light-mode .matrix td.theme-name,
+    body.light-mode .synthesis-box h3,
+    body.light-mode .score-bars-container h4 {
+      color: #3a3f38;
+    }
+
+    body.light-mode .tab-btn.active {
+      border-bottom-color: #3a3f38;
+    }
+
+    body.light-mode .prose,
+    body.light-mode .comp-card p,
+    body.light-mode .silence-card p,
+    body.light-mode .acc-inner,
+    body.light-mode .matrix th,
+    body.light-mode .matrix td,
+    body.light-mode .au-col p {
+      color: #555555;
+    }
+
+    body.light-mode .pillar-levels dt {
+      color: #666;
+    }
+
+    body.light-mode .filter-btn:hover,
+    body.light-mode .filter-btn.active {
+      background: #F2F2F2;
+      color: #3a3f38;
+      border-color: #3a3f38;
+    }
+
+    body.light-mode .evidence-block:hover {
+      border-color: #3a3f38;
+    }
+
+    body.light-mode .score-bars-container,
+    body.light-mode .synthesis-box {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid #E8E8E8;
+    }
+
+    body.light-mode .score-label {
+      color: #666;
+    }
+
+    body.light-mode .verdict-box {
+      border-left: 2px solid #3a3f38;
+      padding-left: 2.5rem;
+    }
+
+    body.light-mode .theme-toggle,
+    body.light-mode .play-audio-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #E8E8E8;
+      color: #3a3f38;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .theme-toggle:hover,
+    body.light-mode .play-audio-btn:hover {
+      background: #3a3f38;
+      color: #e5e2d2;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      border-color: #3a3f38;
+    }
+
+    body.light-mode .tts-subtitles {
+      color: #111111;
+    }
+
+    /* DGPF article-specific play-audio-btn override (filled style, not outline) */
+    .play-audio-btn {
+      background: var(--text-main);
+      color: var(--bg);
+      border: none;
+    }
+
+    body.light-mode .play-audio-btn:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Wordcloud */
+    .wordcloud {
+      position: relative;
+      height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      perspective: 1200px;
+      margin: 4rem 0;
+      cursor: crosshair;
+    }
+
+    .wordcloud .word {
+      position: absolute;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: inherit;
+      cursor: pointer;
+      will-change: transform, opacity, filter;
+      transform-style: preserve-3d;
+      text-shadow: 0 0 15px currentColor;
+    }
+
+    .wc-xl { font-size: 3rem; }
+    .wc-lg { font-size: 2.2rem; }
+    .wc-md { font-size: 1.5rem; }
+    .wc-sm { font-size: 1rem; }
+
+    .wc-imported { color: var(--tag-imported); }
+    .wc-adapted { color: var(--tag-adapted); }
+    .wc-grounded { color: var(--tag-grounded); }
+    .wc-neutral { color: var(--text-muted); }
+
+    .wc-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .wc-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+
+    .wc-dot-imported { background: var(--tag-imported); }
+    .wc-dot-adapted { background: var(--tag-adapted); }
+    .wc-dot-grounded { background: var(--tag-grounded); }
+    .wc-dot-neutral { background: var(--text-muted); }
+
+    /* Synthesis box and score bars */
+    .synthesis-box {
+      padding: 4rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .synthesis-box h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #e5e2d2;
+      margin-bottom: 2rem;
+    }
+
+    .score-bars-container {
+      margin-top: 3rem;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .score-bars-container h4 {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #e5e2d2;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .score-bars-container>p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .score-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .score-label {
+      width: 120px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+    }
+
+    .score-bar-track {
+      flex: 1;
+      height: 4px;
+      background: var(--border-strong);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .score-val {
+      width: 30px;
+      text-align: right;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* AU split layout */
+    .au-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4vw;
+      margin-top: 3rem;
+    }
+
+    .au-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .au-col.au-converge h3 {
+      color: var(--tag-grounded);
+    }
+
+    .au-col.au-diverge h3 {
+      color: var(--tag-imported);
+    }
+
+    .au-col p {
+      font-size: 1.1rem;
+      color: #b3b3b3;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* DGPF footer override */
+    .footer {
+      padding: 4rem 10vw;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      z-index: 1;
+      position: relative;
+      background: transparent;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .au-split {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <button class="theme-toggle" id="themeToggle">Light Mode</button>
+  </nav>
+
+  <canvas id="webgl-canvas"></canvas>
+
+  <header class="article-header">
+    <div class="kicker">September 2024</div>
+    <h1 class="hero-title">Culture, Coordination, and Capability in South Africa's Draft Digital Government Policy
+      Framework</h1>
+    <p class="subtitle">Developed by <a href="https://x.com/OfficialSethu" target="_blank"
+        rel="noopener noreferrer">@OfficialSethu</a></p>
+    <div style="position: relative;">
+      <button class="play-audio-btn" id="playAudioBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span>Listen to Summary</span>
+      </button>
+      <div id="tts-subtitles" class="tts-subtitles"></div>
+    </div>
+  </header>
+
+  <section class="scrolly-container">
+    <div class="scrolly-left">
+      <div class="verdict-box">
+        <div class="verdict-label">The Verdict</div>
+        <div class="verdict-word">Technically Sound &mdash; Culturally Thin</div>
+        <div class="verdict-text">
+          <p>A capable technical blueprint missing the cultural and behavioural scaffolding digital transformation
+            actually requires.</p>
+          <p>The Draft Digital Government Policy Framework (DGPF) advances a credible technical vision for modernising
+            South Africa's public service. It names the right ambitions &mdash; citizen-centric delivery,
+            interoperability, and Batho Pele alignment &mdash; and gestures toward the skills agenda needed to realise
+            them.</p>
+          <p>However, the framework treats digital transformation primarily as a <strong>technology adoption
+              problem</strong> rather than a <strong>cultural transformation problem</strong>. Drawing on Schein's
+            levels of culture and lessons from Estonia and South African universities, four structural gaps emerge: weak
+            emphasis on organisational culture, insufficient national-level coordination, a narrow skills agenda, and
+            the absence of structured implementation and evaluation guidelines.</p>
+          <p>The result is a document that can be implemented on paper but risks stalling in practice &mdash; unless the
+            underlying assumptions, values of integration, and values of adaptation are surfaced and worked on
+            deliberately.</p>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="scrolly-right">
+      <div class="pillar-card pillar-intro">
+        <div class="kicker" style="margin-bottom: 1rem; color: var(--tag-grounded);">Analytical Framework</div>
+        <h3
+          style="font-size: 2rem; color: var(--text-main); margin-bottom: 1.5rem; text-transform: none; letter-spacing: -0.02em;">
+          A Blueprint for Cultural Transformation</h3>
+        <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; font-weight: 300;">The DGPF is strong
+          on
+          technical ambition but thin on the cultural scaffolding digital transformation needs. <br><br>The following
+          four pillars outline my <strong>recommended
+            framework</strong> for how South Africa must translate global ideals into actionable policies across
+          National, Provincial, and Local tiers.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>01. Cultural Transformation</h3>
+        <p>Digital transformation is first a culture problem. The DGPF names outdated processes and leadership gaps but
+          stops short of treating culture and behaviour as a core pillar. Schein's levels &mdash; assumptions, espoused
+          values, and observable behaviours &mdash; must be made legible and actively managed.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Mandate the National School of Government to develop an ongoing National Learning Agenda for digital
+            culture change.</dd>
+          <dt>Departmental</dt>
+          <dd>Require organisational culture assessments before and during digital transformation initiatives.</dd>
+          <dt>Individual</dt>
+          <dd>Embed digital orientation into onboarding and core public service induction.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>02. National Coordination</h3>
+        <p>Section 11.2.3 gestures at coordination without the machinery to deliver it. Estonia's e-University
+          experience shows that coherent digital transformation needs a unified coordinating body with real authority,
+          not advisory committees layered on existing silos.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Establish a National Digital Governance Council to harmonise initiatives across departments.</dd>
+          <dt>Departmental</dt>
+          <dd>Run regular NSG-led Digital Maturity Assessments to track alignment and readiness.</dd>
+          <dt>Workforce</dt>
+          <dd>Integrate digital readiness criteria into the Public Service Human Resource Development Strategy.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>03. Comprehensive Skills</h3>
+        <p>Section 11.2.10 acknowledges the need for digital skills but lacks the mechanisms to reach all staff.
+          Research in South African universities found the majority of employees are never directly targeted by
+          supposedly institution-wide interventions &mdash; the same risk applies here.</p>
+        <dl class="pillar-levels">
+          <dt>Assessment</dt>
+          <dd>Regular, anonymised Digital Literacy Assessments aligned to a Digital Competency Framework.</dd>
+          <dt>Initiative</dt>
+          <dd>A National Digital Skills Initiative for public servants at every level.</dd>
+          <dt>Leadership</dt>
+          <dd>Dedicated Digital Transformation Leadership Programmes for senior officials.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>04. Implementation &amp; Evaluation</h3>
+        <p>Sections 7 and 8 set ambitious objectives and outcomes without the implementation roadmaps or evaluation
+          frameworks needed to reach them. Without structured review, the DGPF risks becoming a statement of intent
+          rather than a driver of change.</p>
+        <dl class="pillar-levels">
+          <dt>Framework</dt>
+          <dd>Mandate a comprehensive, data-driven Digital Governance Monitoring &amp; Evaluation framework.</dd>
+          <dt>Review</dt>
+          <dd>Regular, structured progress reviews channelled through the National Digital Governance Council.</dd>
+          <dt>Learning</dt>
+          <dd>Feedback loops that convert evaluation findings into revisions of the Learning Agenda.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <h2 class="section-title">Final Synthesis</h2>
+    <div class="synthesis-box">
+      <h3>Technically Ready, Culturally Unprepared</h3>
+      <div class="prose">
+        <p>The Draft Digital Government Policy Framework reads as a technically competent modernisation plan. It names
+          the right ambitions and anchors itself in Batho Pele. What it does not yet do is treat digital transformation
+          as the cultural project it is &mdash; a shift in underlying assumptions about how the state works, whom it
+          serves, and what it rewards.</p>
+        <p>Estonia's coordinated national approach and the South African university experience both point in the same
+          direction: technology adoption without cultural alignment stalls. The four guiding principles proposed here
+          &mdash; cultural transformation, national coordination, comprehensive skills, and structured implementation
+          &amp; evaluation &mdash; are not additions to the DGPF. They are the conditions under which it can actually
+          succeed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="blogpost">
+    <h2 class="section-title">Blog Post &mdash; A Summary for Listening</h2>
+    <p class="section-intro">A plain-language companion piece to the formal comment, written to be read aloud or heard
+      through the Listen to Summary button at the top of this page.</p>
+    <div class="synthesis-box">
+      <h3>The Missing Layer in South Africa's Digital Government Plan</h3>
+      <div class="prose">
+        <p>When a government publishes a digital transformation framework, it is tempting to read it as a technology
+          document. Cloud here, interoperability there, a section on skills, a mention of leadership. The Draft Digital
+          Government Policy Framework follows that familiar shape, and on its own terms it is a credible piece of work.
+          But the more time you spend with it, the more you notice what is not on the page.</p>
+        <p>Digital transformation is not really about technology. It is about the assumptions people carry to work, the
+          behaviours their managers reward, and the stories an institution tells itself about why it exists. Edgar
+          Schein called these the underlying assumptions, the espoused values, and the observable artefacts of
+          organisational culture. You can replace every server in the building and change none of them &mdash; and if
+          you do, nothing meaningful will change.</p>
+        <p>This is the missing layer in the DGPF. The framework gestures at culture in its problem statement, noting
+          outdated processes and insufficient leadership involvement, but it treats these as obstacles to be cleared
+          rather than as the substance of the work itself. Research in South African universities suggests why that
+          matters. When institutions announce digital transformation without clearly articulating what it means beyond
+          the core business, and without engaging all staff, uptake stays shallow. The tools arrive. The culture does
+          not move.</p>
+        <p>The comment I submitted proposes four guiding principles to address this gap. The first is cultural
+          transformation itself, embedded as a principle rather than assumed as a by-product. That means giving the
+          National School of Government a real mandate to run an ongoing National Learning Agenda, and requiring
+          departments to assess their culture before and during digital initiatives, not after they fail.</p>
+        <p>The second is national coordination. Estonia's success in digital government was not an accident of small
+          size. It came from a unified coordinating structure with genuine authority. Section 11.2.3 of the DGPF
+          gestures at coordination without the teeth to deliver it. A National Digital Governance Council, paired with
+          regular Digital Maturity Assessments across departments, would turn an aspiration into a system.</p>
+        <p>The third is comprehensive skills development. The DGPF acknowledges the skills problem in Section 11.2.10,
+          but the remedy needs to reach every level of the public service, not only the officials who already sit
+          closest to the technology. Anonymised literacy assessments, a national skills initiative, and dedicated
+          leadership programmes for senior officials would begin to close the gap.</p>
+        <p>The fourth is structured implementation and evaluation. Objectives and expected outcomes are set out in
+          Sections 7 and 8, but without implementation roadmaps and a monitoring and evaluation framework, they remain
+          ambitions. A data-driven evaluation framework, reviewed regularly through the proposed Council, turns the
+          document into a living instrument.</p>
+        <p>None of these recommendations argue against the technical work in the DGPF. They argue that the technical
+          work will not travel on its own. Without cultural transformation, coordination, skills, and evaluation, the
+          framework risks becoming another well-drafted document that changes the language public servants use without
+          changing the work they do. With those four layers in place, it can become something rarer: a policy that moves
+          an institution.</p>
+        <p>That is the argument, in summary. The full comment, with corresponding sections and citations, sits above
+          this post. If you prefer to hear it, the Listen to Summary button at the top of the page will read a shorter
+          version aloud.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="article-footer" style="justify-content:center;text-align:center;">
+    <span>Runtime State &middot; 2026 &middot; <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">@OfficialSethu</a></span>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="/js/main.js"></script>
+  <script>
+  /* Progressive WebGL + GSAP — loads only if user hasn't requested reduced motion */
+  (function () {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var scripts = [
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
+    ];
+    var loaded = 0;
+    scripts.forEach(function (src) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = function () {
+        loaded++;
+        if (loaded === scripts.length) initEnhancements();
+      };
+      document.head.appendChild(s);
+    });
+  })();
+
+  function initEnhancements() {
+    // 1. THREE.JS ARCHITECTURE
+    var canvas = document.querySelector('#webgl-canvas');
+    var scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x1f2220, 0.015);
+
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 22);
+    camera.rotation.x = 0;
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    var geometry = new THREE.TorusKnotGeometry(6, 1.4, 160, 20, 2, 5);
+
+    var material = new THREE.MeshBasicMaterial({
+      color: 0x4a5048,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.45
+    });
+
+    var terrain = new THREE.Mesh(geometry, material);
+    terrain.position.set(0, 0, -2);
+    scene.add(terrain);
+
+    window.addEventListener('resize', function () {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animateThreeJS() {
+      terrain.rotation.x += 0.0008;
+      terrain.rotation.y += 0.0012;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animateThreeJS);
+    }
+    animateThreeJS();
+
+    // 2. GSAP SETUP (no Lenis)
+    gsap.ticker.lagSmoothing(0);
+    gsap.registerPlugin(ScrollTrigger);
+
+    // 3. SECTION ANIMATIONS
+    gsap.from(".hero-title", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.2 });
+    gsap.from(".subtitle", { y: 30, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.5 });
+
+    // Scrolly Pinning
+    ScrollTrigger.create({
+      trigger: ".scrolly-container",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".scrolly-left",
+      pinSpacing: false
+    });
+
+    // Pillar fading (GSAP scrub version — enhances the IO fallback in main.js)
+    var pillars = gsap.utils.toArray('.pillar-card');
+    pillars.forEach(function (pillar) {
+      gsap.to(pillar, {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: pillar,
+          start: "top 70%",
+          end: "top 40%",
+          scrub: true
+        }
+      });
+    });
+
+    // Camera Fly
+    ScrollTrigger.create({
+      trigger: "body",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 1,
+      onUpdate: function (self) {
+        camera.position.z = 20 - (self.progress * 15);
+        camera.position.y = 5 - (self.progress * 2);
+        camera.rotation.x = -0.2 - (self.progress * 0.3);
+      }
+    });
+
+    // 4. SEXY 3D HUD WORDCLOUD ANIMATION
+    var words = gsap.utils.toArray('.wordcloud .word');
+    var wordcloud = document.querySelector('.wordcloud');
+
+    if (wordcloud && words.length) {
+      // Scatter words into a 3D Galaxy Cluster
+      words.forEach(function (word) {
+        var x = gsap.utils.random(-window.innerWidth * 0.4, window.innerWidth * 0.4);
+        var y = gsap.utils.random(-300, 300);
+        var z = gsap.utils.random(-800, 400);
+        var scale = gsap.utils.mapRange(-800, 400, 0.4, 1.2, z);
+        var opacity = gsap.utils.mapRange(-800, 400, 0.2, 0.9, z);
+
+        gsap.set(word, { x: x, y: y, z: z, scale: scale, opacity: opacity });
+
+        // Core floating orbit
+        gsap.to(word, {
+          x: x + gsap.utils.random(-30, 30),
+          y: y + gsap.utils.random(-30, 30),
+          z: z + gsap.utils.random(-100, 100),
+          rotationX: gsap.utils.random(-20, 20),
+          rotationY: gsap.utils.random(-20, 20),
+          duration: gsap.utils.random(4, 9),
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut"
+        });
+      });
+
+      // Optical parallax tracking on mouse move
+      wordcloud.addEventListener("mousemove", function (e) {
+        var rect = wordcloud.getBoundingClientRect();
+        var relX = (e.clientX - rect.left) / rect.width - 0.5;
+        var relY = (e.clientY - rect.top) / rect.height - 0.5;
+
+        gsap.to(words, {
+          rotationY: relX * 40,
+          rotationX: -relY * 40,
+          duration: 1,
+          ease: "power2.out",
+          overwrite: "auto"
+        });
+      });
+
+      // Entrance Animation
+      gsap.from(words, {
+        opacity: 0,
+        z: -1200,
+        filter: "blur(10px)",
+        duration: 2,
+        stagger: 0.02,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".wordcloud",
+          start: "top 70%",
+        }
+      });
+
+      words.forEach(function (word) {
+        // Hover effect for engagement
+        word.addEventListener('mouseenter', function () {
+          var isLight = document.body.classList.contains('light-mode');
+          var hoverColor = isLight ? "#3a3f38" : "#e5e2d2";
+          var shadow = isLight ? "0 4px 15px rgba(0,0,0,0.15)" : "0 0 20px currentColor, 0 0 40px currentColor";
+
+          gsap.to(word, {
+            scale: 1.3,
+            color: hoverColor,
+            textShadow: shadow,
+            duration: 0.3,
+            overwrite: "auto"
+          });
+        });
+        word.addEventListener('mouseleave', function () {
+          gsap.to(word, {
+            scale: 1,
+            color: "",
+            textShadow: "none",
+            duration: 0.5,
+            overwrite: "auto"
+          });
+        });
+      });
+    }
+
+    // 5. PIE CHART GSAP ENHANCEMENT (visual pop on click)
+    document.querySelectorAll('.pie-segment').forEach(function (seg) {
+      seg.addEventListener('click', function () {
+        gsap.fromTo(this, { strokeWidth: 10 }, { strokeWidth: 6, duration: 0.5, ease: "power2.out" });
+      });
+    });
+
+    // 6. MATRIX FILTER GSAP ENHANCEMENT (pie chart fade-in)
+    document.querySelectorAll('#filterBar .filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        var pieChart = document.getElementById('overallChartView');
+        if (f === 'overall' && pieChart) {
+          gsap.fromTo(pieChart, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+        }
+      });
+    });
+
+    // 7. Theme change handler for Three.js
+    document.addEventListener('themechange', function (e) {
+      if (e.detail.light) {
+        scene.fog.color.setHex(0xe5e2d2);
+        material.color.setHex(0xc5c1b0);
+      } else {
+        scene.fog.color.setHex(0x1f2220);
+        material.color.setHex(0x4a5048);
+      }
+    });
+  }
+  </script>
+</body>
+
+</html>

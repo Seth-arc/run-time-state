@@ -1,0 +1,129 @@
+/* ─── Runtime State · Site Shell ─── */
+
+/* ─── BACKGROUND CANVAS ─── */
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── SITE NAV ─── */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2.5rem;
+  pointer-events: none;
+}
+
+.site-nav > * {
+  pointer-events: auto;
+}
+
+.site-logo {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  color: var(--text, #e0e0e0);
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.site-logo:hover {
+  opacity: 1;
+}
+
+.site-logo .accent {
+  color: var(--accent, #e86a4a);
+}
+
+.site-nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.site-nav-links a {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--faint, #3a3a3a);
+  transition: color 0.3s;
+}
+
+.site-nav-links a:hover {
+  color: var(--dim, #777);
+}
+
+/* ─── PAGE CONTAINER ─── */
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  padding: 0 3rem;
+  margin: 0 auto;
+}
+
+/* ─── SITE FOOTER ─── */
+.site-footer {
+  padding: 3rem 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.65rem;
+  color: var(--faint, #3a3a3a);
+  letter-spacing: 0.05em;
+}
+
+.site-footer a {
+  text-decoration: none;
+  color: var(--faint, #3a3a3a);
+  transition: color 0.3s;
+}
+
+.site-footer a:hover {
+  color: var(--dim, #777);
+}
+
+/* ─── THEME TOGGLE ─── */
+.theme-toggle {
+  background: transparent;
+  color: var(--text-main, var(--text, #e0e0e0));
+  border: 1px solid var(--border-strong, var(--faint, #3a3a3a));
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: all 0.3s;
+  backdrop-filter: blur(5px);
+}
+
+.theme-toggle:hover {
+  background: var(--text-main, var(--text, #e0e0e0));
+  color: var(--bg);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .page {
+    padding: 0 1.5rem;
+  }
+
+  .site-nav {
+    padding: 1.5rem;
+  }
+}

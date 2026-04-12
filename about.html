@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Runtime State</title>
+  <meta name="description" content="About Runtime State and its author.">
+
+  <!-- Social -->
+  <meta property="og:title" content="About — Runtime State">
+  <meta property="og:description" content="About Runtime State and its author.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://runtimestate.com/about">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@OfficialSethu">
+
+  <link rel="canonical" href="https://runtimestate.com/about">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <style>
+    /* ─── ABOUT-SPECIFIC ─── */
+    header {
+      padding: 18vh 0 6rem;
+    }
+
+    .title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 2.5rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    .content {
+      padding: 3rem 0 8rem;
+    }
+
+    .content p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--dim);
+      font-weight: 300;
+      max-width: 600px;
+      margin-bottom: 1.5rem;
+    }
+
+    .content p strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .content p a {
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid var(--faint);
+      transition: border-color 0.3s;
+    }
+
+    .content p a:hover {
+      border-color: var(--dim);
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--faint);
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 12vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <ul class="site-nav-links">
+      <li><a href="/">Archive</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <header>
+      <h1 class="title">About</h1>
+    </header>
+
+    <hr class="divider">
+
+    <div class="content">
+      <p><strong>Runtime State</strong> is a research archive where I publish analysis and field notes on South African
+        technology, policy, and governance.</p>
+
+      <div class="section-label">Method</div>
+      <p>The primary methods are discourse analysis and incident mapping. Policy documents are read not for what they
+        propose but for what they reveal about the assumptions, silences, and structural logics that shape them. Cyber
+        incidents are compiled from public records, annual reports, and ministerial disclosures to surface systemic
+        patterns.</p>
+
+      <div class="section-label">Contact</div>
+      <p>Find me on <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">X / Twitter</a>.
+      </p>
+    </div>
+
+    <footer class="site-footer">
+      <span>Runtime State &middot; 2026</span>
+      <a href="/">Home</a>
+    </footer>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

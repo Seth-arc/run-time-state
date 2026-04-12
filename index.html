@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Runtime State</title>
+  <meta name="description" content="Analysis and field notes on South African technology, policy, and governance.">
+
+  <!-- Social -->
+  <meta property="og:title" content="Runtime State">
+  <meta property="og:description" content="Analysis and field notes on South African technology, policy, and governance.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://runtimestate.com/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@OfficialSethu">
+  <meta name="twitter:title" content="Runtime State">
+  <meta name="twitter:description" content="Analysis and field notes on South African technology, policy, and governance.">
+
+  <link rel="canonical" href="https://runtimestate.com/">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <style>
+    /* ─── HOME-SPECIFIC ─── */
+    header {
+      padding: 18vh 0 6rem;
+    }
+
+    .title {
+      font-size: 5rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 2.5rem;
+    }
+
+    .title .accent {
+      color: var(--accent);
+    }
+
+    .intro {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--dim);
+      font-weight: 300;
+      max-width: 580px;
+    }
+
+    .intro a {
+      text-decoration: none;
+      color: var(--text);
+      border-bottom: 1px solid var(--faint);
+      transition: border-color 0.3s;
+    }
+
+    .intro a:hover {
+      border-color: var(--dim);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 0;
+    }
+
+    .entries {
+      padding: 1rem 0 8rem;
+    }
+
+    .entry {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .entry-meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+    }
+
+    .entry-meta .sep {
+      color: var(--rule);
+    }
+
+    .entry-title {
+      font-size: 1.25rem;
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+      transition: color 0.25s;
+    }
+
+    .entry:hover .entry-title {
+      color: #fff;
+    }
+
+    .entry-desc {
+      font-size: 0.92rem;
+      color: var(--faint);
+      line-height: 1.65;
+      font-weight: 300;
+      max-width: 600px;
+      transition: color 0.4s;
+    }
+
+    .entry:hover .entry-desc {
+      color: var(--dim);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 12vh;
+      }
+
+      .title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="site-nav">
+    <span></span>
+    <ul class="site-nav-links">
+      <li><a href="/about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <header>
+      <h1 class="title">Runtime <span class="accent">State</span></h1>
+      <p class="intro">Analysis and field notes on South African technology, policy, and governance.</p>
+    </header>
+
+    <hr class="divider">
+
+    <main class="entries">
+      <a href="/posts/government-cyber-breaches" class="entry">
+        <div class="entry-meta">
+          <span>Field Note</span>
+          <span class="sep">&middot;</span>
+          <span>April 2026</span>
+        </div>
+        <h2 class="entry-title">The Slow Breach: Five Years of Cyber Incidents Inside South Africa's Government</h2>
+        <p class="entry-desc">Nine confirmed intrusions across justice, logistics, defence, health, and finance. Not
+          isolated incidents — a systemic resilience problem.</p>
+      </a>
+
+      <a href="/posts/sita-mandate-analysis" class="entry">
+        <div class="entry-meta">
+          <span>Governance Note</span>
+          <span class="sep">&middot;</span>
+          <span>January 2026</span>
+        </div>
+        <h2 class="entry-title">SITA, Trapped Between Responsibility and Authority</h2>
+        <p class="entry-desc">SITA is repeatedly asked to guarantee continuity for systems the state depends on,
+          without being empowered to own, resolve, or terminate them.</p>
+      </a>
+
+      <a href="/posts/digital-government-policy-framework" class="entry">
+        <div class="entry-meta">
+          <span>Framework Analysis</span>
+          <span class="sep">&middot;</span>
+          <span>September 2024</span>
+        </div>
+        <h2 class="entry-title">Culture, Coordination, and Capability in the Draft Digital Government Policy
+          Framework</h2>
+        <p class="entry-desc">A capable technical blueprint missing the cultural and behavioural scaffolding digital
+          transformation actually requires.</p>
+      </a>
+
+      <a href="/posts/ai-policy-discourse-analysis" class="entry">
+        <div class="entry-meta">
+          <span>Discourse Analysis</span>
+          <span class="sep">&middot;</span>
+          <span>April 2026</span>
+        </div>
+        <h2 class="entry-title">Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy</h2>
+        <p class="entry-desc">A selective adaptation layered onto a substantially imported architecture. It reads
+          global and annotates local.</p>
+      </a>
+    </main>
+
+    <footer class="site-footer">
+      <span>Runtime State &middot; 2026</span>
+      <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">@OfficialSethu</a>
+    </footer>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

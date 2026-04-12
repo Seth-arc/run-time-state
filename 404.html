@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not Found — Runtime State</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <style>
+    .four-oh-four {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .four-oh-four h1 {
+      font-size: 4rem;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      color: var(--faint);
+    }
+
+    .four-oh-four p {
+      font-size: 1.05rem;
+      color: var(--dim);
+      font-weight: 300;
+    }
+
+    .four-oh-four a {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--faint);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.25rem;
+      transition: color 0.3s, border-color 0.3s;
+    }
+
+    .four-oh-four a:hover {
+      color: var(--text);
+      border-color: var(--dim);
+    }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <span></span>
+  </nav>
+
+  <div class="four-oh-four">
+    <h1>404</h1>
+    <p>This page does not exist.</p>
+    <a href="/">Back to archive</a>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy — Runtime State</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://runtimestate.com/posts/ai-policy-discourse-analysis">
+  <meta property="og:title" content="Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy — Runtime State">
+  <meta property="og:description" content="A selective adaptation layered onto a substantially imported architecture. It reads global and annotates local.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://runtimestate.com/posts/ai-policy-discourse-analysis">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@OfficialSethu">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/article.css">
+  <style>
+    :root {
+      --bg: #030303;
+      --text-main: #FAFAFA;
+      --text-muted: #666666;
+      --border: #1A1A1A;
+      --border-strong: #333333;
+
+      --tag-imported: #e86a4a;
+      --tag-adapted: #e8a03a;
+      --tag-grounded: #5fc490;
+      --tag-performative: #c088e0;
+      --tag-ambiguous: #6aa8e0;
+      --tag-unsaid: #8a8579;
+    }
+
+    body.light-mode {
+      --bg: #FFFFFF;
+      --text-main: #000000;
+      --text-muted: #666666;
+      --border: #E8E8E8;
+      --border-strong: #000000;
+
+      --tag-imported: #D94520;
+      --tag-adapted: #CD7F15;
+      --tag-grounded: #1A8C4B;
+      --tag-performative: #A644D2;
+      --tag-ambiguous: #206EBF;
+      --tag-unsaid: #5A5A5A;
+    }
+
+    body.light-mode .v-stat {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .verdict-text strong,
+    body.light-mode .prose strong,
+    body.light-mode .prose h3,
+    body.light-mode .tab-btn:hover,
+    body.light-mode .tab-btn.active,
+    body.light-mode .comp-card h4,
+    body.light-mode .silence-card h4,
+    body.light-mode .acc-header,
+    body.light-mode .matrix td.theme-name,
+    body.light-mode .synthesis-box h3,
+    body.light-mode .score-bars-container h4 {
+      color: #000000;
+    }
+
+    body.light-mode .tab-btn.active {
+      border-bottom-color: #000000;
+    }
+
+    body.light-mode .prose,
+    body.light-mode .comp-card p,
+    body.light-mode .silence-card p,
+    body.light-mode .acc-inner,
+    body.light-mode .matrix th,
+    body.light-mode .matrix td,
+    body.light-mode .au-col p {
+      color: #555555;
+    }
+
+    body.light-mode .pillar-levels dt {
+      color: #666;
+    }
+
+    body.light-mode .filter-btn:hover,
+    body.light-mode .filter-btn.active {
+      background: #F2F2F2;
+      color: #000;
+      border-color: #000;
+    }
+
+    body.light-mode .evidence-block:hover {
+      border-color: #000;
+    }
+
+    body.light-mode .score-bars-container,
+    body.light-mode .synthesis-box {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid #E8E8E8;
+    }
+
+    body.light-mode .score-label {
+      color: #666;
+    }
+
+    body.light-mode .verdict-box {
+      border-left: 2px solid #000;
+      padding-left: 2.5rem;
+    }
+
+    body.light-mode .theme-toggle,
+    body.light-mode .play-audio-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #E8E8E8;
+      color: #000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    body.light-mode .theme-toggle:hover,
+    body.light-mode .play-audio-btn:hover {
+      background: #000;
+      color: #FFF;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      border-color: #000;
+    }
+
+    body.light-mode .play-audio-btn:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    body.light-mode .tts-subtitles {
+      color: #111111;
+    }
+
+    /* Play audio button solid-background override */
+    .play-audio-btn {
+      background: var(--text-main);
+      color: var(--bg);
+      border: none;
+    }
+
+    .play-audio-btn:hover {
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+    }
+
+    /* AU split layout */
+    .au-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4vw;
+      margin-top: 3rem;
+    }
+
+    .au-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .au-col.au-converge h3 {
+      color: var(--tag-grounded);
+    }
+
+    .au-col.au-diverge h3 {
+      color: var(--tag-imported);
+    }
+
+    .au-col p {
+      font-size: 1.1rem;
+      color: #b3b3b3;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Synthesis box */
+    .synthesis-box {
+      padding: 4rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .synthesis-box h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+
+    /* Score bars */
+    .score-bars-container {
+      margin-top: 3rem;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .score-bars-container h4 {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .score-bars-container>p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .score-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .score-label {
+      width: 120px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+    }
+
+    .score-bar-track {
+      flex: 1;
+      height: 4px;
+      background: var(--border-strong);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .score-val {
+      width: 30px;
+      text-align: right;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Footer override */
+    .footer {
+      padding: 4rem 10vw;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      z-index: 1;
+      position: relative;
+      background: transparent;
+      text-align: center;
+    }
+
+    /* Pie chart */
+    .pie-segment {
+      cursor: pointer;
+      transition: stroke-width 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s;
+    }
+
+    .pie-segment:hover {
+      stroke-width: 8;
+      opacity: 0.8;
+    }
+
+    .pie-explanation {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+    }
+
+    body.light-mode .pie-explanation {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .au-split {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <button class="theme-toggle" id="themeToggle">Light Mode</button>
+  </nav>
+
+  <canvas id="webgl-canvas"></canvas>
+
+  <header class="article-header">
+    <div class="kicker">April 2026</div>
+    <h1 class="hero-title">Citizens, Infrastructure, and Knowledge in South Africa's Draft AI
+      Policy</h1>
+    <p class="subtitle">Developed by <a href="https://x.com/OfficialSethu" target="_blank"
+        rel="noopener noreferrer">@OfficialSethu</a></p>
+    <div style="position: relative;">
+      <button class="play-audio-btn" id="playAudioBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span>Listen to Summary</span>
+      </button>
+      <div id="tts-subtitles" class="tts-subtitles"></div>
+    </div>
+  </header>
+
+  <section class="scrolly-container">
+    <div class="scrolly-left">
+      <div class="verdict-box">
+        <div class="verdict-label">The Verdict</div>
+        <div class="verdict-word">Hybrid &mdash; Leaning Derivative</div>
+        <div class="verdict-text">
+          <p>The policy is a selective adaptation layered onto a substantially imported architecture.</p>
+          <p>South Africa's AI policy trajectory represents a <strong>hybrid effort</strong> &mdash; but one whose
+            centre of gravity sits closer to the derivative end of the spectrum than to genuine origination. The 2026
+            Draft Policy makes real and sometimes inventive attempts at contextual grounding: anchoring AI governance in
+            the Constitution, invoking Ubuntu, and foregrounding indigenous language preservation.</p>
+          <p>However, the <strong>core policy architecture</strong> &mdash; risk-based classification, ethical
+            principles, and innovation-competitiveness framing &mdash; remains <strong>fundamentally imported</strong>.
+          <p>The result is a document that reads global and annotates local, rather than one that thinks from local
+            conditions outward.</p>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="scrolly-right">
+      <div class="pillar-card pillar-intro">
+        <div class="kicker" style="margin-bottom: 1rem; color: var(--tag-grounded);">Analytical Framework</div>
+        <h3
+          style="font-size: 2rem; color: var(--text-main); margin-bottom: 1.5rem; text-transform: none; letter-spacing: -0.02em;">
+          A Blueprint for Localization</h3>
+        <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; font-weight: 300;">While the current SA
+          Draft Policy relies heavily on imported, top-heavy institutional blueprints, a genuinely contextual AI
+          strategy requires ground-level execution. <br><br>The following seven pillars outline my <strong>recommended
+            framework</strong> for how South Africa must translate global ideals into actionable policies across
+          National, Provincial, and Local tiers.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>01. The Citizen</h3>
+        <p>AI policy is ultimately a question of whose life it touches. The citizen is not a passive data subject but a
+          current or possible innovator and rights-bearer entitled to explanation, redress, privacy, and meaningful
+          participation under the Constitution.
+        </p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Legislate algorithmic due-process rights and statutory redress pathways.</dd>
+          <dt>Provincial</dt>
+          <dd>Ensure service-delivery AI systems comply with Batho Pele principles.</dd>
+          <dt>Local</dt>
+          <dd>Run community consultations in multiple official languages before implementation.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>02. The Infrastructure</h3>
+        <p>No AI policy survives contact with an unstable grid, thin fibre coverage, or foreign-owned compute.
+          Infrastructure is a hard constraint.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Coordinate energy, spectrum, and compute strategy; negotiate sovereign-cloud terms.</dd>
+          <dt>Provincial</dt>
+          <dd>Align broadband and data-centre incentives with the national plan.</dd>
+          <dt>Local</dt>
+          <dd>Municipal fibre, public Wi-Fi, and last-mile connectivity to close access divides.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>03. State Capacity</h3>
+        <p>A risk-classification regime borrowed from Brussels presumes a regulator that can audit, inspect, and
+          enforce. A deep institutional capacity check is required.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Fund technical AI-auditing capacity inside regulators; avoid creating unfunded bodies.</dd>
+          <dt>Provincial</dt>
+          <dd>Build AI literacy in provincial treasuries and procurement units.</dd>
+          <dt>Local</dt>
+          <dd>Train municipal officials to evaluate vendor claims and refuse opaque tech.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>04. The Economy</h3>
+        <p>Over a third of South Africa's workforce operates outside the formal economy. An AI policy that speaks only
+          to large firms writes millions out.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Labour-market transition policy, platform-worker protections, and SMME programmes.</dd>
+          <dt>Provincial</dt>
+          <dd>Sector-specific reskilling tied to provincial economic profiles.</dd>
+          <dt>Local</dt>
+          <dd>Support township digital hubs and informal-trader digitisation.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>05. Knowledge &amp; Language</h3>
+        <p>Twelve official languages and indigenous knowledge systems determine whether AI is built for South Africans
+          or merely deployed on them.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Fund indigenous-language corpora, open datasets, and doctoral pipelines.</dd>
+          <dt>Provincial</dt>
+          <dd>Integrate AI literacy into basic and higher-education curricula.</dd>
+          <dt>Local</dt>
+          <dd>Public libraries and community centres as major access points for tools.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>06. Governance &amp; Accountability</h3>
+        <p>Without a clear inter-governmental architecture, the framework risks becoming a national document that never
+          reaches the municipal coalface.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Clarify lead department, inter-ministerial coordination, and continental alignment.</dd>
+          <dt>Provincial</dt>
+          <dd>Provincial AI focal points accountable to legislatures.</dd>
+          <dt>Local</dt>
+          <dd>Mandatory AI-use registers for municipalities, open to public inspection.</dd>
+        </dl>
+      </div>
+      <div class="pillar-card">
+        <h3>07. Innovation, Citizens &amp; Context</h3>
+        <p>Innovation is treated as an outcome if ethics are addressed, missing its role in political-economic design
+          and local knowledge structures.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Fund citizen-led R&amp;D, public-interest model development, and fair-use copyright.</dd>
+          <dt>Provincial</dt>
+          <dd>Procurement preferences for locally produced models and datasets.</dd>
+          <dt>Local</dt>
+          <dd>Township innovation hubs with real stakes.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>08. Build &amp; Transform</h3>
+        <p>The Framework nowhere commits the state to building a sovereign foundation model or to reorganising the
+          machinery of government around AI-enabled decision-making. It names every argument for doing so &mdash; data
+          sovereignty, foreign-provider dependence, indigenous-language under-representation &mdash; and then declines
+          to prescribe the treatment. The document imagines AI as something the state will <em>oversee</em>, not
+          something the state will <em>become</em>. This is the difference between being a consumer and a producer of
+          AI, and the Framework, for all its ambition, sits squarely on the consumer side.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Commit public funding to a sovereign South African foundation model built for local languages and
+            contexts; create a central digital service with real authority over line departments rather than only
+            advisory bodies.</dd>
+          <dt>Provincial</dt>
+          <dd>Rewrite procurement law so AI commitments cannot be captured by a handful of foreign vendors; embed data
+            stewards inside provincial departments rather than outside them.</dd>
+          <dt>Local</dt>
+          <dd>Pilot genuine institutional redesign in at least one metro &mdash; not a chatbot bolted onto a website,
+            but a rethinking of how decisions get made, audited, and contested.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section class="section" id="comparative">
+    <h2 class="section-title">Comparative Findings</h2>
+    <p class="section-intro">Key structural similarities and differences across the international texts and the SA
+      frameworks.</p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="comp-similarities">Similarities</button>
+      <button class="tab-btn" data-tab="comp-differences">Differences</button>
+      <button class="tab-btn" data-tab="comp-docs">Doc Profiles</button>
+    </div>
+
+    <div class="tab-panel active" id="comp-similarities">
+      <div class="prose">
+        <p><strong>Convergence of Terminology:</strong> Terms such as "human-centric," "trustworthy AI," "transparency,"
+          "accountability," "fairness," and "risk-based approach" appear across every text. This reflects a unified
+          language template originating primarily from the OECD AI Principles and UNESCO.</p>
+        <p><strong>Risk-based classification</strong> forms the structural backbone for the EU AI Act, the UN Model
+          Policy, and the SA Draft Policy. Each relies on regulating through harm grading.</p>
+        <p><strong>Governance architectures</strong> display mirrored elements: dedicated oversight bodies, ethics
+          boards, and audit obligations are pervasive globally.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="comp-differences">
+      <div class="comp-card">
+        <h4>Legal Bindingness & Jurisdiction</h4>
+        <p>The EU AI Act is sweeping binding legislation. The SA Draft Policy is a framework that <em>may</em> lead to
+          legislation down the line. The UN documents remain purely guidance mechanisms.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Developmental Framing</h4>
+        <p>Only the SA documents repeatedly frame AI primarily as a <em>development</em> tool destined to address
+          poverty, unemployment, and inequality.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Cultural Anchoring</h4>
+        <p>The SA documents explicitly invoke Ubuntu, setting them conceptually apart from the purely individual
+          rights-based structure of the EU.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="comp-docs">
+      <div class="accordion">
+        <div class="acc-header">
+          <span>SA Draft National AI Policy (March 2026)</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            An 86-page policy document proposing extensive institutional bodies (Commission, Ethics Board, Authority,
+            etc.). It cites the EU AI Act and GDPR "as a model," containing pre-regulatory open "OPTIONS."
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-header">
+          <span>SA National AI Policy Framework (October 2024)</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            A slim 14-page predecessor. It uses a Futures Triangle model but operates predominantly at the slogan level,
+            lifting strategic pillars heavily from global frameworks.
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-header">
+          <span>EU AI Act (March 2024)</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            The world's foremost comprehensive and binding AI legislation. It focuses on internal market integration and
+            rigid systemic evaluation.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="au-split">
+      <div class="au-col au-converge">
+        <h3>AU Strategy: Convergences</h3>
+        <p>Both SA and the AU frameworks share a definitive developmental orientation, emphasizing the "AI divide" and
+          harnessing technical benefits amidst historical constraints.</p>
+      </div>
+      <div class="au-col au-diverge">
+        <h3>AU Strategy: Divergences</h3>
+        <p>The AU Strategy is aggressive about African-centric AI capability and cultural renaissance. SA acknowledges
+          these but predominantly leans on OECD regulatory vernacular rather than fully embracing continental
+          disruption.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Discourse & Interpretation</h2>
+    <p class="section-intro">Evaluating the authoritative levers and core narrative mechanisms driving the policy
+      documents.</p>
+
+    <div class="accordion">
+      <div class="acc-header">
+        <span>Legitimizing References</span>
+        <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+      <div class="acc-body">
+        <div class="acc-inner prose">
+          The SA Draft Policy asserts its legitimacy through a dual strategy: referencing internal constitutional
+          anchoring (Bill of Rights, POPIA) and international benchmarking (EU AI Act, OECD). Consequently, the text
+          embodies a unique hybrid posture.
+          <div class="evidence-block">
+            "The guidelines espoused in this policy must be followed. And in line with the OECD's human-centred
+            values..."
+            <span class="src">SA Draft Policy, Section 4</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header">
+        <span>Implied Audiences & Power Assumptions</span>
+        <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+      <div class="acc-body">
+        <div class="acc-inner prose">
+          Citizens function in only three capacities in the text: beneficiaries of services, victims to be protected, or
+          consumers of awareness campaigns. The active policy machinery is structured from the top down, overlooking
+          foundational capacities for localized, citizen-led governance models.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header">
+        <span>Hermeneutic Reality</span>
+        <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+      <div class="acc-body">
+        <div class="acc-inner prose">
+          Fundamentally, the SA policy is a manifestation of state aspiration burdened by resource limitations. It
+          advocates for global-scale institutional infrastructure from within a state that faces vast existing
+          administrative and physical realities. Even well-intentioned elements like Ubuntu serve mostly as linguistic
+          accents over a Western European regulatory template. Its brightest conceptual spark exists in highly specific
+          ideas like the AI Insurance Superfund.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Borrowed vs. Grounded Assessment</h2>
+    <p class="section-intro">Diagnostic breakdown of specific thematic modules within the policy and their degree of
+      local grounding.</p>
+
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-label">Filter</span>
+      <button class="filter-btn" data-filter="overall">Overall Breakdown</button>
+      <button class="filter-btn active" data-filter="all">All Themes</button>
+      <button class="filter-btn" data-filter="imported">Imported</button>
+      <button class="filter-btn" data-filter="adapted">Adapted</button>
+      <button class="filter-btn" data-filter="grounded">Grounded</button>
+      <button class="filter-btn" data-filter="performative">Performative</button>
+      <button class="filter-btn" data-filter="ambiguous">Ambiguous</button>
+      <button class="filter-btn" data-filter="unsaid">Unsaid</button>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Theme</th>
+            <th>Classification</th>
+            <th>Analytic Take</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-cat="imported">
+            <td class="theme-name">Risk-Based Regulation</td>
+            <td><span class="tag tag-imported">Imported</span></td>
+            <td>Overtly extracts the EU AI Act's structural logic globally transposed.</td>
+          </tr>
+          <tr data-cat="imported">
+            <td class="theme-name">Ethical Principles</td>
+            <td><span class="tag tag-imported">Imported</span></td>
+            <td>Nearly verbatim mimicry of prevailing OECD and major corporate principles.</td>
+          </tr>
+          <tr data-cat="adapted">
+            <td class="theme-name">Inclusion & Equity</td>
+            <td><span class="tag tag-adapted">Adapted</span></td>
+            <td>Integrates SA's legacy of inequality into global inclusiveness dialogue.</td>
+          </tr>
+          <tr data-cat="grounded">
+            <td class="theme-name">Constitutional Anchoring</td>
+            <td><span class="tag tag-grounded">Grounded</span></td>
+            <td>Specifically intertwined with provisions from the SA Bill of Rights and domestic tech law.</td>
+          </tr>
+          <tr data-cat="grounded">
+            <td class="theme-name">AI Insurance Superfund</td>
+            <td><span class="tag tag-grounded">Grounded</span></td>
+            <td>Adapted off the framework of the localized Road Accident Fund concept.</td>
+          </tr>
+          <tr data-cat="performative">
+            <td class="theme-name">Ubuntu Philosophy</td>
+            <td><span class="tag tag-performative">Performative</span></td>
+            <td>Invoked purely on an aspirational values basis without structural mechanics.</td>
+          </tr>
+          <tr data-cat="performative">
+            <td class="theme-name">Education System</td>
+            <td><span class="tag tag-performative">Performative</span></td>
+            <td>Ignores baseline disparities in the current school system while projecting AI ubiquity.</td>
+          </tr>
+          <tr data-cat="ambiguous">
+            <td class="theme-name">Digital Infrastructure</td>
+            <td><span class="tag tag-ambiguous">Ambiguous</span></td>
+            <td>Recommends vast technological networking completely detached from persistent grid instability.</td>
+          </tr>
+          <tr data-cat="unsaid">
+            <td class="theme-name">Informal Economy</td>
+            <td><span class="tag tag-unsaid">Unsaid</span></td>
+            <td>Total omission of an economic engine involving millions of marginalized participants.</td>
+          </tr>
+          <tr data-cat="unsaid">
+            <td class="theme-name">Fiscal Feasibility</td>
+            <td><span class="tag tag-unsaid">Unsaid</span></td>
+            <td>Broad mandates built on absent budgeting metrics.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- OVERALL PIE CHART HUD -->
+      <div id="overallChartView"
+        style="display: none; justify-content: center; align-items: center; padding: 4rem 2rem; flex-direction: column;">
+        <div style="width: 250px; height: 250px; position: relative;">
+          <!-- SVG Pie Chart using stroke-dasharray (Total 18, circumference 100) -->
+          <svg width="100%" height="100%" viewBox="0 0 32 32"
+            style="transform: rotate(-90deg); border-radius: 50%; overflow: visible;" id="pieInteractiveSvg">
+            <!-- Imported: 38.89% -->
+            <circle class="pie-segment" data-segment="imported" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-imported)" stroke-width="6" stroke-dasharray="38.89 100" stroke-dashoffset="0" />
+            <!-- Adapted: 22.22% -->
+            <circle class="pie-segment" data-segment="adapted" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-adapted)" stroke-width="6" stroke-dasharray="22.22 100" stroke-dashoffset="-38.89" />
+            <!-- Grounded: 16.67% -->
+            <circle class="pie-segment" data-segment="grounded" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-grounded)" stroke-width="6" stroke-dasharray="16.67 100" stroke-dashoffset="-61.11" />
+            <!-- Unsaid: 22.22% -->
+            <circle class="pie-segment" data-segment="unsaid" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-unsaid)" stroke-width="6" stroke-dasharray="22.22 100" stroke-dashoffset="-77.78" />
+          </svg>
+          <!-- Center Hole Text -->
+          <div
+            style="position: absolute; top:0; left:0; width:100%; height:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; pointer-events: none;">
+            <span style="font-size: 2.5rem; font-weight: 600; color: var(--text-main); line-height:1;">18</span>
+            <span
+              style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top:0.2rem;">Policies</span>
+          </div>
+        </div>
+
+        <!-- DYNAMIC EXPLANATION BOX -->
+        <div id="pieExplanation" class="pie-explanation"
+          style="margin-top: 3rem; max-width: 500px; min-height: 4.5rem; text-align: center; color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; padding: 1rem 1.5rem; border-radius: 8px; transition: opacity 0.2s, border-color 0.2s;">
+          <span id="pieExpText">Select any segment of the chart above to view the policy classification analysis.</span>
+        </div>
+
+        <div
+          style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; max-width: 600px;">
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-imported);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">7</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Imported
+              / Perf.</span>
+          </div>
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-adapted);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">4</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Adapted</span>
+          </div>
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-grounded);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">3</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Grounded</span>
+          </div>
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-unsaid);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">4</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Ambig/Unsaid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Critical Silences</h2>
+    <p class="section-intro">A framework defined as much by its exclusions as its written ambitions.</p>
+
+    <div class="silence-card">
+      <h4>State Capacity & Implementation Reality</h4>
+      <p>The policy mandates creating seven brand-new institutional regulatory bodies—all while existent regulators face
+        overwhelming operational constraint. Institutional blueprinting frequently overshadows execution capabilities.
+      </p>
+    </div>
+    <div class="silence-card">
+      <h4>Grid Infrastructure</h4>
+      <p>Data centres, digital sovereignty, and complex computing architectures run sharply counter to South Africa's
+        deep realities regarding load shedding and electrical grid decay. This critical constraint is profoundly
+        understated.</p>
+    </div>
+    <div class="silence-card">
+      <h4>The Informal Labour Base</h4>
+      <p>A staggering percentage of SA's workforce relies on the informal economy. And yet, this sector has no seat at
+        the table concerning automation vectors, economic shockwaves, or transitional protections driven by AI
+        propagation.</p>
+    </div>
+    <div class="silence-card">
+      <h4>The Absent Sovereign Model</h4>
+      <p>Nowhere in the Framework does the state commit to building a national foundation model. It worries about data
+        sovereignty, foreign providers, and the under-representation of South African languages, and then proposes no
+        domestic model to address any of it. The UAE built Falcon, France backed Mistral, Singapore funded SEA-LION,
+        India is funding Indic LLMs; South Africa regulates and enables but does not build. The document names every
+        disease the treatment would cure, and then declines to prescribe it.</p>
+    </div>
+    <div class="silence-card">
+      <h4>Institutional Transformation of the State</h4>
+      <p>The Framework proposes many new bodies &mdash; an Ethics Board, a National AI Commission, a Regulatory
+        Authority, a Safety Institute, an Ombudsperson &mdash; but all of them sit <em>above</em> the machinery of
+        government, watching it. None are inside the departments rebuilding how decisions are actually made. Serious
+        AI-driven governance implies central digital services with real authority, data stewards embedded in
+        ministries, rewritten procurement law, and new civil-service training. The document treats AI as a tool to
+        procure rather than an occasion to reconstruct public capacity.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Final Synthesis</h2>
+    <div class="synthesis-box">
+      <h3>A Derivative Translation</h3>
+      <div class="prose">
+        <p>South Africa is actively engaging in policy creation, translating modern global AI governance discourse into
+          its local institutional syntax. This constitutes a valuable but undeniably derivative enterprise.</p>
+        <p>The profound and particular realities of the nation—informal economics, profound energy deficits, structural
+          limits in fiscal policy, and immense bureaucratic stresses—must generate the shape of policy formulation.
+          Allowing core values like Ubuntu to manifest as concrete operational tools will begin defining a grounded,
+          rather than merely annotated, national path forward.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Works Cited</h2>
+    <div class="prose">
+      <p><strong>1.</strong> Republic of South Africa, Department of Communications and Digital Technologies.
+        <em>National Artificial Intelligence Policy Framework</em>. Government Gazette No. 54477, 10 April 2026.
+        Pretoria: Government Printing Works.</p>
+      <p><strong>2.</strong> On the economics of scraping and journalism, see Reuters Institute for the Study of
+        Journalism, <em>Digital News Report</em> (annual), and contemporary debate on text-and-data mining exceptions in
+        copyright law.</p>
+      <p><strong>3.</strong> African Union Commission. <em>Continental Artificial Intelligence Strategy: Harnessing AI
+          for Africa's Development and Prosperity</em>. Addis Ababa, July 2024.</p>
+      <p><strong>4.</strong> Pritchett, L., Woolcock, M., &amp; Andrews, M. (2013). Looking Like a State: Techniques of
+        Persistent Failure in State Capability for Implementation. <em>Journal of Development Studies</em>, 49(1),
+        1&ndash;18.</p>
+      <p><strong>5.</strong> Andrews, M., Pritchett, L., &amp; Woolcock, M. (2017). <em>Building State Capability:
+          Evidence, Analysis, Action</em>. Oxford: Oxford University Press.</p>
+      <p><strong>6.</strong> Supplementary: UNESCO, <em>Recommendation on the Ethics of Artificial Intelligence</em>
+        (2021); OECD AI Principles (2019, updated 2024); European Parliament, Regulation (EU) 2024/1689 (AI Act).</p>
+    </div>
+  </section>
+
+  <footer class="article-footer" style="flex-direction:column;gap:0.5rem;text-align:center;">
+    <div>Comparative Discourse Analysis &middot; Finalized April 2026</div>
+    <div style="font-size:0.75rem;">Evaluating SA frameworks vs. AU Strategy, EU Act, and UN Models.</div>
+    <div style="margin-top:0.5rem;">Runtime State &middot; <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">@OfficialSethu</a></div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="/js/main.js"></script>
+  <script>
+  /* Progressive WebGL + GSAP */
+  (function () {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var scripts = [
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
+    ];
+    var loaded = 0;
+    scripts.forEach(function (src) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = function () {
+        loaded++;
+        if (loaded === scripts.length) initEnhancements();
+      };
+      document.head.appendChild(s);
+    });
+  })();
+
+  function initEnhancements() {
+    // THREE.JS SCENE
+    var canvas = document.querySelector('#webgl-canvas');
+    var scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x030303, 0.015);
+
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 5, 20);
+    camera.rotation.x = -0.2;
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    var geometry = new THREE.PlaneGeometry(100, 100, 30, 30);
+    var pos = geometry.attributes.position;
+    for (var i = 0; i < pos.count; i++) {
+      var z = (Math.random() - 0.5) * 4;
+      pos.setZ(i, z);
+    }
+    geometry.computeVertexNormals();
+
+    var material = new THREE.MeshBasicMaterial({
+      color: 0x222222,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.5
+    });
+
+    var terrain = new THREE.Mesh(geometry, material);
+    terrain.rotation.x = -Math.PI / 2;
+    terrain.position.y = -5;
+    scene.add(terrain);
+
+    window.addEventListener('resize', function () {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animateThreeJS() {
+      terrain.rotation.z -= 0.0005;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animateThreeJS);
+    }
+    animateThreeJS();
+
+    // GSAP ANIMATIONS
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entrance
+    gsap.from(".hero-title", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.2 });
+    gsap.from(".subtitle", { y: 30, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.5 });
+
+    // Scrolly Pinning
+    ScrollTrigger.create({
+      trigger: ".scrolly-container",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".scrolly-left",
+      pinSpacing: false
+    });
+
+    // Pillar fading
+    var pillars = gsap.utils.toArray('.pillar-card');
+    pillars.forEach(function (pillar) {
+      gsap.to(pillar, {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: pillar,
+          start: "top 70%",
+          end: "top 40%",
+          scrub: true
+        }
+      });
+    });
+
+    // Camera Fly
+    ScrollTrigger.create({
+      trigger: "body",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 1,
+      onUpdate: function (self) {
+        camera.position.z = 20 - (self.progress * 15);
+        camera.position.y = 5 - (self.progress * 2);
+        camera.rotation.x = -0.2 - (self.progress * 0.3);
+      }
+    });
+
+    // Pie chart visual pop
+    document.querySelectorAll('.pie-segment').forEach(function (seg) {
+      seg.addEventListener('click', function () {
+        gsap.fromTo(this, { strokeWidth: 10 }, { strokeWidth: 6, duration: 0.5, ease: "power2.out" });
+      });
+    });
+
+    // Overall chart view GSAP transition
+    document.querySelectorAll('#filterBar .filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        var pieChart = document.getElementById('overallChartView');
+        if (f === 'overall' && pieChart) {
+          gsap.fromTo(pieChart, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+        }
+      });
+    });
+
+    // Theme handler
+    document.addEventListener('themechange', function (e) {
+      if (e.detail.light) {
+        scene.fog.color.setHex(0xffffff);
+        material.color.setHex(0xededed);
+      } else {
+        scene.fog.color.setHex(0x030303);
+        material.color.setHex(0x222222);
+      }
+    });
+
+    gsap.ticker.lagSmoothing(0);
+  }
+  </script>
+</body>
+
+</html>
