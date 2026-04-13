@@ -684,3 +684,149 @@ h1.hero-title {
     text-align: center;
   }
 }
+
+/* ─── LIGHT MODE — shared article header ─── */
+.light-mode h1.hero-title {
+  color: #000;
+}
+
+.light-mode .kicker {
+  color: #555;
+}
+
+.light-mode .subtitle {
+  color: #333;
+}
+
+.light-mode .subtitle a {
+  color: #000;
+  border-bottom-color: #000;
+}
+
+/* ─── SHARE BAR ─── */
+.share-bar {
+  display: flex;
+  align-items: center;
+  gap: 2.25rem;
+  margin: 6rem 10vw 3.5rem;
+  padding: 2.25rem 0 0;
+  border-top: 1px solid var(--border, #1a1a1a);
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+.share-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-muted, #666);
+  margin-right: auto;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  color: var(--text-muted, #666);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  position: relative;
+  font-family: inherit;
+  opacity: 0.65;
+  transition: color 0.4s ease, opacity 0.4s ease, transform 0.4s ease;
+}
+
+.share-btn::before {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-main, #fafafa);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  font-weight: 400;
+}
+
+.share-btn:hover,
+.share-btn:focus-visible {
+  color: var(--accent, #e86a4a);
+  opacity: 1;
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.share-btn:hover::before,
+.share-btn:focus-visible::before,
+.share-btn.copied::before {
+  opacity: 0.85;
+  transform: translateX(-50%) translateY(0);
+}
+
+.share-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+  stroke: currentColor;
+  display: block;
+}
+
+.share-btn[data-share="copy"] svg {
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.share-btn.copied {
+  color: var(--tag-grounded, #5fc490);
+  opacity: 1;
+}
+
+/* Light mode */
+.light-mode .share-bar {
+  border-color: #E8E8E8;
+}
+
+.light-mode .share-label,
+.light-mode .share-btn {
+  color: #555;
+}
+
+.light-mode .share-btn:hover,
+.light-mode .share-btn:focus-visible {
+  color: var(--accent, #e86a4a);
+}
+
+.light-mode .share-btn::before {
+  color: #000;
+}
+
+.light-mode .share-btn.copied {
+  color: #1A8C4B;
+}
+
+@media (max-width: 768px) {
+  .share-bar {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    gap: 1.75rem;
+  }
+
+  .share-label {
+    display: none;
+  }
+}

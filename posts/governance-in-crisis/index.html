@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governance in Crisis: Why I Started Runtime State · Runtime State</title>
+  <meta name="description" content="A founding note. Why a small reading practice on South African governance, written from the outside in, is worth keeping.">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://runtimestate.com/posts/governance-in-crisis">
+
+  <!-- Social -->
+  <meta property="og:title" content="Governance in Crisis: Why I Started Runtime State">
+  <meta property="og:description" content="A founding note. Why a small reading practice on South African governance, written from the outside in, is worth keeping.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://runtimestate.com/posts/governance-in-crisis">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@runtimestate">
+  <meta name="twitter:title" content="Governance in Crisis: Why I Started Runtime State">
+  <meta name="twitter:description" content="A founding note. Why a small reading practice on South African governance, written from the outside in, is worth keeping.">
+
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('light-mode');
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/article.css">
+
+  <style>
+    :root {
+      --bg: #030303;
+      --text-main: #FAFAFA;
+      --text-muted: #666666;
+      --border: #1A1A1A;
+      --border-strong: #333333;
+      --accent-quiet: #5fc490;
+    }
+
+    .light-mode {
+      --bg: #FFFFFF;
+      --text-main: #000000;
+      --text-muted: #555555;
+      --border: #E8E8E8;
+      --border-strong: #000000;
+      --accent-quiet: #1A8C4B;
+    }
+
+    /* ─── Header with muted hero ─── */
+    .article-header {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .article-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(0.5) brightness(0.45);
+      z-index: -2;
+    }
+
+    .article-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3, 3, 3, 0.65) 0%, rgba(3, 3, 3, 0.9) 100%);
+      z-index: -1;
+    }
+
+    .light-mode .article-header::before {
+      filter: grayscale(0.1) brightness(1);
+    }
+
+    .light-mode .article-header::after {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.78) 100%);
+    }
+
+    /* ─── Essay typography ─── */
+    .essay {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .essay .lede {
+      font-size: 1.35rem;
+      line-height: 1.55;
+      font-weight: 300;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .light-mode .essay .lede {
+      color: #111;
+    }
+
+    .essay p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-main);
+      font-weight: 300;
+      margin-bottom: 1.6rem;
+    }
+
+    .light-mode .essay p {
+      color: #222;
+    }
+
+    .essay p strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .light-mode .essay p strong {
+      color: #000;
+    }
+
+    .essay h2 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      font-weight: 500;
+      color: var(--accent-quiet);
+      margin-top: 4.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .essay h2::before {
+      content: "";
+      display: inline-block;
+      width: 2rem;
+      height: 1px;
+      background: var(--accent-quiet);
+      flex-shrink: 0;
+    }
+
+    .essay h2 .num {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* ─── Pull quote ─── */
+    .pull {
+      margin: 3rem 0;
+      padding: 2rem 0 2rem 2rem;
+      border-left: 2px solid var(--accent-quiet);
+      font-size: 1.25rem;
+      line-height: 1.5;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+    }
+
+    .light-mode .pull {
+      color: #111;
+    }
+
+    .pull em {
+      color: var(--accent-quiet);
+      font-style: normal;
+    }
+
+    /* ─── Terms block ─── */
+    .terms {
+      margin: 3rem 0;
+      padding: 2rem 2.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .light-mode .terms {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: #E8E8E8;
+    }
+
+    .terms h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .light-mode .terms h3 {
+      color: #000;
+    }
+
+    .terms dl {
+      margin: 0;
+    }
+
+    .terms dt {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-top: 1.2rem;
+    }
+
+    .terms dt:first-child {
+      margin-top: 0;
+    }
+
+    .light-mode .terms dt {
+      color: #000;
+    }
+
+    .terms dd {
+      margin: 0.4rem 0 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    .light-mode .terms dd {
+      color: #555;
+    }
+
+    /* ─── Footer ─── */
+    .article-footer {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2rem 6rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .article-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .article-footer a:hover {
+      color: var(--accent-quiet);
+      border-color: var(--accent-quiet);
+    }
+
+    @media (max-width: 600px) {
+      .essay {
+        padding: 4rem 1.25rem 3rem;
+      }
+
+      .essay .lede {
+        font-size: 1.15rem;
+      }
+
+      .essay p {
+        font-size: 1rem;
+      }
+
+      .pull {
+        font-size: 1.1rem;
+        padding-left: 1.25rem;
+      }
+
+      .terms {
+        padding: 1.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <button class="theme-toggle" id="themeToggle">Light Mode</button>
+  </nav>
+
+  <header class="article-header">
+    <div class="kicker">December 2025 &middot; Founding Note</div>
+    <h1 class="hero-title">Governance in Crisis: Why I Started Runtime State</h1>
+    <p class="subtitle">A founding note from <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">@runtimestate</a></p>
+  </header>
+
+  <article class="essay">
+
+    <p class="lede">I did not start Runtime State to add another voice to the noise around South African governance. I started it because the noise itself had become part of the dysfunction, and because I wanted somewhere to put a slower, quieter kind of reading.</p>
+
+    <h2><span class="num">01</span> The Crossroads</h2>
+
+    <p>The post-pandemic state did not collapse. It contracted. That is an important distinction, and one that most of the commentary I read at the time missed. Collapse would have been clarifying; it would have forced a national conversation about replacement. Contraction is softer, more ambiguous, and politically easier to survive. Services thin out. Municipalities stop answering the phone. The lights go off on a schedule. A generation watches the mechanics of public life grind slower each year and learns to route around them.</p>
+
+    <p>By 2024 the pattern was unmistakable. Johannesburg could not keep its water flowing. Nelson Mandela Bay could not keep its council functional. The Auditor-General was reporting, cycle after cycle, that the overwhelming share of the public purse sat in institutions she could not certify. Youth unemployment, at or above 60% depending on how you measured it, was no longer a statistic but a condition: a default setting for an entire demographic cohort. And the party that had held the narrative of the state together since 1994 no longer had a majority to hold it with.</p>
+
+    <p>What I kept noticing, reading the policy documents and the commentary side by side, was that the two were describing different countries. The documents described architectures: new authorities, new frameworks, new delegations. The commentary described affect: anger, fatigue, suspicion, exhaustion. Neither was wrong. But neither was <strong>reading the other</strong>.</p>
+
+    <div class="pull">
+      <em>The documents described architectures. The commentary described affect. Neither was reading the other.</em>
+    </div>
+
+    <h2><span class="num">02</span> The Gap I Wanted to Work In</h2>
+
+    <p>There is a gap between the policy text and the lived surface of the state, and it is in that gap that most of the interesting questions sit. Not the questions that make good Twitter threads. The slower ones: <em>Does this Act actually change behaviour, or does it relabel an organogram? Does this framework create new capability, or only new capacity? When the Auditor-General says "material irregularity," and the Minister says "reform," are they pointing at the same object?</em></p>
+
+    <p>Those questions do not answer themselves from one side alone. You cannot answer them by reading only the legislation, because the text will always flatter itself. You cannot answer them by reading only the ground-truth reports, because they document symptoms but not intent. You have to read the documents against each other, and you have to do it with patience.</p>
+
+    <p>That is the reading practice I wanted a home for. Runtime State is, more than anything else, a place to keep that practice honest. A place where a piece of governance gets held up against the numbers it produces, and where the distance between the two is what gets written about.</p>
+
+    <h2><span class="num">03</span> What This Site Is Not</h2>
+
+    <p>It is not activism. Activism is important and necessary, but it is a different discipline with different obligations. Activism is under pressure to mobilise; this site is under pressure only to be accurate.</p>
+
+    <p>It is not punditry. Punditry is in the business of being interesting every week. This site is in the business of being right over a longer horizon, even at the cost of being quiet for months.</p>
+
+    <p>It is not a platform for grand theories of the African condition. The continent does not need another set of those. What it needs, and what South Africa in particular needs, is more careful, document-level reading of how its own state actually works, written in a register that takes the reader seriously and does not apologise for the technicality.</p>
+
+
+    <h2><span class="num">05</span> Writing From the Outside In</h2>
+
+    <p>I should be honest about where I am writing from. I am a South African living in the United States, working in instructional design and training. I am not inside the machinery of the South African state, and I do not pretend to be. What I have is distance, a reading habit, and a stubborn unwillingness to accept either the optimism of the official documents or the cynicism of the comment sections as a final account of the situation.</p>
+
+    <p>Distance has costs. It filters out the texture of daily frustration that only residence can give you. I will try to compensate by being rigorous about sources, citing the Auditor-General and the Public Audit Office rather than the mood of a news cycle, and by writing in a way that can be checked against the documents I am reading. If I get something wrong, I would rather be corrected in public than be agreed with out of politeness.</p>
+
+    <p>Distance also has a use. It makes certain patterns easier to see. It is often easier, from the outside, to notice when two pieces of the state are saying incompatible things, to notice the drift between the policy text and the audit outcome, than it is for someone holding both pieces at once inside the country.</p>
+
+    <h2><span class="num">06</span> An Invitation, Not a Programme</h2>
+
+    <p>Runtime State does not have a programme. It has a habit. Every few weeks, a document (a new Act, a leaked procurement file, a consolidated audit report, a draft policy) gets read slowly, held against the numbers, and written up. The posts will be uneven in length and occasional in frequency. There is no editorial calendar. There is only whatever is worth sitting with long enough to say something careful about.</p>
+
+    <p>If that is the kind of reading you are looking for, you are welcome to stay. If you are looking for something louder, I understand. There is plenty of it elsewhere, and some of it is genuinely good. This is just the corner I needed, and it did not exist, so I built it.</p>
+
+    <p>The crossroads is real. The contraction is real. The gap between the documents and the outcomes is real, and it is where most of the country's present is being quietly lost. The least I can do is read carefully in that direction, and keep the notes.</p>
+
+  </article>
+
+  <div class="share-bar" role="group" aria-label="Share this post">
+    <span class="share-label">Share</span>
+    <a class="share-btn" data-share="twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932Zm-1.29 19.49h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+    <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    </a>
+    <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <button type="button" class="share-btn" data-share="copy" aria-label="Copy link">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    </button>
+  </div>
+
+  <footer class="article-footer">
+    <div>Founding Note &middot; December 2025</div>
+    <div>Runtime State &middot; <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">@runtimestate</a></div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+
+</body>
+
+</html>

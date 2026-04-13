@@ -4,33 +4,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Runtime State</title>
+  <title>About · Runtime State</title>
   <meta name="description" content="About Runtime State and its author.">
 
   <!-- Social -->
-  <meta property="og:title" content="About — Runtime State">
+  <meta property="og:title" content="About · Runtime State">
   <meta property="og:description" content="About Runtime State and its author.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://runtimestate.com/about">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@OfficialSethu">
+  <meta name="twitter:site" content="@runtimestate">
 
   <link rel="canonical" href="https://runtimestate.com/about">
   <link rel="icon" href="/favicon.ico">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('light-mode');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/shell.css">
   <style>
-    /* ─── ABOUT-SPECIFIC ─── */
-    header {
-      padding: 18vh 0 6rem;
+    /* ─── ABOUT - MAGAZINE LAYOUT ─── */
+    header.masthead {
+      padding: 16vh 0 4rem;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.35rem 0.75rem;
+      margin-bottom: 2rem;
     }
 
     .title {
-      font-size: 1.6rem;
+      font-size: 5rem;
       font-weight: 600;
       letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .title .accent { color: var(--accent); }
+
+    .intro {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--dim);
+      font-weight: 300;
+      max-width: 580px;
     }
 
     .divider {
@@ -39,48 +70,109 @@
       margin: 0;
     }
 
-    .content {
-      padding: 3rem 0 8rem;
+    /* ─── Editor's note (feature-style block) ─── */
+    .editor-note {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .content p {
-      font-size: 1.05rem;
-      line-height: 1.75;
+    .editor-note .meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--dim);
-      font-weight: 300;
-      max-width: 600px;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
-    .content p strong {
+    .editor-note .headline {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      max-width: 780px;
+    }
+
+    .editor-note .body {
+      font-size: 1.05rem;
+      color: var(--dim);
+      line-height: 1.7;
+      font-weight: 300;
+      max-width: 680px;
+    }
+
+    .editor-note .body strong {
       color: var(--text);
       font-weight: 400;
     }
 
-    .content p a {
+    /* ─── Colophon / sub-sections ─── */
+    .colophon {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 4rem 0 8rem;
+    }
+
+    .col {
+      position: relative;
+    }
+
+    .col-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .col-label::before {
+      content: "";
+      width: 18px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .col p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--faint);
+      font-weight: 300;
+    }
+
+    .col p + p {
+      margin-top: 1rem;
+    }
+
+    .col p a {
       text-decoration: none;
       color: var(--text);
       border-bottom: 1px solid var(--faint);
-      transition: border-color 0.3s;
+      transition: border-color 0.3s, color 0.3s;
     }
 
-    .content p a:hover {
-      border-color: var(--dim);
+    .col p a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
-    .section-label {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--faint);
-      margin-top: 3rem;
-      margin-bottom: 1.5rem;
+    @media (max-width: 720px) {
+      .colophon {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .editor-note .headline { font-size: 1.5rem; }
+      .title { font-size: 3.5rem; }
     }
 
     @media (max-width: 600px) {
-      header {
-        padding-top: 12vh;
-      }
+      header.masthead { padding-top: 12vh; }
+      .title { font-size: 3rem; }
     }
   </style>
 </head>
@@ -96,26 +188,46 @@
   </nav>
 
   <div class="page">
-    <header>
+    <header class="masthead">
+      <span class="eyebrow">Masthead</span>
       <h1 class="title">About</h1>
+      <p class="intro">A research archive on South African technology, policy, and governance. Read slowly, built in
+        public.</p>
     </header>
 
     <hr class="divider">
 
-    <div class="content">
-      <p><strong>Runtime State</strong> is a research archive where I publish analysis and field notes on South African
-        technology, policy, and governance.</p>
+    <!-- Editor's note / mission statement -->
+    <section class="editor-note">
+      <div class="meta">
+        <span>Editor's Note</span>
+        <span>&middot;</span>
+        <span>2026</span>
+      </div>
+      <h2 class="headline">Runtime State reads policy documents for what they reveal, not just what they propose.</h2>
+      <p class="body">The work sits between discourse analysis and incident
+        mapping. It takes official framings seriously, then tests them against the evidence on the ground.</p>
+    </section>
 
-      <div class="section-label">Method</div>
-      <p>The primary methods are discourse analysis and incident mapping. Policy documents are read not for what they
-        propose but for what they reveal about the assumptions, silences, and structural logics that shape them. Cyber
-        incidents are compiled from public records, annual reports, and ministerial disclosures to surface systemic
-        patterns.</p>
+    <!-- Colophon grid -->
+    <main class="colophon">
+      <div class="col">
+        <div class="col-label">Method</div>
+        <p>The primary methods are discourse analysis and incident mapping. Policy documents are read not for what they
+          propose but for what they reveal about the assumptions, silences, and structural logics that shape them.
+          Cyber incidents are compiled from public records, annual reports, and ministerial disclosures to surface
+          systemic patterns.</p>
+      </div>
 
-      <div class="section-label">Contact</div>
-      <p>Find me on <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">X / Twitter</a>.
-      </p>
-    </div>
+      <div class="col">
+        <div class="col-label">Contact</div>
+        <p>Correspondence: <a href="mailto:info@runtimestate.org">info@runtimestate.org</a>.</p>
+        <p>Follow along on <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">X /
+            Twitter</a> or subscribe on <a href="https://youtube.com/@runtimestatetv" target="_blank"
+            rel="noopener noreferrer">YouTube</a>. New dispatches are published irregularly, usually when a
+          policy draft or incident warrants a closer read.</p>
+      </div>
+    </main>
 
     <footer class="site-footer">
       <span>Runtime State &middot; 2026</span>

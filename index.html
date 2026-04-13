@@ -9,22 +9,34 @@
 
   <!-- Social -->
   <meta property="og:title" content="Runtime State">
-  <meta property="og:description" content="Analysis and field notes on South African technology, policy, and governance.">
+  <meta property="og:description"
+    content="Analysis and field notes on South African technology, policy, and governance.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://runtimestate.com/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@OfficialSethu">
+  <meta name="twitter:site" content="@runtimestate">
   <meta name="twitter:title" content="Runtime State">
-  <meta name="twitter:description" content="Analysis and field notes on South African technology, policy, and governance.">
+  <meta name="twitter:description"
+    content="Analysis and field notes on South African technology, policy, and governance.">
 
   <link rel="canonical" href="https://runtimestate.com/">
   <link rel="icon" href="/favicon.ico">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('light-mode');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/shell.css">
   <style>
-    /* ─── HOME-SPECIFIC ─── */
-    header {
-      padding: 18vh 0 6rem;
+    /* ─── HOME - MAGAZINE LAYOUT ─── */
+    header.masthead {
+      padding: 16vh 0 4rem;
     }
 
     .title {
@@ -32,12 +44,10 @@
       font-weight: 600;
       letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
-    .title .accent {
-      color: var(--accent);
-    }
+    .title .accent { color: var(--accent); }
 
     .intro {
       font-size: 1.05rem;
@@ -54,9 +64,7 @@
       transition: border-color 0.3s;
     }
 
-    .intro a:hover {
-      border-color: var(--dim);
-    }
+    .intro a:hover { border-color: var(--dim); }
 
     .divider {
       border: none;
@@ -64,67 +72,135 @@
       margin: 0;
     }
 
-    .entries {
-      padding: 1rem 0 8rem;
+    /* ─── Feature (top) entry ─── */
+    .feature {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      padding: 3.5rem 0 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .feature-image {
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 2rem;
+      filter: grayscale(0.2) brightness(0.9);
+      transition: filter 0.5s;
+    }
+
+    .feature:hover .feature-image {
+      filter: grayscale(0) brightness(1);
+    }
+
+    .feature-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.35rem 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--dim);
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-size: 2.4rem;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      max-width: 780px;
+      transition: color 0.3s;
+    }
+
+    .feature:hover .feature-title { color: #fff; }
+
+    .feature-desc {
+      font-size: 1.05rem;
+      color: var(--dim);
+      line-height: 1.65;
+      font-weight: 300;
+      max-width: 680px;
+    }
+
+    /* ─── Secondary entries grid ─── */
+    .secondary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      padding: 3rem 0 8rem;
     }
 
     .entry {
       display: block;
       text-decoration: none;
       color: inherit;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--rule);
+    }
+
+    .entry-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 1.25rem;
+      filter: grayscale(0.35) brightness(0.85);
+      transition: filter 0.4s;
+    }
+
+    .entry:hover .entry-image {
+      filter: grayscale(0) brightness(1);
     }
 
     .entry-meta {
       display: flex;
-      gap: 1rem;
-      align-items: center;
-      margin-bottom: 0.75rem;
-      font-size: 0.7rem;
+      gap: 0.75rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--faint);
-    }
-
-    .entry-meta .sep {
-      color: var(--rule);
+      color: var(--dim);
+      margin-bottom: 0.6rem;
     }
 
     .entry-title {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 500;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       line-height: 1.35;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
       transition: color 0.25s;
     }
 
-    .entry:hover .entry-title {
-      color: #fff;
-    }
+    .entry:hover .entry-title { color: #fff; }
 
     .entry-desc {
-      font-size: 0.92rem;
-      color: var(--faint);
+      font-size: 0.9rem;
+      color: var(--dim);
       line-height: 1.65;
       font-weight: 300;
-      max-width: 600px;
-      transition: color 0.4s;
     }
 
-    .entry:hover .entry-desc {
-      color: var(--dim);
+    @media (max-width: 720px) {
+      .secondary { grid-template-columns: 1fr; gap: 2.5rem; }
+      .feature-title { font-size: 1.8rem; }
+      .feature-image { aspect-ratio: 16 / 9; }
     }
 
     @media (max-width: 600px) {
-      header {
-        padding-top: 12vh;
-      }
-
-      .title {
-        font-size: 1.6rem;
-      }
+      header.masthead { padding-top: 12vh; }
+      .title { font-size: 3rem; }
     }
   </style>
 </head>
@@ -135,34 +211,64 @@
   <nav class="site-nav">
     <span></span>
     <ul class="site-nav-links">
-      <li><a href="/about">About</a></li>
+      <li><a href="/about.html">About</a></li>
     </ul>
   </nav>
 
   <div class="page">
-    <header>
+    <header class="masthead">
       <h1 class="title">Runtime <span class="accent">State</span></h1>
-      <p class="intro">Analysis and field notes on South African technology, policy, and governance.</p>
+      <p class="intro">Field notes on South African technology, policy, and governance.</p>
     </header>
 
     <hr class="divider">
 
-    <main class="entries">
-      <a href="/posts/government-cyber-breaches" class="entry">
+    <!-- Featured top post -->
+    <a href="/posts/ai-policy-discourse-analysis" class="feature">
+      <img class="feature-image" src="/posts/ai-policy-discourse-analysis/hero.jpg" alt="" loading="eager">
+      <span class="feature-tag">Latest</span>
+      <div class="feature-meta">
+        <span>Discourse Analysis</span>
+        <span>&middot;</span>
+        <span>April 2026</span>
+      </div>
+      <h2 class="feature-title">Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy</h2>
+      <p class="feature-desc">A selective adaptation layered onto a substantially imported architecture. It reads
+        global and annotates local.</p>
+    </a>
+
+    <!-- Secondary 2×2 grid -->
+    <main class="secondary">
+      <a href="/posts/psaa-capacity-capability" class="entry">
+        <img class="entry-image" src="/posts/psaa-capacity-capability/hero.jpg" alt="" loading="lazy">
         <div class="entry-meta">
-          <span>Field Note</span>
-          <span class="sep">&middot;</span>
+          <span>Policy Analysis</span>
+          <span>&middot;</span>
           <span>April 2026</span>
         </div>
+        <h2 class="entry-title">Capacity vs. Capability: Reading the Public Service Amendment Act Against the
+          Auditor-General's Books</h2>
+        <p class="entry-desc">The Act builds new plumbing. The Auditor-General's numbers describe the pressure the
+          plumbing must survive.</p>
+      </a>
+
+      <a href="/posts/government-cyber-breaches" class="entry">
+        <img class="entry-image" src="/posts/government-cyber-breaches/hero.jpg" alt="" loading="lazy">
+        <div class="entry-meta">
+          <span>Field Note</span>
+          <span>&middot;</span>
+          <span>March 2026</span>
+        </div>
         <h2 class="entry-title">The Slow Breach: Five Years of Cyber Incidents Inside South Africa's Government</h2>
-        <p class="entry-desc">Nine confirmed intrusions across justice, logistics, defence, health, and finance. Not
-          isolated incidents — a systemic resilience problem.</p>
+        <p class="entry-desc">Nine confirmed intrusions across justice, logistics, defence, health, and finance. This
+          is a systemic resilience problem, not a run of isolated incidents.</p>
       </a>
 
       <a href="/posts/sita-mandate-analysis" class="entry">
+        <img class="entry-image" src="/posts/sita-mandate-analysis/hero.jpg" alt="" loading="lazy">
         <div class="entry-meta">
           <span>Governance Note</span>
-          <span class="sep">&middot;</span>
+          <span>&middot;</span>
           <span>January 2026</span>
         </div>
         <h2 class="entry-title">SITA, Trapped Between Responsibility and Authority</h2>
@@ -170,33 +276,22 @@
           without being empowered to own, resolve, or terminate them.</p>
       </a>
 
-      <a href="/posts/digital-government-policy-framework" class="entry">
+      <a href="/posts/governance-in-crisis" class="entry">
+        <img class="entry-image" src="/posts/governance-in-crisis/hero.jpg" alt="" loading="lazy">
         <div class="entry-meta">
-          <span>Framework Analysis</span>
-          <span class="sep">&middot;</span>
-          <span>September 2024</span>
+          <span>Founding Note</span>
+          <span>&middot;</span>
+          <span>December 2025</span>
         </div>
-        <h2 class="entry-title">Culture, Coordination, and Capability in the Draft Digital Government Policy
-          Framework</h2>
-        <p class="entry-desc">A capable technical blueprint missing the cultural and behavioural scaffolding digital
-          transformation actually requires.</p>
-      </a>
-
-      <a href="/posts/ai-policy-discourse-analysis" class="entry">
-        <div class="entry-meta">
-          <span>Discourse Analysis</span>
-          <span class="sep">&middot;</span>
-          <span>April 2026</span>
-        </div>
-        <h2 class="entry-title">Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy</h2>
-        <p class="entry-desc">A selective adaptation layered onto a substantially imported architecture. It reads
-          global and annotates local.</p>
+        <h2 class="entry-title">Governance in Crisis: Why I Started Runtime State</h2>
+        <p class="entry-desc">A small reading practice on South African governance, written from the outside in, and
+          why it's worth keeping.</p>
       </a>
     </main>
 
     <footer class="site-footer">
       <span>Runtime State &middot; 2026</span>
-      <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">@OfficialSethu</a>
+      <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">@runtimestate</a>
     </footer>
   </div>
 

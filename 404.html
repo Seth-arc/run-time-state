@@ -4,48 +4,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Not Found — Runtime State</title>
+  <title>404: Not in the Public Record · Runtime State</title>
+  <meta name="description" content="The requested resource could not be located.">
   <link rel="icon" href="/favicon.ico">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('light-mode');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/shell.css">
   <style>
+    /* ─── 404 - INCIDENT REPORT ─── */
     .four-oh-four {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 12vh 0 6rem;
+      max-width: 780px;
+    }
+
+    .status-line {
+      display: flex;
       align-items: center;
-      text-align: center;
-      gap: 1.5rem;
+      gap: 1rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.5rem;
     }
 
-    .four-oh-four h1 {
-      font-size: 4rem;
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.35; transform: scale(0.75); }
+    }
+
+    .status-line .sep { color: var(--rule); }
+
+    .big-code {
+      font-size: clamp(6rem, 18vw, 12rem);
       font-weight: 600;
-      letter-spacing: -0.04em;
-      color: var(--faint);
+      letter-spacing: -0.055em;
+      line-height: 0.85;
+      color: var(--text);
+      margin-bottom: 2rem;
+      font-variant-numeric: tabular-nums;
     }
 
-    .four-oh-four p {
+    .big-code .strike {
+      position: relative;
+      display: inline-block;
+    }
+
+    .big-code .strike::after {
+      content: "";
+      position: absolute;
+      left: -4%;
+      right: -4%;
+      top: 52%;
+      height: 4px;
+      background: var(--accent);
+      transform-origin: left center;
+      animation: strike 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s both;
+    }
+
+    @keyframes strike {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    .headline {
+      font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+      color: var(--text);
+      max-width: 20ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .subtitle {
       font-size: 1.05rem;
+      line-height: 1.7;
       color: var(--dim);
       font-weight: 300;
+      max-width: 56ch;
+      margin-bottom: 3rem;
     }
 
-    .four-oh-four a {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--faint);
-      text-decoration: none;
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 0.25rem;
-      transition: color 0.3s, border-color 0.3s;
-    }
-
-    .four-oh-four a:hover {
+    .subtitle em {
+      font-style: normal;
       color: var(--text);
-      border-color: var(--dim);
+    }
+
+    /* Incident-report table */
+    .log {
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.5rem 0;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 0.85rem 2rem;
+      font-size: 0.8rem;
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+    }
+
+    .log dt {
+      color: var(--faint);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.65rem;
+    }
+
+    .log dd {
+      color: var(--dim);
+      font-variant-numeric: tabular-nums;
+      word-break: break-all;
+    }
+
+    .log dd .accent-txt { color: var(--accent); }
+
+    /* CTA row */
+    .actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.85rem 1.4rem;
+      border: 1px solid var(--rule);
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .btn.primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn .arrow {
+      transition: transform 0.3s;
+    }
+
+    .btn:hover .arrow {
+      transform: translateX(4px);
+    }
+
+    @media (max-width: 600px) {
+      .four-oh-four { padding-top: 14vh; }
+      .log { grid-template-columns: 1fr; gap: 0.35rem; padding: 1.25rem 0; }
+      .log dt { margin-top: 0.6rem; }
+      .log dt:first-child { margin-top: 0; }
     }
   </style>
 </head>
@@ -55,16 +200,66 @@
 
   <nav class="site-nav">
     <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
-    <span></span>
+    <ul class="site-nav-links">
+      <li><a href="/">Archive</a></li>
+    </ul>
   </nav>
 
-  <div class="four-oh-four">
-    <h1>404</h1>
-    <p>This page does not exist.</p>
-    <a href="/">Back to archive</a>
+  <div class="page">
+    <section class="four-oh-four">
+      <div class="status-line">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Incident Report</span>
+        <span class="sep">&middot;</span>
+        <span>Filed <span id="filed-date">today</span></span>
+      </div>
+
+      <div class="big-code">4<span class="strike">0</span>4</div>
+
+      <h1 class="headline">This page is not in the public record.</h1>
+
+      <p class="subtitle">The resource you requested could not be located. It may have been <em>renamed</em> or
+        <em>withdrawn</em>. In the tradition of the things this publication tracks, it may also have been <em>never
+          officially published at all</em>.</p>
+
+      <dl class="log">
+        <dt>Status</dt>
+        <dd><span class="accent-txt">404</span> &middot; Not Found</dd>
+        <dt>Requested</dt>
+        <dd id="log-path">/</dd>
+        <dt>Referrer</dt>
+        <dd id="log-ref">-</dd>
+        <dt>Classification</dt>
+        <dd>Unresolved / Ambient</dd>
+      </dl>
+
+      <div class="actions">
+        <a href="/" class="btn primary">
+          <span>Return to Archive</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+        <a href="/about.html" class="btn">
+          <span>About the Project</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
   </div>
 
   <script src="/js/main.js"></script>
+  <script>
+    (function () {
+      var pathEl = document.getElementById('log-path');
+      var refEl  = document.getElementById('log-ref');
+      var dateEl = document.getElementById('filed-date');
+      if (pathEl) pathEl.textContent = location.pathname + (location.search || '');
+      if (refEl)  refEl.textContent  = document.referrer ? new URL(document.referrer).hostname : 'direct';
+      if (dateEl) {
+        var d = new Date();
+        dateEl.textContent = d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      }
+    })();
+  </script>
 </body>
 
 </html>

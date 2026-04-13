@@ -25,7 +25,7 @@
 
   function loop() {
     ctx.clearRect(0, 0, W, H);
-    var light = document.body.classList.contains('light-mode');
+    var light = document.documentElement.classList.contains('light-mode');
     ctx.fillStyle = light ? 'rgba(0,0,0,0.25)' : 'rgba(255,255,255,0.15)';
     for (var i = 0; i < dots.length; i++) {
       var d = dots[i];
@@ -42,16 +42,114 @@
   }
 })();
 
-/* Theme toggle — works on any page with a .theme-toggle button. */
+/* Theme toggle — follows system by default, manual pick persists to localStorage.
+   Initial class is set by the inline boot script in each page <head>. */
 (function initThemeToggle() {
+  var root = document.documentElement;
+  var mq = window.matchMedia('(prefers-color-scheme: light)');
+
+  function syncLabel() {
+    var btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    btn.textContent = root.classList.contains('light-mode') ? 'Dark Mode' : 'Light Mode';
+  }
+
+  function applyLight(light) {
+    root.classList.toggle('light-mode', light);
+    syncLabel();
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { light: light } }));
+  }
+
+  syncLabel();
+
   var btn = document.getElementById('themeToggle');
-  if (!btn) return;
-  btn.addEventListener('click', function () {
-    document.body.classList.toggle('light-mode');
-    var isLight = document.body.classList.contains('light-mode');
-    btn.textContent = isLight ? 'Dark Mode' : 'Light Mode';
-    /* Dispatch event so page-specific JS (e.g. Three.js) can react */
-    document.dispatchEvent(new CustomEvent('themechange', { detail: { light: isLight } }));
+  if (btn) {
+    btn.addEventListener('click', function () {
+      var nextLight = !root.classList.contains('light-mode');
+      applyLight(nextLight);
+      try { localStorage.setItem('theme', nextLight ? 'light' : 'dark'); } catch (e) {}
+    });
+  }
+
+  /* React to OS theme changes only if the user hasn't made an explicit choice. */
+  var onSystemChange = function (e) {
+    var stored;
+    try { stored = localStorage.getItem('theme'); } catch (err) {}
+    if (!stored) applyLight(e.matches);
+  };
+  if (mq.addEventListener) mq.addEventListener('change', onSystemChange);
+  else if (mq.addListener) mq.addListener(onSystemChange);
+})();
+
+/* Share bar — wires Twitter/X, LinkedIn, Facebook, and copy-link buttons on any page with a .share-bar. */
+(function initShare() {
+  var bars = document.querySelectorAll('.share-bar');
+  if (!bars.length) return;
+
+  var canonical = document.querySelector('link[rel="canonical"]');
+  var shareUrl = canonical && canonical.href ? canonical.href : location.href;
+  var rawTitle = document.title || '';
+  var shareTitle = rawTitle.split(' · ')[0].trim() || rawTitle;
+
+  var endpoints = {
+    twitter: 'https://x.com/intent/post?url=' + encodeURIComponent(shareUrl)
+      + '&text=' + encodeURIComponent(shareTitle) + '&via=runtimestate',
+    linkedin: 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(shareUrl),
+    facebook: 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl)
+  };
+
+  function openShare(url) {
+    window.open(url, 'share', 'noopener,noreferrer,width=600,height=520');
+  }
+
+  function copyLink(btn) {
+    var originalLabel = btn.getAttribute('aria-label') || 'Copy link';
+    var done = function () {
+      btn.classList.add('copied');
+      btn.setAttribute('aria-label', 'Link copied');
+      setTimeout(function () {
+        btn.classList.remove('copied');
+        btn.setAttribute('aria-label', originalLabel);
+      }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareUrl).then(done, function () {
+        fallbackCopy(shareUrl, done);
+      });
+    } else {
+      fallbackCopy(shareUrl, done);
+    }
+  }
+
+  function fallbackCopy(text, done) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'absolute';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  Array.prototype.forEach.call(bars, function (bar) {
+    var buttons = bar.querySelectorAll('[data-share]');
+    Array.prototype.forEach.call(buttons, function (btn) {
+      var kind = btn.getAttribute('data-share');
+      if (kind === 'copy') {
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          copyLink(btn);
+        });
+      } else if (endpoints[kind]) {
+        btn.setAttribute('href', endpoints[kind]);
+        btn.addEventListener('click', function (e) {
+          e.preventDefault();
+          openShare(endpoints[kind]);
+        });
+      }
+    });
   });
 })();
 

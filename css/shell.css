@@ -47,6 +47,10 @@
   color: var(--accent, #e86a4a);
 }
 
+.light-mode .site-logo {
+  color: #000;
+}
+
 .site-nav-links {
   display: flex;
   gap: 1.5rem;
@@ -58,12 +62,17 @@
   text-transform: uppercase;
   letter-spacing: 0.12em;
   text-decoration: none;
-  color: var(--faint, #3a3a3a);
-  transition: color 0.3s;
+  color: var(--text, #e0e0e0);
+  opacity: 0.6;
+  transition: opacity 0.3s;
 }
 
 .site-nav-links a:hover {
-  color: var(--dim, #777);
+  opacity: 1;
+}
+
+.light-mode .site-nav-links a {
+  color: #000;
 }
 
 /* ─── PAGE CONTAINER ─── */

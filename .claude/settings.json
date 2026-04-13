@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv \"Episode 1 AI-policy-discourse-analysis.mp3\" \"Episode 3 AI-policy-discourse-analysis.mp3\")",
+      "Bash(mv \"Episode 1 AI-policy-discourse-analysis-original.mp3\" \"Episode 3 AI-policy-discourse-analysis-original.mp3\")",
+      "Bash(mv \"AI Policy Discourse Analysis.jpg\" \"posts/ai-policy-discourse-analysis/hero.jpg\")",
+      "Bash(mv \"The Slow Breach.jpg\" \"posts/government-cyber-breaches/hero.jpg\")",
+      "Bash(mv \"SITA.jpg\" \"posts/sita-mandate-analysis/hero.jpg\")",
+      "Bash(ls posts/*/hero.jpg)",
+      "Bash(rm index-test-1-magazine.html index-test-2-typographic.html index-test-3-combined.html)",
+      "Bash(ls index*.html)",
+      "Bash(mv capacity.html posts/psaa-capacity-capability/index.html)",
+      "Bash(mv capacity.jpg posts/psaa-capacity-capability/hero.jpg)",
+      "Bash(mv why-runtime-state.html posts/governance-in-crisis/index.html)",
+      "Bash(mv why-runtime-state.jpg posts/governance-in-crisis/hero.jpg)",
+      "Bash(mv \"A Derivative Translation — Runtime State, Episode One.pdf\" \"episodes/ai-policy-discourse-analysis/transcript.pdf\")",
+      "Bash(mv \"runtime_state_podcast_ep02_sita.md.pdf\" \"episodes/sita-mandate-analysis/transcript.pdf\")",
+      "Bash(mv \"runtime_state_podcast_ep03_slow_breach.md.pdf\" \"episodes/government-cyber-breaches/transcript.pdf\")"
+    ]
+  }
+}

@@ -1,0 +1,2098 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capacity vs. Capability: Reading the Public Service Amendment Act · Runtime State</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="canonical" href="https://runtimestate.com/posts/psaa-capacity-capability">
+  <meta property="og:title" content="Capacity vs. Capability: Reading the Public Service Amendment Act · Runtime State">
+  <meta property="og:description" content="The Act builds new plumbing. The Auditor-General's numbers describe the pressure the plumbing must survive.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://runtimestate.com/posts/psaa-capacity-capability">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@runtimestate">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('light-mode');
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/article.css">
+  <style>
+    :root {
+      --bg: #030303;
+      --text-main: #FAFAFA;
+      --text-muted: #666666;
+      --border: #1A1A1A;
+      --border-strong: #333333;
+
+      --tag-imported: #e86a4a;
+      --tag-adapted: #e8a03a;
+      --tag-grounded: #5fc490;
+      --tag-performative: #c088e0;
+      --tag-ambiguous: #6aa8e0;
+      --tag-unsaid: #8a8579;
+    }
+
+    .light-mode {
+      --bg: #FFFFFF;
+      --text-main: #000000;
+      --text-muted: #666666;
+      --border: #E8E8E8;
+      --border-strong: #000000;
+
+      --tag-imported: #D94520;
+      --tag-adapted: #CD7F15;
+      --tag-grounded: #1A8C4B;
+      --tag-performative: #A644D2;
+      --tag-ambiguous: #206EBF;
+      --tag-unsaid: #5A5A5A;
+    }
+
+    .light-mode .v-stat {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .light-mode .verdict-text strong,
+    .light-mode .prose strong,
+    .light-mode .prose h3,
+    .light-mode .tab-btn:hover,
+    .light-mode .tab-btn.active,
+    .light-mode .comp-card h4,
+    .light-mode .silence-card h4,
+    .light-mode .acc-header,
+    .light-mode .matrix td.theme-name,
+    .light-mode .synthesis-box h3,
+    .light-mode .score-bars-container h4 {
+      color: #000000;
+    }
+
+    .light-mode .tab-btn.active {
+      border-bottom-color: #000000;
+    }
+
+    .light-mode .prose,
+    .light-mode .comp-card p,
+    .light-mode .silence-card p,
+    .light-mode .acc-inner,
+    .light-mode .matrix th,
+    .light-mode .matrix td,
+    .light-mode .au-col p {
+      color: #555555;
+    }
+
+    .light-mode .pillar-levels dt {
+      color: #666;
+    }
+
+    .light-mode .filter-btn:hover,
+    .light-mode .filter-btn.active {
+      background: #F2F2F2;
+      color: #000;
+      border-color: #000;
+    }
+
+    .light-mode .evidence-block:hover {
+      border-color: #000;
+    }
+
+    .light-mode .score-bars-container,
+    .light-mode .synthesis-box {
+      background: rgba(0, 0, 0, 0.02);
+      border: 1px solid #E8E8E8;
+    }
+
+    .light-mode .score-label {
+      color: #666;
+    }
+
+    .light-mode .verdict-box {
+      border-left: 2px solid #000;
+      padding-left: 2.5rem;
+    }
+
+    .light-mode .theme-toggle,
+    .light-mode .play-audio-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: #E8E8E8;
+      color: #000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .light-mode .theme-toggle:hover,
+    .light-mode .play-audio-btn:hover {
+      background: #000;
+      color: #FFF;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      border-color: #000;
+    }
+
+    .light-mode .play-audio-btn:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .light-mode .tts-subtitles {
+      color: #111111;
+    }
+
+    /* Hero background image */
+    .article-header {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .article-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(0.3) brightness(0.55);
+      z-index: -2;
+    }
+
+    .article-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3, 3, 3, 0.55) 0%, rgba(3, 3, 3, 0.85) 100%);
+      z-index: -1;
+    }
+
+    .light-mode .article-header::before {
+      filter: grayscale(0.1) brightness(1);
+    }
+
+    .light-mode .article-header::after {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.78) 100%);
+    }
+
+    /* Play audio button solid-background override */
+    .play-audio-btn {
+      background: var(--text-main);
+      color: var(--bg);
+      border: none;
+    }
+
+    .play-audio-btn:hover {
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+    }
+
+    /* AU split layout */
+    .au-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4vw;
+      margin-top: 3rem;
+    }
+
+    .au-col h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .au-col.au-converge h3 {
+      color: var(--tag-grounded);
+    }
+
+    .au-col.au-diverge h3 {
+      color: var(--tag-imported);
+    }
+
+    .au-col p {
+      font-size: 1.1rem;
+      color: #b3b3b3;
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* Synthesis box */
+    .synthesis-box {
+      padding: 4rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .synthesis-box h3 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 2rem;
+    }
+
+    /* Score bars */
+    .score-bars-container {
+      margin-top: 3rem;
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .score-bars-container h4 {
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .score-bars-container>p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .score-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .score-label {
+      width: 120px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.8rem;
+    }
+
+    .score-bar-track {
+      flex: 1;
+      height: 4px;
+      background: var(--border-strong);
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .score-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+    }
+
+    .score-val {
+      width: 30px;
+      text-align: right;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Footer override */
+    .footer {
+      padding: 4rem 10vw;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      z-index: 1;
+      position: relative;
+      background: transparent;
+      text-align: center;
+    }
+
+    /* Pie chart */
+    .pie-segment {
+      cursor: pointer;
+      transition: stroke-width 0.2s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.2s;
+    }
+
+    .pie-segment:hover {
+      stroke-width: 8;
+      opacity: 0.8;
+    }
+
+    .pie-explanation {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border);
+    }
+
+    .light-mode .pie-explanation {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .au-split {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ========== DATA SECTION (AG-driven visualizations) ========== */
+    .data-section {
+      padding-top: 2rem;
+    }
+
+    .data-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    /* Big stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2.5rem 0 4rem;
+    }
+
+    .stat-card {
+      padding: 2rem 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .light-mode .stat-card {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: #E8E8E8;
+    }
+
+    .stat-card .stat-val {
+      display: block;
+      font-size: 2.6rem;
+      font-weight: 600;
+      line-height: 1;
+      color: var(--text-main);
+      letter-spacing: -0.02em;
+    }
+
+    .stat-card .stat-unit {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-left: 0.25rem;
+    }
+
+    .stat-card .stat-label {
+      display: block;
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .stat-card .stat-src {
+      display: block;
+      margin-top: 0.9rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #555;
+    }
+
+    .light-mode .stat-card .stat-src {
+      color: #999;
+    }
+
+    .stat-card.accent-imported .stat-val {
+      color: var(--tag-imported);
+    }
+
+    .stat-card.accent-grounded .stat-val {
+      color: var(--tag-grounded);
+    }
+
+    .stat-card.accent-performative .stat-val {
+      color: var(--tag-performative);
+    }
+
+    /* Chart block */
+    .chart-block {
+      padding: 3rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin: 3rem 0;
+    }
+
+    .light-mode .chart-block {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: #E8E8E8;
+    }
+
+    .chart-block h3 {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .chart-block .chart-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+
+    .chart-block .chart-src {
+      margin-top: 1.5rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #555;
+    }
+
+    .light-mode .chart-block .chart-src {
+      color: #999;
+    }
+
+    .chart-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .chart-svg .axis-text {
+      font-family: inherit;
+      font-size: 11px;
+      fill: var(--text-muted);
+    }
+
+    .chart-svg .axis-line {
+      stroke: var(--border-strong);
+      stroke-width: 1;
+    }
+
+    .chart-svg .grid-line {
+      stroke: var(--border);
+      stroke-width: 1;
+      stroke-dasharray: 2 3;
+    }
+
+    .light-mode .chart-svg .grid-line {
+      stroke: #EEE;
+    }
+
+    .chart-svg .bar-label {
+      font-size: 11px;
+      fill: var(--text-main);
+      font-weight: 500;
+    }
+
+    .chart-svg .val-label {
+      font-size: 11px;
+      fill: var(--text-main);
+      font-weight: 600;
+    }
+
+    .chart-svg .series-line {
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .chart-svg .trend-imported {
+      stroke: var(--tag-imported);
+    }
+
+    .chart-svg .trend-performative {
+      stroke: var(--tag-performative);
+    }
+
+    .chart-svg .dot {
+      r: 3;
+    }
+
+    /* Two-up chart layout */
+    .chart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    /* Recovery gauge */
+    .gauge-wrap {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .gauge-wrap svg {
+      flex-shrink: 0;
+    }
+
+    .gauge-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .gauge-text strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    /* Legend */
+    .chart-legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .chart-legend .leg-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chart-legend .leg-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .ag-callout {
+      margin: 3rem 0;
+      padding: 2rem 2.5rem;
+      border-left: 2px solid var(--tag-imported);
+      background: rgba(232, 106, 74, 0.04);
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-main);
+    }
+
+    .light-mode .ag-callout {
+      background: rgba(217, 69, 32, 0.05);
+    }
+
+    .ag-callout .ag-cite {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+
+    /* ========== NSG / Learning Nation highlight ========== */
+    .nsg-highlight {
+      margin-top: 3rem;
+      padding: 3rem;
+      background: rgba(95, 196, 144, 0.05);
+      border: 1px solid rgba(95, 196, 144, 0.25);
+      border-left: 3px solid var(--tag-grounded);
+      border-radius: 4px;
+    }
+
+    .light-mode .nsg-highlight {
+      background: rgba(26, 140, 75, 0.04);
+      border-color: rgba(26, 140, 75, 0.2);
+      border-left-color: var(--tag-grounded);
+    }
+
+    .nsg-highlight .nsg-kicker {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tag-grounded);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .nsg-highlight h3 {
+      font-size: 1.6rem;
+      font-weight: 400;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .nsg-highlight p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .light-mode .nsg-highlight p {
+      color: #555;
+    }
+
+    .nsg-highlight strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .nsg-tiers {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .nsg-tier {
+      padding: 1.2rem 1rem;
+      background: rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(95, 196, 144, 0.15);
+      border-radius: 4px;
+    }
+
+    .light-mode .nsg-tier {
+      background: rgba(255, 255, 255, 0.6);
+      border-color: rgba(26, 140, 75, 0.15);
+    }
+
+    .nsg-tier .nsg-tier-label {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--tag-grounded);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .nsg-tier .nsg-tier-text {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .light-mode .nsg-tier .nsg-tier-text {
+      color: #555;
+    }
+
+    /* ========== Thread callout (Sethu thread integration) ========== */
+    .thread-callout {
+      margin: 3rem 0;
+      padding: 2.5rem 3rem;
+      background: rgba(192, 136, 224, 0.04);
+      border: 1px solid rgba(192, 136, 224, 0.15);
+      border-left: 2px solid var(--tag-performative);
+      border-radius: 4px;
+    }
+
+    .light-mode .thread-callout {
+      background: rgba(166, 68, 210, 0.04);
+      border-color: rgba(166, 68, 210, 0.15);
+      border-left-color: var(--tag-performative);
+    }
+
+    .thread-callout .thread-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--tag-performative);
+      font-weight: 500;
+    }
+
+    .thread-callout .thread-handle {
+      color: var(--text-muted);
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 400;
+    }
+
+    .thread-tweet {
+      padding: 1rem 0;
+      border-top: 1px dashed rgba(192, 136, 224, 0.15);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: var(--text-main);
+    }
+
+    .light-mode .thread-tweet {
+      border-top-color: rgba(166, 68, 210, 0.15);
+      color: #222;
+    }
+
+    .thread-tweet:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .thread-tweet:last-child {
+      padding-bottom: 0;
+    }
+
+    .thread-tweet em {
+      color: var(--tag-performative);
+      font-style: normal;
+      font-weight: 500;
+    }
+
+    .thread-link {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    .thread-link:hover {
+      color: var(--tag-performative);
+    }
+
+    /* ========== Jargon test block ========== */
+    .jargon-test {
+      margin-top: 2.5rem;
+      padding: 2rem 2.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+
+    .light-mode .jargon-test {
+      background: rgba(0, 0, 0, 0.02);
+      border-color: #E8E8E8;
+    }
+
+    .jargon-test h4 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-main);
+      margin-bottom: 1.2rem;
+      font-weight: 500;
+    }
+
+    .jargon-test ol {
+      list-style: none;
+      counter-reset: jtest;
+      padding: 0;
+      margin: 0;
+    }
+
+    .jargon-test ol li {
+      counter-increment: jtest;
+      padding: 0.8rem 0 0.8rem 2.5rem;
+      position: relative;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .light-mode .jargon-test ol li {
+      border-top-color: #EEE;
+      color: #555;
+    }
+
+    .jargon-test ol li:first-child {
+      border-top: none;
+    }
+
+    .jargon-test ol li::before {
+      content: counter(jtest, decimal-leading-zero);
+      position: absolute;
+      left: 0;
+      top: 0.9rem;
+      font-size: 0.75rem;
+      color: var(--tag-imported);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .jargon-test ol li strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .chart-grid {
+        grid-template-columns: 1fr;
+      }
+      .chart-block {
+        padding: 2rem 1.5rem;
+      }
+      .gauge-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nsg-tiers {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nsg-highlight,
+      .thread-callout {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <button class="theme-toggle" id="themeToggle">Light Mode</button>
+  </nav>
+
+  <canvas id="webgl-canvas"></canvas>
+
+  <header class="article-header">
+    <div class="kicker">April 2026</div>
+    <h1 class="hero-title">Capacity vs. Capability: Reading the Public Service Amendment Act Against the Auditor-General's Books</h1>
+    <p class="subtitle">Developed by <a href="https://x.com/runtimestate" target="_blank"
+        rel="noopener noreferrer">@runtimestate</a></p>
+    <div style="position: relative;">
+      <button class="play-audio-btn" id="playEpisodeBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="5 3 19 12 5 21 5 3"></polygon>
+        </svg>
+        <span>Listen to Episode 4</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="scrolly-container">
+    <div class="scrolly-left">
+      <div class="verdict-box">
+        <div class="verdict-label">The Verdict</div>
+        <div class="verdict-word">Capacity Reform, Not Yet Capability Reform</div>
+        <div class="verdict-text">
+          <p>The Public Service Amendment Act redraws organograms, delegations, and reporting lines. The
+            Auditor-General's most recent consolidated report describes the pressure those structures must survive.
+            The two documents, read together, disagree.</p>
+          <p>Only <strong>36% of PFMA auditees achieved clean audits</strong> in 2024-25, and those auditees control
+            just <strong>12% of the expenditure budget</strong>. Put another way, <strong>88% of the public purse</strong>
+            sits in institutions the AG cannot certify as financially competent.</p>
+          <p>The Act is a serious and overdue act of structural engineering. But <strong>capacity</strong>, meaning
+            inputs, posts, delegations, and training catalogues, is not the same thing as <strong>capability</strong>:
+            the demonstrated ability to procure lawfully, discipline transgressors, and recover losses.</p>
+          <p>The AG's books are the ground-truth test of capability. On that test, the Act does not yet move the needle.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="scrolly-right">
+      <div class="pillar-card pillar-intro">
+        <div class="kicker" style="margin-bottom: 1rem; color: var(--tag-grounded);">Analytical Framework</div>
+        <h3
+          style="font-size: 2rem; color: var(--text-main); margin-bottom: 1.5rem; text-transform: none; letter-spacing: -0.02em;">
+          Eight Questions the Act Must Answer</h3>
+        <p style="font-size: 1.2rem; color: var(--text-muted); line-height: 1.6; font-weight: 300;">Each pillar below
+          tests a provision of the Public Service Amendment Act against the capacity/capability distinction developed
+          by Andrews, Pritchett, and Woolcock, and against the hard numbers in the Auditor-General's most recent
+          PFMA and MFMA general reports. <br><br>The question is never whether the Act creates new <em>structures</em>.
+          It almost always does. The question is whether those structures will move a single indicator in the AG's
+          ledger.</p>
+      </div>
+
+      <div class="pillar-card">
+        <h3>01. The Head of Public Administration</h3>
+        <p>The Act establishes a Head of Public Administration to provide stewardship across the service. A single
+          senior post cannot substitute for the distributed judgment real capability requires, especially when
+          the AG reports <strong>only two SOEs</strong> (DBSA and NECSA) achieving clean audits in 2024-25 across the
+          entire state enterprise landscape.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Give the HoPA a small implementation unit with diagnostic authority over the 88% of expenditure currently
+            flagged by the AG.</dd>
+          <dt>Provincial</dt>
+          <dd>Mirror the function in each Office of the Premier with real budget and the right to intervene.</dd>
+          <dt>Local</dt>
+          <dd>The PSAA does not reach municipalities. CoGTA must extend equivalent stewardship into the MFMA
+            environment.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>02. Separation of Political and Administrative Authority</h3>
+        <p>The clearest capability move in the Act. Removing direct HR authority from Ministers and vesting it in Heads
+          of Department is a structural answer to cadre deployment, one of the root causes the AG consistently
+          identifies for non-compliance and material irregularities.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Publish all HoD appointment panels and panel reasons; transparency is the enforcement mechanism.</dd>
+          <dt>Provincial</dt>
+          <dd>Protect HoDs with fixed terms and cause-based removal so separation survives contact with politics.</dd>
+          <dt>Local</dt>
+          <dd>The municipal analogue, where managers are captured by mayoral committees, remains untouched.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>03. Delegation of Human-Resource Powers</h3>
+        <p>A textbook capacity move: it changes the name on the signature line. Whether the new signatory can exercise
+          the power is a capability question the Act does not answer. The AG's standing finding is that SCM
+          non-compliance persists regardless of who signs off.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Pair delegations with mandatory HR-skills certification for HoDs; unsupported delegations fail quietly.
+          </dd>
+          <dt>Provincial</dt>
+          <dd>Audit time-to-fill and time-to-discipline as capability indicators, not organogram completeness.</dd>
+          <dt>Local</dt>
+          <dd>Publish vacancy and disciplinary data at municipal level quarterly and in plain language.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>04. Professionalisation and the National School of Government</h3>
+        <p>The Act's headline pairing with the National Framework Towards the Professionalisation of the Public Sector
+          is, in part, an elevation of the <strong>National School of Government</strong> from a peripheral training
+          provider to the central learning institution of the state. That elevation is the single most consequential
+          architectural move in the reform package, and it deserves explicit recognition: it is the one provision
+          that points toward capability-building rather than capacity-relabelling.</p>
+        <p>The rest of the Framework (entry standards, technical exams, graduate pipelines) remains pure capacity
+          input. The AG has noted for multiple cycles that consultant reliance continues to grow even
+          as training budgets rise; in Gauteng alone, financial-reporting consultant costs climbed from R57.15m to
+          R70.13m between 2022-23 and 2023-24. The NSG is the only pillar of the reform plausibly positioned to
+          reverse that flow.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Scope the NSG as the backbone of a distributed learning agenda; problem-driven cohorts, not course
+            catalogues.</dd>
+          <dt>Provincial</dt>
+          <dd>Rotate high-potential officials across NSG-coordinated problem teams rather than parking them in training
+            rooms.</dd>
+          <dt>Local</dt>
+          <dd>Extend the NSG's mandate into the MFMA tier through structured secondments between high-capacity and
+            distressed municipalities.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>05. Consequence Management</h3>
+        <p>The Act tightens discipline procedures. The AG's numbers show the problem is not the rulebook. Of the
+          <strong>R14.34bn</strong> in material irregularities identified in national and provincial government over
+          the five-year PFMA cycle, <strong>only about 8%</strong> has been recovered. South Africa has never lacked
+          discipline procedures; it has lacked willingness to execute them.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Publish a national consequence-management dashboard: cases opened, resolved, dismissals executed,
+            amounts recovered.</dd>
+          <dt>Provincial</dt>
+          <dd>Make MECs and HoDs jointly accountable for disciplinary throughput.</dd>
+          <dt>Local</dt>
+          <dd>Councils must sign off on municipal disciplinary registers; silence becomes a formal finding.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>06. Lateral Entry and Mobility</h3>
+        <p>The Act contemplates easier movement of senior staff across the service and from the private sector.
+          Mobility is a capability enabler only when the receiving institution can absorb and deploy incoming talent.
+          Drop a specialist into a dysfunctional unit and the unit wins.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Target lateral entry at narrowly specified problem-teams with explicit mandates and sunset clauses.</dd>
+          <dt>Provincial</dt>
+          <dd>Use secondment-with-authority rather than permanent appointments for scarce technical skills.</dd>
+          <dt>Local</dt>
+          <dd>Create a municipal-finance corps with rotating placements in distressed councils.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>07. Ethics, Interests, and Outside Remuneration</h3>
+        <p>Tightening rules on outside remunerative work and conflicts of interest addresses a known pathology.
+          Welcome, but still capacity: the rule exists, and compliance remains to be built and measured against the
+          AG's annual non-compliance findings.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Integrate disclosure systems with SARS and CIPC data; manual declarations continue to fail.</dd>
+          <dt>Provincial</dt>
+          <dd>Resource provincial ethics offices for random audits rather than complaints-only enforcement.</dd>
+          <dt>Local</dt>
+          <dd>Require municipal officials' business interests on an open register.</dd>
+        </dl>
+      </div>
+
+      <div class="pillar-card">
+        <h3>08. What the Act Does Not Address</h3>
+        <p>Problem-driven iterative adaptation is the one method the capability literature identifies as having
+          produced real gains elsewhere, and it is nowhere in the Act. The AG's reports are, in effect, a 20-year
+          longitudinal trial of the "pass better rules, hope for better outcomes" hypothesis. The null result is on
+          the books. The Act does not break with it.</p>
+        <dl class="pillar-levels">
+          <dt>National</dt>
+          <dd>Commission five to seven PDIA-style problem teams inside the HoPA's office with independent evaluation
+            against AG indicators.</dd>
+          <dt>Provincial</dt>
+          <dd>Convert at least one department per province into a learning unit that is outcome-tracked and
+            publicly reported.</dd>
+          <dt>Local</dt>
+          <dd>Treat one distressed metro as a full capability laboratory, not a turnaround PowerPoint.</dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section data-section">
+    <h2 class="section-title">The Evidence Base</h2>
+    <p class="section-intro">What the Auditor-General's most recent consolidated reports tell us about the gap the
+      PSAA is nominally built to close.</p>
+
+    <div class="stats-grid">
+      <div class="stat-card accent-imported">
+        <span class="stat-val">88<span class="stat-unit">%</span></span>
+        <span class="stat-label">of the PFMA expenditure budget sits in auditees that cannot be certified clean.</span>
+        <span class="stat-src">AG PFMA 2024&ndash;25</span>
+      </div>
+      <div class="stat-card accent-grounded">
+        <span class="stat-val">151<span class="stat-unit"> / 417</span></span>
+        <span class="stat-label">auditees achieved clean audits in 2024&ndash;25: 36% of the audit base.</span>
+        <span class="stat-src">AG PFMA 2024&ndash;25</span>
+      </div>
+      <div class="stat-card accent-imported">
+        <span class="stat-val">R14.34<span class="stat-unit">bn</span></span>
+        <span class="stat-label">in material financial loss flagged across 266 material irregularities over five
+          PFMA cycles.</span>
+        <span class="stat-src">AG / PMG briefing</span>
+      </div>
+      <div class="stat-card accent-performative">
+        <span class="stat-val">~8<span class="stat-unit">%</span></span>
+        <span class="stat-label">of that loss has been recovered. The remaining 92% is the capability gap in
+          cash.</span>
+        <span class="stat-src">AG MI progress report</span>
+      </div>
+    </div>
+
+    <!-- Chart 1: Audit outcomes distribution -->
+    <div class="chart-block">
+      <h3>PFMA Audit Outcomes, 2024&ndash;25</h3>
+      <p class="chart-sub">The shape of accountability at national and provincial level. "Clean" means unqualified
+        financial statements with no findings on performance or compliance.</p>
+      <svg class="chart-svg" viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet" role="img" aria-label="PFMA audit outcomes bar chart">
+        <!-- Axis -->
+        <line class="axis-line" x1="180" y1="40" x2="180" y2="270" />
+        <!-- Grid lines -->
+        <line class="grid-line" x1="180" y1="40" x2="670" y2="40" />
+        <line class="grid-line" x1="180" y1="98" x2="670" y2="98" />
+        <line class="grid-line" x1="180" y1="155" x2="670" y2="155" />
+        <line class="grid-line" x1="180" y1="213" x2="670" y2="213" />
+        <!-- Scale labels (0 - 250 auditees) -->
+        <text class="axis-text" x="175" y="275" text-anchor="end">0</text>
+        <text class="axis-text" x="175" y="217" text-anchor="end">60</text>
+        <text class="axis-text" x="175" y="159" text-anchor="end">120</text>
+        <text class="axis-text" x="175" y="102" text-anchor="end">180</text>
+        <text class="axis-text" x="175" y="44" text-anchor="end">240</text>
+
+        <!-- Bars: 5 categories, each bar width based on count -->
+        <!-- Clean: 151 auditees. 151/240 * 230 = 144.7px width -->
+        <rect x="180" y="55" width="145" height="28" fill="var(--tag-grounded)" />
+        <text class="bar-label" x="20" y="73">Unqualified, no findings (clean)</text>
+        <text class="val-label" x="335" y="73">151 &middot; 36%</text>
+
+        <!-- Unqualified with findings: ~180 auditees. 180/240 * 230 = 172.5 -->
+        <rect x="180" y="110" width="173" height="28" fill="var(--tag-adapted)" />
+        <text class="bar-label" x="20" y="128">Unqualified with findings</text>
+        <text class="val-label" x="363" y="128">~180 &middot; 43%</text>
+
+        <!-- Qualified: ~55 -->
+        <rect x="180" y="165" width="53" height="28" fill="var(--tag-imported)" />
+        <text class="bar-label" x="20" y="183">Qualified with findings</text>
+        <text class="val-label" x="243" y="183">~55 &middot; 13%</text>
+
+        <!-- Adverse / Disclaimed: ~18 -->
+        <rect x="180" y="220" width="17" height="28" fill="var(--tag-performative)" />
+        <text class="bar-label" x="20" y="238">Adverse / disclaimed</text>
+        <text class="val-label" x="207" y="238">~18 &middot; 4%</text>
+
+        <!-- Outstanding: ~13 -->
+        <rect x="180" y="275" width="12" height="28" fill="var(--tag-unsaid)" />
+        <text class="bar-label" x="20" y="293">Outstanding</text>
+        <text class="val-label" x="202" y="293">~13 &middot; 3%</text>
+      </svg>
+      <div class="chart-legend">
+        <div class="leg-item"><span class="leg-dot" style="background: var(--tag-grounded);"></span>Clean:
+          12% of budget</div>
+        <div class="leg-item"><span class="leg-dot" style="background: var(--tag-adapted);"></span>Unqualified with
+          findings</div>
+        <div class="leg-item"><span class="leg-dot" style="background: var(--tag-imported);"></span>Qualified</div>
+        <div class="leg-item"><span class="leg-dot" style="background: var(--tag-performative);"></span>Adverse /
+          Disclaimed</div>
+      </div>
+      <div class="chart-src">Source: AGSA consolidated PFMA general report 2024&ndash;25. Figures for non-clean
+        categories are derived from AG presentation ranges.</div>
+    </div>
+
+    <!-- Chart 2: 10-year irregular expenditure trend -->
+    <div class="chart-block">
+      <h3>Irregular &amp; Fruitless Expenditure, 2006&ndash;07 to 2017&ndash;18</h3>
+      <p class="chart-sub">The decade-long deterioration that motivated the 2018 Public Audit Act amendments and,
+        ultimately, the 2023 Public Service Amendment Act. Values in R billions per year, national and provincial
+        government plus public entities.</p>
+      <svg class="chart-svg" viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="xMidYMid meet" role="img" aria-label="Irregular expenditure line chart">
+        <!-- Axes -->
+        <line class="axis-line" x1="60" y1="40" x2="60" y2="280" />
+        <line class="axis-line" x1="60" y1="280" x2="680" y2="280" />
+        <!-- Y-axis grid & labels (0 to 50bn) -->
+        <line class="grid-line" x1="60" y1="40" x2="680" y2="40" />
+        <line class="grid-line" x1="60" y1="88" x2="680" y2="88" />
+        <line class="grid-line" x1="60" y1="136" x2="680" y2="136" />
+        <line class="grid-line" x1="60" y1="184" x2="680" y2="184" />
+        <line class="grid-line" x1="60" y1="232" x2="680" y2="232" />
+
+        <text class="axis-text" x="55" y="284" text-anchor="end">R0</text>
+        <text class="axis-text" x="55" y="236" text-anchor="end">R10bn</text>
+        <text class="axis-text" x="55" y="188" text-anchor="end">R20bn</text>
+        <text class="axis-text" x="55" y="140" text-anchor="end">R30bn</text>
+        <text class="axis-text" x="55" y="92" text-anchor="end">R40bn</text>
+        <text class="axis-text" x="55" y="44" text-anchor="end">R50bn</text>
+
+        <!-- X-axis labels (12 points) -->
+        <!-- x positions from 80 to 660, spacing ~53 -->
+        <text class="axis-text" x="80" y="298" text-anchor="middle">'06/07</text>
+        <text class="axis-text" x="133" y="298" text-anchor="middle">'07/08</text>
+        <text class="axis-text" x="186" y="298" text-anchor="middle">'08/09</text>
+        <text class="axis-text" x="239" y="298" text-anchor="middle">'09/10</text>
+        <text class="axis-text" x="292" y="298" text-anchor="middle">'10/11</text>
+        <text class="axis-text" x="345" y="298" text-anchor="middle">'11/12</text>
+        <text class="axis-text" x="398" y="298" text-anchor="middle">'12/13</text>
+        <text class="axis-text" x="451" y="298" text-anchor="middle">'13/14</text>
+        <text class="axis-text" x="504" y="298" text-anchor="middle">'14/15</text>
+        <text class="axis-text" x="557" y="298" text-anchor="middle">'15/16</text>
+        <text class="axis-text" x="610" y="298" text-anchor="middle">'16/17</text>
+        <text class="axis-text" x="663" y="298" text-anchor="middle">'17/18</text>
+
+        <!-- Irregular expenditure line: R1bn → R45.5bn
+             y scale: R0 = y=280, R50bn = y=40, so 4.8px per R1bn -->
+        <polyline class="series-line trend-imported"
+          points="80,275 133,266 186,256 239,242 292,223 345,195 398,170 451,140 504,108 557,85 610,61 663,60" />
+        <!-- Dots -->
+        <circle class="dot" cx="80" cy="275" fill="var(--tag-imported)" />
+        <circle class="dot" cx="133" cy="266" fill="var(--tag-imported)" />
+        <circle class="dot" cx="186" cy="256" fill="var(--tag-imported)" />
+        <circle class="dot" cx="239" cy="242" fill="var(--tag-imported)" />
+        <circle class="dot" cx="292" cy="223" fill="var(--tag-imported)" />
+        <circle class="dot" cx="345" cy="195" fill="var(--tag-imported)" />
+        <circle class="dot" cx="398" cy="170" fill="var(--tag-imported)" />
+        <circle class="dot" cx="451" cy="140" fill="var(--tag-imported)" />
+        <circle class="dot" cx="504" cy="108" fill="var(--tag-imported)" />
+        <circle class="dot" cx="557" cy="85" fill="var(--tag-imported)" />
+        <circle class="dot" cx="610" cy="61" fill="var(--tag-imported)" />
+        <circle class="dot" cx="663" cy="60" fill="var(--tag-imported)" />
+
+        <!-- Fruitless/wasteful line: R77m → R2.4bn (much smaller, near x-axis) -->
+        <polyline class="series-line trend-performative"
+          points="80,279 133,278 186,277 239,276 292,274 345,272 398,270 451,268 504,265 557,263 610,260 663,269" />
+
+        <!-- Endpoint annotations -->
+        <text class="val-label" x="670" y="55" text-anchor="start" fill="var(--tag-imported)">R45.5bn</text>
+        <text class="val-label" x="75" y="270" text-anchor="start" fill="var(--tag-imported)">R1bn</text>
+      </svg>
+      <div class="chart-legend">
+        <div class="leg-item"><span class="leg-dot" style="background: var(--tag-imported);"></span>Irregular
+          expenditure</div>
+        <div class="leg-item"><span class="leg-dot" style="background: var(--tag-performative);"></span>Fruitless
+          &amp; wasteful expenditure</div>
+      </div>
+      <div class="chart-src">Source: AGSA PFMA consolidated reports (2007, 2018); Gasela (2022) synthesis. Irregular
+        expenditure rose approximately 4,400% over the decade, the structural indictment the PSAA is meant to
+        answer.</div>
+    </div>
+
+    <!-- Chart 3: Two-up — Recovery gauge and SOE clean audit ratio -->
+    <div class="chart-grid">
+      <div class="chart-block" style="margin:0;">
+        <h3>Material Irregularity Recovery Rate</h3>
+        <p class="chart-sub">Of R14.34bn in flagged losses, the portion actually recovered.</p>
+        <div class="gauge-wrap">
+          <svg width="160" height="160" viewBox="0 0 160 160" role="img"
+            aria-label="Recovery rate donut chart">
+            <!-- Background ring -->
+            <circle cx="80" cy="80" r="62" fill="none" stroke="var(--border-strong)" stroke-width="14" />
+            <!-- Recovered arc: ~9% of circumference.
+                 circumference = 2*pi*62 ≈ 389.6.  9% ≈ 35.1 -->
+            <circle cx="80" cy="80" r="62" fill="none" stroke="var(--tag-grounded)" stroke-width="14"
+              stroke-dasharray="35 390" stroke-dashoffset="0"
+              transform="rotate(-90 80 80)" />
+            <!-- Center text -->
+            <text x="80" y="82" text-anchor="middle" style="font-size:28px; font-weight:600; fill:var(--text-main);">~9%</text>
+            <text x="80" y="102" text-anchor="middle" style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; fill:var(--text-muted);">recovered</text>
+          </svg>
+          <div class="gauge-text">
+            <strong>R1.29bn</strong> recovered. <strong>R13.05bn</strong> outstanding or unresolved. A further
+            R560m&ndash;R700m is reportedly in the recovery pipeline. The Act's discipline provisions are an attempt
+            to move this ratio, an outcome the AG will measure directly.
+          </div>
+        </div>
+        <div class="chart-src">Source: AGSA Material Irregularity progress briefing, PMG records.</div>
+      </div>
+
+      <div class="chart-block" style="margin:0;">
+        <h3>SOE Clean Audit Ratio</h3>
+        <p class="chart-sub">The state-enterprise system the PSAA notably does not reach.</p>
+        <div class="gauge-wrap">
+          <svg width="160" height="160" viewBox="0 0 160 160" role="img"
+            aria-label="SOE clean audit donut chart">
+            <circle cx="80" cy="80" r="62" fill="none" stroke="var(--border-strong)" stroke-width="14" />
+            <!-- 2 clean out of ~27 major SOEs ≈ 7.4% → ~29 of 390 -->
+            <circle cx="80" cy="80" r="62" fill="none" stroke="var(--tag-imported)" stroke-width="14"
+              stroke-dasharray="29 390" stroke-dashoffset="0"
+              transform="rotate(-90 80 80)" />
+            <text x="80" y="82" text-anchor="middle" style="font-size:28px; font-weight:600; fill:var(--text-main);">2</text>
+            <text x="80" y="102" text-anchor="middle" style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; fill:var(--text-muted);">clean SOEs</text>
+          </svg>
+          <div class="gauge-text">
+            Only <strong>DBSA</strong> and <strong>NECSA</strong> achieved clean audits in 2024&ndash;25. The
+            large-balance-sheet enterprises (Eskom, Transnet, Denel, SAA) sit outside the PSAA's scope entirely,
+            governed by a parallel regime.
+          </div>
+        </div>
+        <div class="chart-src">Source: AGSA PFMA 2024&ndash;25 consolidated report.</div>
+      </div>
+    </div>
+
+    <div class="ag-callout">
+      "88% of the budget sits in the hands of auditees that are unable to demonstrate that they have good financial
+      management practices, stable performance planning and monitoring and reporting practices, and the type of
+      integrity measures and controls that ensure that when they procure goods and services, they do so in a manner
+      that respects the rule of law."
+      <span class="ag-cite">Auditor-General Tsakani Maluleke, PFMA 2024&ndash;25 tabling</span>
+    </div>
+  </section>
+
+
+
+  <section class="section" id="comparative">
+    <h2 class="section-title">Comparative Findings</h2>
+    <p class="section-intro">The PSAA read against reform programmes that have attempted, with varying results, to
+      close the capacity/capability gap.</p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="comp-similarities">Similarities</button>
+      <button class="tab-btn" data-tab="comp-differences">Differences</button>
+      <button class="tab-btn" data-tab="comp-docs">Reform Profiles</button>
+    </div>
+
+    <div class="tab-panel active" id="comp-similarities">
+      <div class="prose">
+        <p><strong>Separation of politics and administration</strong> is a common move. The UK's Next Steps agencies,
+          New Zealand's State Sector Act, and SA's PSAA all attempt, in different registers, to insulate administrative
+          decisions from direct political interference.</p>
+        <p><strong>Stewardship at the centre</strong>, meaning a single official or small office responsible for the
+          service as a whole, appears in Singapore (Head of Civil Service), the UK (Cabinet Secretary), and now
+          SA (Head of Public Administration).</p>
+        <p><strong>Professionalisation frameworks</strong> with entry standards, technical streams, and continuous
+          learning are ubiquitous. They are also, almost universally, the part of reform that under-delivers against
+          measurable outcomes.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="comp-differences">
+      <div class="comp-card">
+        <h4>Implementation Architecture</h4>
+        <p>Singapore's PS21 and Rwanda's Imihigo built delivery units with hard authority over line ministries. The
+          PSAA creates stewardship and delegations but nothing resembling a delivery unit with operational teeth that
+          could plausibly move the AG's 88%-of-budget figure.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Performance Contracting</h4>
+        <p>Rwanda's Imihigo binds senior officials to publicly adjudicated annual targets. The PSAA's performance
+          provisions remain largely internal, process-heavy, and rarely tied to removal or to AG-tracked outcomes.</p>
+      </div>
+      <div class="comp-card">
+        <h4>Problem-Driven Method</h4>
+        <p>PDIA has been piloted in Albania, Mozambique, and Sri Lanka with documented capability gains. The PSAA
+          speaks the language of structure and delegation, not of problem decomposition and iteration tied to a
+          measurable target such as MI recovery rate.</p>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="comp-docs">
+      <div class="accordion">
+        <div class="acc-header">
+          <span>SA Public Service Amendment Act 15 of 2023</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            Amends the 1994 Public Service Act to separate executive and administrative authority, vest specified HR
+            powers in Heads of Department, establish a Head of Public Administration, and tighten rules on outside
+            remunerative work. National departments and provincial administrations only; municipalities and SOEs lie
+            outside its scope.
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-header">
+          <span>AGSA PFMA 2024&ndash;25 Consolidated General Report</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            The most recent empirical portrait of SA public-finance governance. Covers 417 national and provincial
+            auditees. Reports 151 clean audits (36%) covering 12% of expenditure; sustained non-compliance on SCM,
+            consequence management and financial health; and continued low MI recovery rates.
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-header">
+          <span>AGSA MFMA 2023&ndash;24 Local Government Report</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            R8.72bn in irregular expenditure written off in one year; 268 MIs identified in local government with R1.35bn
+            in estimated loss and R401.87m recovered to date. The tier the PSAA does not reach and where the
+            capacity/capability gap bites hardest.
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-header">
+          <span>National Framework Towards the Professionalisation of the Public Sector (2022)</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            Companion policy to the PSAA. Sets entry standards, extends the role of the National School of Government,
+            and lays out a graduate recruitment scheme. Heavy on inputs, light on how to change the culture that
+            determines whether those inputs translate into AG-measurable outcomes.
+          </div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div class="acc-header">
+          <span>Rwanda Imihigo Performance Contracts</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 12 15 18 9" />
+          </svg>
+        </div>
+        <div class="acc-body">
+          <div class="acc-inner prose">
+            Annual public contracts between the President and district mayors, independently scored, with visible
+            consequences for underperformance. A capability regime stripped to its essentials: public commitment,
+            public adjudication, public consequence.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="au-split">
+      <div class="au-col au-converge">
+        <h3>Convergences</h3>
+        <p>The PSAA names real pathologies the capability literature has diagnosed for years: political
+          interference in HR, weak consequence management, and fragmented stewardship. The AG's 20-year longitudinal
+          record corroborates each of them with hard numbers.</p>
+      </div>
+      <div class="au-col au-diverge">
+        <h3>Divergences</h3>
+        <p>Their central warning is that reforms which change forms without changing function produce "isomorphic
+          mimicry": a state that looks the part without doing the work. The AG's 88% figure is what isomorphic
+          mimicry looks like in rand terms. The PSAA is vulnerable to the same critique.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">The National School of Government: Seeds of a Learning Nation</h2>
+    <p class="section-intro">One provision of the reform package warrants explicit applause, and careful
+      scaffolding.</p>
+
+    <div class="nsg-highlight">
+      <div class="nsg-kicker">Capability-Building &middot; The One Genuine Move</div>
+      <h3>From Training Provider to Learning Backbone</h3>
+      <p>The expanded and central role granted to the <strong>National School of Government (NSG)</strong> in the
+        post-PSAA architecture is the single provision in this reform package that points toward genuine capability
+        rather than rehearsed capacity. For the first time in three decades, South Africa has an institutional
+        vehicle positioned to do something beyond certify attendance: it can plausibly become the <strong>learning
+          backbone</strong> of a state that, for most of its post-1996 history, has been institutionally incapable of
+        learning from itself.</p>
+      <p>A professionalisation framework that only issues entry tickets is a HR compliance regime. A professionalisation
+        framework anchored by a <strong>distributed learning agenda</strong>, with feedback loops running from the
+        municipal coalface through provincial departments through national ministries back to a central learning
+        function, is something South Africa has not previously attempted at scale. The NSG's expanded mandate
+        makes that attempt structurally possible. Whether it happens is a matter of scope and political will.</p>
+
+      <div class="nsg-tiers">
+        <div class="nsg-tier">
+          <span class="nsg-tier-label">National</span>
+          <span class="nsg-tier-text">Problem-driven cohorts tied to AG-tracked indicators; diagnosis before curriculum.</span>
+        </div>
+        <div class="nsg-tier">
+          <span class="nsg-tier-label">Provincial</span>
+          <span class="nsg-tier-text">Rotating placements across functions; provincial learning hubs feeding NSG
+            syllabus.</span>
+        </div>
+        <div class="nsg-tier">
+          <span class="nsg-tier-label">Local</span>
+          <span class="nsg-tier-text">Extend mandate into MFMA tier via secondments between distressed and
+            high-capacity councils.</span>
+        </div>
+        <div class="nsg-tier">
+          <span class="nsg-tier-label">SOE &amp; Citizen</span>
+          <span class="nsg-tier-text">Open parts of the curriculum to SOEs and to civic-tech participants; a learning
+            nation is not a closed civil service.</span>
+        </div>
+      </div>
+
+      <p>Read most ambitiously, the NSG's elevation is the seed of a <strong>Learning Nation</strong>: a
+        country whose public institutions are organised to iterate on their own practice, share what works across
+        tiers, and translate the AG's findings into curricular consequence. This framing is absent from the Act's
+        explanatory memoranda, and that absence is itself a problem. The instrument has been created; the ambition
+        it licences has not yet been articulated.</p>
+      <p>If this is the one provision that does more than what the Act's text promises, it is also the one provision
+        most at risk of being under-scoped into another certificate factory. Applause is warranted. So is
+        vigilance.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Discourse &amp; Interpretation</h2>
+    <p class="section-intro">How the Act constructs its own authority, who it imagines as its audience, and what
+      conception of reform it encodes.</p>
+
+    <div class="accordion">
+      <div class="acc-header">
+        <span>Legitimising References</span>
+        <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+      <div class="acc-body">
+        <div class="acc-inner prose">
+          The Act draws legitimacy from three sources: the Constitution's Chapter 10 values, the Zondo Commission's
+          findings on state capture, and the National Development Plan's call for a capable developmental state. Each
+          names capability as the target. The Act's instruments, meaning organograms, delegations, and disciplinary
+          procedures, are the classical instruments of capacity.
+          <div class="evidence-block">
+            "A professional, career-oriented, and impartial public administration..."
+            <span class="src">PSAA preamble, echoing Section 195 of the Constitution</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header">
+        <span>Implied Audiences &amp; Power Assumptions</span>
+        <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+      <div class="acc-body">
+        <div class="acc-inner prose">
+          The Act is addressed almost entirely to senior managers and ministers. Line officials appear as subjects of
+          delegation rather than agents of reform; citizens appear as recipients of a better-run service rather than
+          as participants in its design. This top-down framing is continuous with the tradition of SA public-service
+          reform since 1996, a tradition whose track record is documented line by line in the AG's books.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion">
+      <div class="acc-header">
+        <span>Hermeneutic Reality</span>
+        <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+      <div class="acc-body">
+        <div class="acc-inner prose">
+          Read generously, the PSAA is the most serious attempt in a decade to fix the structural conditions under
+          which South African public administration has failed. Read against the AG's numbers, it is another iteration
+          of the long-running habit of legislating the shape of a capable state while the practice of one continues to
+          atrophy. Both readings are defensible. The test (the 88% figure, the 8% recovery rate, the 2
+          clean-audit SOEs) is independently measured and published annually.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">The Jargon Problem: When Words Replace Numbers</h2>
+    <p class="section-intro">A discourse analysis of the phrase that has come to do most of South Africa's
+      accountability work, and most of its accountability dodging.</p>
+
+    <div class="prose">
+      <p>"Consequence management." Few phrases in contemporary South African governance have been worked harder or
+        defined less. Ministers deploy it at press conferences; heads of department cite it in annual reports;
+        parliamentary portfolio committees demand it; local media relay it, uninterrogated, as if the invocation of
+        the phrase were itself the action it names. The phrase has become a <strong>three-word ritual</strong>: a
+        verbal substitute for the outcomes it was originally meant to describe.</p>
+      <p>This is a specific failure of public discourse. The phrase survives unexamined because it performs
+        accountability without committing to it. "Consequence management will be pursued" is a sentence that
+        precludes follow-up by appearing to answer the question. Local media reports it as news rather than
+        interrogating it as an empty performative. Over time, the phrase has been <strong>shielded as politics
+          rather than exposed as governance</strong>: a matter of ministerial reputation and party positioning, not
+        a matter of cases opened, salaries garnished, monies recovered, officials dismissed.</p>
+      <p>The AG's numbers do the interrogation the media will not. <strong>R14.34bn</strong> in flagged material
+        losses, <strong>~8%</strong> recovered. That is what consequence management looks like when it is measured
+        rather than merely invoked.</p>
+    </div>
+
+    <div class="jargon-test">
+      <h4>A Test for Political Rhetoric</h4>
+      <ol>
+        <li>Does the sentence name a <strong>number of cases</strong>, or does it gesture at "cases"?</li>
+        <li>Does it specify <strong>an amount</strong> to be recovered, or does it invoke "monies"?</li>
+        <li>Does it commit to a <strong>date</strong>, or does it float in procedural time?</li>
+      </ol>
+      <p style="margin: 1.2rem 0 0 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">If the answer
+        to any of the three is no, the sentence is politics, not governance. The default editorial posture of South
+        African public-affairs journalism should be to refuse to transcribe it without follow-up. It currently is
+        not.</p>
+    </div>
+
+    <div class="prose">
+      <p>The thread's diagnostic arrives at the same door as this essay's, from the fiscal rather than the structural
+        side. "Consequence management" as a phrase operates in precisely the register the thread warns against:
+        <strong>catch-all</strong>, un-quantifiable, politically legible but governance-opaque. Its companion phrases
+        ("transformation," "capacity-building," "professionalisation," "stakeholder engagement," "the capable
+        developmental state") form a vocabulary that, deployed together, can describe any policy direction
+        without committing to any policy outcome.</p>
+      <p>The organogram diagnostic is particularly sharp against the PSAA. The Act redraws <strong>lines of
+          authority</strong> on the organogram. It does not disturb the <strong>technical-to-administrative ratio</strong>
+        or the <strong>executive-to-operational ratio</strong> that the thread identifies as the actual measurable
+        indicators of whether a department is structured to produce outcomes or to produce reports. A department that
+        has rebalanced its HR delegations while retaining a thirty-to-one administrative-to-technical ratio has
+        reformed its signature block, not its capacity to deliver.</p>
+      <p>The analytical upshot is modest and uncomfortable: until South Africa's political vocabulary can be
+        disciplined into producing <strong>numbers alongside its nouns</strong>, successive reform Acts will continue
+        to pass into a discourse that cannot distinguish them from their predecessors.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Capacity vs. Capability Assessment</h2>
+    <p class="section-intro">Each major provision of the Act classified by the kind of reform work it actually
+      performs, and whether it has a plausible line-of-sight to an AG-measured indicator.</p>
+
+    <div class="filter-bar" id="filterBar">
+      <span class="filter-label">Filter</span>
+      <button class="filter-btn" data-filter="overall">Overall Breakdown</button>
+      <button class="filter-btn active" data-filter="all">All Themes</button>
+      <button class="filter-btn" data-filter="imported">Capacity Only</button>
+      <button class="filter-btn" data-filter="adapted">Capacity w/ Capability Hooks</button>
+      <button class="filter-btn" data-filter="grounded">Capability-Building</button>
+      <button class="filter-btn" data-filter="performative">Performative</button>
+      <button class="filter-btn" data-filter="ambiguous">Ambiguous</button>
+      <button class="filter-btn" data-filter="unsaid">Unsaid</button>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr>
+            <th>Provision</th>
+            <th>Classification</th>
+            <th>AG-Measurable Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-cat="imported">
+            <td class="theme-name">HR Delegations to HoDs</td>
+            <td><span class="tag tag-imported">Capacity Only</span></td>
+            <td>Changes the signatory; does not predict movement in SCM non-compliance.</td>
+          </tr>
+          <tr data-cat="imported">
+            <td class="theme-name">Tightened Discipline Procedures</td>
+            <td><span class="tag tag-imported">Capacity Only</span></td>
+            <td>Rulebook improvements in a system whose 8% MI recovery rate shows the problem is non-enforcement.</td>
+          </tr>
+          <tr data-cat="adapted">
+            <td class="theme-name">Head of Public Administration</td>
+            <td><span class="tag tag-adapted">Capacity w/ Capability Hooks</span></td>
+            <td>Could move the 88% figure if paired with an implementation unit with authority over auditees.</td>
+          </tr>
+          <tr data-cat="adapted">
+            <td class="theme-name">Lateral Entry Provisions</td>
+            <td><span class="tag tag-adapted">Capacity w/ Capability Hooks</span></td>
+            <td>Capability gain only if placements are targeted at repeat-offender auditees with defined problems.</td>
+          </tr>
+          <tr data-cat="adapted">
+            <td class="theme-name">NSG Expanded Central Role</td>
+            <td><span class="tag tag-adapted">Capacity w/ Capability Hooks</span></td>
+            <td>The one architectural move with genuine Learning-Nation potential, if scoped beyond certification.</td>
+          </tr>
+          <tr data-cat="grounded">
+            <td class="theme-name">Separation of Political &amp; Administrative Authority</td>
+            <td><span class="tag tag-grounded">Capability-Building</span></td>
+            <td>Attacks the cadre-deployment pathology the AG identifies as a root cause of non-compliance.</td>
+          </tr>
+          <tr data-cat="grounded">
+            <td class="theme-name">Outside-Remuneration Restrictions</td>
+            <td><span class="tag tag-grounded">Capability-Building</span></td>
+            <td>Reduces conflict-of-interest drag on procurement decisions, if enforced and audited.</td>
+          </tr>
+          <tr data-cat="performative">
+            <td class="theme-name">Professionalisation Framework</td>
+            <td><span class="tag tag-performative">Performative</span></td>
+            <td>Entry standards without a mechanism to reduce consultant reliance (R70m+ in Gauteng alone).</td>
+          </tr>
+          <tr data-cat="performative">
+            <td class="theme-name">Values &amp; Ethics Declarations</td>
+            <td><span class="tag tag-performative">Performative</span></td>
+            <td>Declaratory language unaccompanied by behavioural enforcement or AG-tracked compliance.</td>
+          </tr>
+          <tr data-cat="ambiguous">
+            <td class="theme-name">Performance Management</td>
+            <td><span class="tag tag-ambiguous">Ambiguous</span></td>
+            <td>Depends on whether HoDs are held to AG-tracked outcomes or to internal paper KPIs.</td>
+          </tr>
+          <tr data-cat="unsaid">
+            <td class="theme-name">Municipal Public Service</td>
+            <td><span class="tag tag-unsaid">Unsaid</span></td>
+            <td>R8.72bn in annual irregular expenditure in MFMA space; PSAA does not reach it.</td>
+          </tr>
+          <tr data-cat="unsaid">
+            <td class="theme-name">State-Owned Enterprises</td>
+            <td><span class="tag tag-unsaid">Unsaid</span></td>
+            <td>2 clean audits out of the major SOE base; governed under a parallel regime.</td>
+          </tr>
+          <tr data-cat="unsaid">
+            <td class="theme-name">Problem-Driven Iterative Method</td>
+            <td><span class="tag tag-unsaid">Unsaid</span></td>
+            <td>The one approach with documented capability gains is entirely absent from the Act.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- OVERALL PIE CHART HUD -->
+      <div id="overallChartView"
+        style="display: none; justify-content: center; align-items: center; padding: 4rem 2rem; flex-direction: column;">
+        <div style="width: 250px; height: 250px; position: relative;">
+          <!-- SVG Pie Chart using stroke-dasharray. 13 provisions total. -->
+          <svg width="100%" height="100%" viewBox="0 0 32 32"
+            style="transform: rotate(-90deg); border-radius: 50%; overflow: visible;" id="pieInteractiveSvg">
+            <!-- Capacity Only: 2/13 = 15.38% -->
+            <circle class="pie-segment" data-segment="imported" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-imported)" stroke-width="6" stroke-dasharray="15.38 100" stroke-dashoffset="0" />
+            <!-- Capacity w/ Capability Hooks: 3/13 = 23.08% -->
+            <circle class="pie-segment" data-segment="adapted" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-adapted)" stroke-width="6" stroke-dasharray="23.08 100" stroke-dashoffset="-15.38" />
+            <!-- Capability-Building: 2/13 = 15.38% -->
+            <circle class="pie-segment" data-segment="grounded" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-grounded)" stroke-width="6" stroke-dasharray="15.38 100" stroke-dashoffset="-38.46" />
+            <!-- Performative: 2/13 = 15.38% -->
+            <circle class="pie-segment" data-segment="performative" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-performative)" stroke-width="6" stroke-dasharray="15.38 100" stroke-dashoffset="-53.84" />
+            <!-- Ambiguous: 1/13 = 7.69% -->
+            <circle class="pie-segment" data-segment="ambiguous" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-ambiguous)" stroke-width="6" stroke-dasharray="7.69 100" stroke-dashoffset="-69.22" />
+            <!-- Unsaid: 3/13 = 23.08% -->
+            <circle class="pie-segment" data-segment="unsaid" r="15.915" cx="16" cy="16" fill="transparent"
+              stroke="var(--tag-unsaid)" stroke-width="6" stroke-dasharray="23.08 100" stroke-dashoffset="-76.91" />
+          </svg>
+          <!-- Center Hole Text -->
+          <div
+            style="position: absolute; top:0; left:0; width:100%; height:100%; display: flex; flex-direction: column; justify-content: center; align-items: center; pointer-events: none;">
+            <span style="font-size: 2.5rem; font-weight: 600; color: var(--text-main); line-height:1;">13</span>
+            <span
+              style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-top:0.2rem;">Provisions</span>
+          </div>
+        </div>
+
+        <!-- DYNAMIC EXPLANATION BOX -->
+        <div id="pieExplanation" class="pie-explanation"
+          style="margin-top: 3rem; max-width: 500px; min-height: 4.5rem; text-align: center; color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; padding: 1rem 1.5rem; border-radius: 8px; transition: opacity 0.2s, border-color 0.2s;">
+          <span id="pieExpText">Select any segment of the chart above to view the classification analysis.</span>
+        </div>
+
+        <div
+          style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap; justify-content: center; max-width: 600px;">
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-imported);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">2</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Capacity
+              Only</span>
+          </div>
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-adapted);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">3</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Cap.
+              w/ Hooks</span>
+          </div>
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-grounded);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">2</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Capability</span>
+          </div>
+          <div class="legend-item" style="display: flex; flex-direction: column; align-items: center; gap: 0.25rem;">
+            <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--tag-unsaid);"></div>
+            <b style="color: var(--text-main); font-size: 1.1rem; line-height:1;">6</b>
+            <span
+              style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Perf.
+              / Ambig. / Unsaid</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Critical Silences</h2>
+    <p class="section-intro">What the Act leaves out, priced in AG terms.</p>
+
+    <div class="silence-card">
+      <h4>The Municipal Tier: R8.72bn/yr</h4>
+      <p>The Public Service Act governs national and provincial administration. Municipalities sit under the MFMA. In
+        2023-24 alone, councils wrote off <strong>R8.72bn</strong> in irregular expenditure, and the AG identified
+        268 material irregularities at the local level with <strong>R1.35bn</strong> in estimated losses. Only
+        R401.87m has been recovered. The capacity/capability gap is widest at the bottom tier, and the
+        PSAA does not touch it.</p>
+    </div>
+    <div class="silence-card">
+      <h4>State-Owned Enterprises: 2 Clean</h4>
+      <p>Eskom, Transnet, Denel, SAA, and the rest of the major SOEs sit in a parallel governance regime. Only DBSA
+        and NECSA achieved clean audits in 2024-25. Reforming the public service while leaving SOE governance
+        untouched leaves the most visible and expensive sites of administrative failure outside the scope of the
+        reform.</p>
+    </div>
+    <div class="silence-card">
+      <h4>The Implementation Unit</h4>
+      <p>Every reform programme that has closed a capacity/capability gap (Singapore, Rwanda, the UK) did so through
+        a small, empowered unit with hard authority at the centre. The PSAA creates stewardship; it does not create
+        an implementation unit. A Head of Public Administration without operational teeth is a capacity artefact,
+        not a capability instrument, and cannot credibly claim to move the AG's 88% figure.</p>
+    </div>
+    <div class="silence-card">
+      <h4>Problem-Driven Iterative Adaptation</h4>
+      <p>The one reform method the capability literature identifies as having produced measurable gains is entirely
+        absent from the Act. PDIA is concrete: small teams, defined problems, rapid iteration, independent
+        evaluation. A state-reform Act that does not mention the one well-evidenced method of building capability is
+        one that has chosen, consciously or otherwise, to build capacity instead.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Final Synthesis</h2>
+    <div class="synthesis-box">
+      <h3>Better Plumbing, Same Water Pressure, One Promising Valve</h3>
+      <div class="prose">
+        <p>The Public Service Amendment Act is the most coherent attempt in recent memory to fix the structural
+          conditions under which the South African public service operates. The separation of political and
+          administrative authority, the consolidation of stewardship at the centre, the delegation of HR powers to
+          Heads of Department, and the tightening of outside-remuneration rules all address real and long-diagnosed
+          pathologies.</p>
+        <p>But the Act repeats, at a higher resolution, the mistake that has characterised SA public-administration
+          reform since 1996: it confuses the passing of better rules for the building of a better state.
+          <strong>Capacity</strong> is what you legislate. <strong>Capability</strong> is what you demonstrate, and
+          the Auditor-General measures the demonstration. On her most recent numbers (88% of the budget in
+          uncertified hands, 8% of R14bn in material losses recovered, 2 clean SOE audits out of the major set), the
+          demonstration has not begun.</p>
+        <p>The <strong>one promising valve</strong> in the whole reform package is the elevated role of the National
+          School of Government. If that elevation is scoped ambitiously, as the backbone of a distributed learning
+          agenda reaching into provinces, municipalities, and SOEs, the Act will have seeded something genuinely new
+          in South African public administration. If it is under-scoped into another certificate
+          factory, the reform will have produced one more capacity artefact at the price of a historic opportunity.
+          That choice is being made now, in the quiet sentences of implementation regulations nobody reports on.</p>
+        <p>And the reporting itself is part of the problem. As long as "consequence management" circulates as a
+          three-word ritual, transcribed by local media without the three numbers that would convert it from
+          politics into governance, the discourse around this Act will be unable to distinguish progress from the
+          repeated announcement of it. The organogram diagnostic is unforgiving: departments that reform their
+          signature blocks without moving their technical-to-administrative ratios have relabelled capacity and
+          called it capability.</p>
+        <p>The test of the PSAA will not be found in its text. It will be found, a decade from now, in whether the
+          AG's three numbers have moved, whether the NSG has become a learning institution or a credentialing one,
+          and whether the political vocabulary around reform has started producing <strong>numbers alongside its
+            nouns</strong>. If the 2033 consolidated report shows the same distribution as today's, the Act will have
+          joined the shelf. If it shows even modest convergence toward the median the capability literature predicts
+          is possible, the Act (and the Learning Nation it could seed) will have done something South African
+          public-service reform has not done in thirty years.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Works Cited</h2>
+    <div class="prose">
+      <p><strong>1.</strong> Republic of South Africa. <em>Public Service Amendment Act 15 of 2023</em>. Pretoria:
+        Government Printing Works.</p>
+      <p><strong>2.</strong> Republic of South Africa. <em>Public Service Act, 1994 (Proclamation 103 of 1994)</em>,
+        as amended.</p>
+      <p><strong>3.</strong> Auditor-General of South Africa. <em>Consolidated General Report on the National and
+          Provincial Audit Outcomes: PFMA 2024&ndash;25</em>. Pretoria, tabled 2025. Supplementary address by
+        Auditor-General T. Maluleke.</p>
+      <p><strong>4.</strong> Auditor-General of South Africa. <em>Consolidated General Report on Local Government
+          Audit Outcomes: MFMA 2023&ndash;24</em>. Pretoria, 2025.</p>
+      <p><strong>5.</strong> Auditor-General of South Africa. Material Irregularity briefings to the Standing Committee
+        on the Auditor-General and the Standing Committee on Appropriations, 2024&ndash;2025. Parliamentary Monitoring
+        Group records.</p>
+      <p><strong>6.</strong> Department of Public Service and Administration. <em>National Framework Towards the
+          Professionalisation of the Public Sector</em>, 2022.</p>
+      <p><strong>7.</strong> Pritchett, L., Woolcock, M., &amp; Andrews, M. (2013). Looking Like a State: Techniques
+        of Persistent Failure in State Capability for Implementation. <em>Journal of Development Studies</em>, 49(1),
+        1&ndash;18.</p>
+      <p><strong>8.</strong> Andrews, M., Pritchett, L., &amp; Woolcock, M. (2017). <em>Building State Capability:
+          Evidence, Analysis, Action</em>. Oxford: Oxford University Press.</p>
+      <p><strong>9.</strong> Judicial Commission of Inquiry into Allegations of State Capture (Zondo Commission).
+        <em>Report</em>, Parts I&ndash;VI. Pretoria, 2022.</p>
+      <p><strong>10.</strong> National Planning Commission. <em>National Development Plan 2030: Our Future,
+          Make It Work</em>. Pretoria, 2012, especially Chapter 13.</p>
+      <p><strong>11.</strong> Gasela, M. (2022). The impact of material irregularity provisions of the Public Audit
+        Act on accountability, oversight and governance in the Northern Cape province. <em>Africa's Public Service
+          Delivery &amp; Performance Review</em>.</p>
+      <p><strong>12.</strong> @OfficialSethu. Thread on government spending, industrialisation pathways, and the
+        organogram diagnostic. X (formerly Twitter), 4 October 2024. Available at
+        <a href="https://x.com/OfficialSethu/status/1842191849739706451" target="_blank" rel="noopener noreferrer">
+          https://x.com/OfficialSethu/status/1842191849739706451</a>.</p>
+    </div>
+  </section>
+
+  <div class="share-bar" role="group" aria-label="Share this post">
+    <span class="share-label">Share</span>
+    <a class="share-btn" data-share="twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932Zm-1.29 19.49h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+    <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    </a>
+    <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <button type="button" class="share-btn" data-share="copy" aria-label="Copy link">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    </button>
+  </div>
+
+  <footer class="article-footer" style="flex-direction:column;gap:0.5rem;text-align:center;">
+    <div>Data-Driven Policy Analysis &middot; Finalized April 2026</div>
+    <div style="font-size:0.75rem;">PSAA read against the AG's most recent consolidated general reports.</div>
+    <div style="margin-top:0.5rem;">Runtime State &middot; <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">@runtimestate</a></div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+  /* Episode 4 MP3 player — replaces TTS for this post */
+  (function initEpisodePlayer() {
+    var btn = document.getElementById('playEpisodeBtn');
+    if (!btn) return;
+    var audio = new Audio('/episodes/psaa-capacity-capability/Episode 4 psaa-capacity-capability.mp3');
+    var isPlaying = false;
+
+    audio.addEventListener('ended', function () {
+      isPlaying = false;
+      btn.querySelector('span').textContent = 'Listen to Episode 4';
+      btn.querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+    });
+
+    btn.addEventListener('click', function () {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        btn.querySelector('span').textContent = 'Listen to Episode 4';
+        btn.querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+      } else {
+        audio.play();
+        isPlaying = true;
+        btn.querySelector('span').textContent = 'Pause Episode';
+        btn.querySelector('svg').innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+      }
+    });
+  })();
+  </script>
+  <script src="/js/main.js"></script>
+  <script>
+  /* Progressive WebGL + GSAP */
+  (function () {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var scripts = [
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
+    ];
+    var loaded = 0;
+    scripts.forEach(function (src) {
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = function () {
+        loaded++;
+        if (loaded === scripts.length) initEnhancements();
+      };
+      document.head.appendChild(s);
+    });
+  })();
+
+  function initEnhancements() {
+    // THREE.JS SCENE
+    var canvas = document.querySelector('#webgl-canvas');
+    var scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x030303, 0.015);
+
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 5, 20);
+    camera.rotation.x = -0.2;
+
+    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    var geometry = new THREE.PlaneGeometry(100, 100, 30, 30);
+    var pos = geometry.attributes.position;
+    for (var i = 0; i < pos.count; i++) {
+      var z = (Math.random() - 0.5) * 4;
+      pos.setZ(i, z);
+    }
+    geometry.computeVertexNormals();
+
+    var material = new THREE.MeshBasicMaterial({
+      color: 0x222222,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.5
+    });
+
+    var terrain = new THREE.Mesh(geometry, material);
+    terrain.rotation.x = -Math.PI / 2;
+    terrain.position.y = -5;
+    scene.add(terrain);
+
+    window.addEventListener('resize', function () {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    function animateThreeJS() {
+      terrain.rotation.z -= 0.0005;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animateThreeJS);
+    }
+    animateThreeJS();
+
+    // GSAP ANIMATIONS
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entrance
+    gsap.from(".hero-title", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.2 });
+    gsap.from(".subtitle", { y: 30, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.5 });
+
+    // Scrolly Pinning
+    ScrollTrigger.create({
+      trigger: ".scrolly-container",
+      start: "top top",
+      end: "bottom bottom",
+      pin: ".scrolly-left",
+      pinSpacing: false
+    });
+
+    // Pillar fading
+    var pillars = gsap.utils.toArray('.pillar-card');
+    pillars.forEach(function (pillar) {
+      gsap.to(pillar, {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: pillar,
+          start: "top 70%",
+          end: "top 40%",
+          scrub: true
+        }
+      });
+    });
+
+    // Stat cards fade-in
+    gsap.utils.toArray('.stat-card').forEach(function (card, i) {
+      gsap.from(card, {
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        delay: i * 0.08,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    // Chart block fade-in
+    gsap.utils.toArray('.chart-block').forEach(function (block) {
+      gsap.from(block, {
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: block,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+    });
+
+    // Camera Fly
+    ScrollTrigger.create({
+      trigger: "body",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 1,
+      onUpdate: function (self) {
+        camera.position.z = 20 - (self.progress * 15);
+        camera.position.y = 5 - (self.progress * 2);
+        camera.rotation.x = -0.2 - (self.progress * 0.3);
+      }
+    });
+
+    // Pie chart visual pop
+    document.querySelectorAll('.pie-segment').forEach(function (seg) {
+      seg.addEventListener('click', function () {
+        gsap.fromTo(this, { strokeWidth: 10 }, { strokeWidth: 6, duration: 0.5, ease: "power2.out" });
+      });
+    });
+
+    // Overall chart view GSAP transition
+    document.querySelectorAll('#filterBar .filter-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        var pieChart = document.getElementById('overallChartView');
+        if (f === 'overall' && pieChart) {
+          gsap.fromTo(pieChart, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.4, ease: "power2.out" });
+        }
+      });
+    });
+
+    // Theme handler
+    document.addEventListener('themechange', function (e) {
+      if (e.detail.light) {
+        scene.fog.color.setHex(0xffffff);
+        material.color.setHex(0xededed);
+      } else {
+        scene.fog.color.setHex(0x030303);
+        material.color.setHex(0x222222);
+      }
+    });
+
+    gsap.ticker.lagSmoothing(0);
+  }
+  </script>
+</body>
+
+</html>

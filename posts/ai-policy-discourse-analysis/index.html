@@ -4,15 +4,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy — Runtime State</title>
+  <title>Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy · Runtime State</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="canonical" href="https://runtimestate.com/posts/ai-policy-discourse-analysis">
-  <meta property="og:title" content="Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy — Runtime State">
+  <meta property="og:title" content="Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy · Runtime State">
   <meta property="og:description" content="A selective adaptation layered onto a substantially imported architecture. It reads global and annotates local.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://runtimestate.com/posts/ai-policy-discourse-analysis">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:site" content="@OfficialSethu">
+  <meta name="twitter:site" content="@runtimestate">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('light-mode');
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="/css/tokens.css">
   <link rel="stylesheet" href="/css/shell.css">
   <link rel="stylesheet" href="/css/article.css">
@@ -32,7 +42,7 @@
       --tag-unsaid: #8a8579;
     }
 
-    body.light-mode {
+    .light-mode {
       --bg: #FFFFFF;
       --text-main: #000000;
       --text-muted: #666666;
@@ -47,91 +57,124 @@
       --tag-unsaid: #5A5A5A;
     }
 
-    body.light-mode .v-stat {
+    .light-mode .v-stat {
       background: rgba(0, 0, 0, 0.02);
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
 
-    body.light-mode .verdict-text strong,
-    body.light-mode .prose strong,
-    body.light-mode .prose h3,
-    body.light-mode .tab-btn:hover,
-    body.light-mode .tab-btn.active,
-    body.light-mode .comp-card h4,
-    body.light-mode .silence-card h4,
-    body.light-mode .acc-header,
-    body.light-mode .matrix td.theme-name,
-    body.light-mode .synthesis-box h3,
-    body.light-mode .score-bars-container h4 {
+    .light-mode .verdict-text strong,
+    .light-mode .prose strong,
+    .light-mode .prose h3,
+    .light-mode .tab-btn:hover,
+    .light-mode .tab-btn.active,
+    .light-mode .comp-card h4,
+    .light-mode .silence-card h4,
+    .light-mode .acc-header,
+    .light-mode .matrix td.theme-name,
+    .light-mode .synthesis-box h3,
+    .light-mode .score-bars-container h4 {
       color: #000000;
     }
 
-    body.light-mode .tab-btn.active {
+    .light-mode .tab-btn.active {
       border-bottom-color: #000000;
     }
 
-    body.light-mode .prose,
-    body.light-mode .comp-card p,
-    body.light-mode .silence-card p,
-    body.light-mode .acc-inner,
-    body.light-mode .matrix th,
-    body.light-mode .matrix td,
-    body.light-mode .au-col p {
+    .light-mode .prose,
+    .light-mode .comp-card p,
+    .light-mode .silence-card p,
+    .light-mode .acc-inner,
+    .light-mode .matrix th,
+    .light-mode .matrix td,
+    .light-mode .au-col p {
       color: #555555;
     }
 
-    body.light-mode .pillar-levels dt {
+    .light-mode .pillar-levels dt {
       color: #666;
     }
 
-    body.light-mode .filter-btn:hover,
-    body.light-mode .filter-btn.active {
+    .light-mode .filter-btn:hover,
+    .light-mode .filter-btn.active {
       background: #F2F2F2;
       color: #000;
       border-color: #000;
     }
 
-    body.light-mode .evidence-block:hover {
+    .light-mode .evidence-block:hover {
       border-color: #000;
     }
 
-    body.light-mode .score-bars-container,
-    body.light-mode .synthesis-box {
+    .light-mode .score-bars-container,
+    .light-mode .synthesis-box {
       background: rgba(0, 0, 0, 0.02);
       border: 1px solid #E8E8E8;
     }
 
-    body.light-mode .score-label {
+    .light-mode .score-label {
       color: #666;
     }
 
-    body.light-mode .verdict-box {
+    .light-mode .verdict-box {
       border-left: 2px solid #000;
       padding-left: 2.5rem;
     }
 
-    body.light-mode .theme-toggle,
-    body.light-mode .play-audio-btn {
+    .light-mode .theme-toggle,
+    .light-mode .play-audio-btn {
       background: rgba(255, 255, 255, 0.9);
       border-color: #E8E8E8;
       color: #000;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     }
 
-    body.light-mode .theme-toggle:hover,
-    body.light-mode .play-audio-btn:hover {
+    .light-mode .theme-toggle:hover,
+    .light-mode .play-audio-btn:hover {
       background: #000;
       color: #FFF;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
       border-color: #000;
     }
 
-    body.light-mode .play-audio-btn:hover {
+    .light-mode .play-audio-btn:hover {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
-    body.light-mode .tts-subtitles {
+    .light-mode .tts-subtitles {
       color: #111111;
+    }
+
+    /* Hero background image */
+    .article-header {
+      position: relative;
+      isolation: isolate;
+    }
+
+    .article-header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("hero.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(0.3) brightness(0.55);
+      z-index: -2;
+    }
+
+    .article-header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(3, 3, 3, 0.55) 0%, rgba(3, 3, 3, 0.85) 100%);
+      z-index: -1;
+    }
+
+    .light-mode .article-header::before {
+      filter: grayscale(0.1) brightness(1);
+    }
+
+    .light-mode .article-header::after {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.78) 100%);
     }
 
     /* Play audio button solid-background override */
@@ -278,7 +321,7 @@
       border: 1px solid var(--border);
     }
 
-    body.light-mode .pie-explanation {
+    .light-mode .pie-explanation {
       background: rgba(0, 0, 0, 0.03);
       border-color: rgba(0, 0, 0, 0.1);
     }
@@ -304,17 +347,16 @@
     <div class="kicker">April 2026</div>
     <h1 class="hero-title">Citizens, Infrastructure, and Knowledge in South Africa's Draft AI
       Policy</h1>
-    <p class="subtitle">Developed by <a href="https://x.com/OfficialSethu" target="_blank"
-        rel="noopener noreferrer">@OfficialSethu</a></p>
+    <p class="subtitle">Developed by <a href="https://x.com/runtimestate" target="_blank"
+        rel="noopener noreferrer">@runtimestate</a></p>
     <div style="position: relative;">
-      <button class="play-audio-btn" id="playAudioBtn">
+      <button class="play-audio-btn" id="playEpisodeBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round">
           <polygon points="5 3 19 12 5 21 5 3"></polygon>
         </svg>
-        <span>Listen to Summary</span>
+        <span>Listen to Episode</span>
       </button>
-      <div id="tts-subtitles" class="tts-subtitles"></div>
     </div>
   </header>
 
@@ -322,15 +364,15 @@
     <div class="scrolly-left">
       <div class="verdict-box">
         <div class="verdict-label">The Verdict</div>
-        <div class="verdict-word">Hybrid &mdash; Leaning Derivative</div>
+        <div class="verdict-word">Hybrid, Leaning Derivative</div>
         <div class="verdict-text">
           <p>The policy is a selective adaptation layered onto a substantially imported architecture.</p>
-          <p>South Africa's AI policy trajectory represents a <strong>hybrid effort</strong> &mdash; but one whose
+          <p>South Africa's AI policy trajectory represents a <strong>hybrid effort</strong>, but one whose
             centre of gravity sits closer to the derivative end of the spectrum than to genuine origination. The 2026
             Draft Policy makes real and sometimes inventive attempts at contextual grounding: anchoring AI governance in
             the Constitution, invoking Ubuntu, and foregrounding indigenous language preservation.</p>
-          <p>However, the <strong>core policy architecture</strong> &mdash; risk-based classification, ethical
-            principles, and innovation-competitiveness framing &mdash; remains <strong>fundamentally imported</strong>.
+          <p>However, the <strong>core policy architecture</strong> (risk-based classification, ethical
+            principles, and innovation-competitiveness framing) remains <strong>fundamentally imported</strong>.
           <p>The result is a document that reads global and annotates local, rather than one that thinks from local
             conditions outward.</p>
         </div>
@@ -449,8 +491,8 @@
       <div class="pillar-card">
         <h3>08. Build &amp; Transform</h3>
         <p>The Framework nowhere commits the state to building a sovereign foundation model or to reorganising the
-          machinery of government around AI-enabled decision-making. It names every argument for doing so &mdash; data
-          sovereignty, foreign-provider dependence, indigenous-language under-representation &mdash; and then declines
+          machinery of government around AI-enabled decision-making. It names every argument for doing so (data
+          sovereignty, foreign-provider dependence, indigenous-language under-representation), then declines
           to prescribe the treatment. The document imagines AI as something the state will <em>oversee</em>, not
           something the state will <em>become</em>. This is the difference between being a consumer and a producer of
           AI, and the Framework, for all its ambition, sits squarely on the consumer side.</p>
@@ -463,8 +505,8 @@
           <dd>Rewrite procurement law so AI commitments cannot be captured by a handful of foreign vendors; embed data
             stewards inside provincial departments rather than outside them.</dd>
           <dt>Local</dt>
-          <dd>Pilot genuine institutional redesign in at least one metro &mdash; not a chatbot bolted onto a website,
-            but a rethinking of how decisions get made, audited, and contested.</dd>
+          <dd>Pilot genuine institutional redesign in at least one metro. Not a chatbot bolted onto a website, but
+            a rethinking of how decisions get made, audited, and contested.</dd>
         </dl>
       </div>
     </div>
@@ -789,7 +831,7 @@
 
     <div class="silence-card">
       <h4>State Capacity & Implementation Reality</h4>
-      <p>The policy mandates creating seven brand-new institutional regulatory bodies—all while existent regulators face
+      <p>The policy mandates creating seven brand-new institutional regulatory bodies-all while existent regulators face
         overwhelming operational constraint. Institutional blueprinting frequently overshadows execution capabilities.
       </p>
     </div>
@@ -815,9 +857,9 @@
     </div>
     <div class="silence-card">
       <h4>Institutional Transformation of the State</h4>
-      <p>The Framework proposes many new bodies &mdash; an Ethics Board, a National AI Commission, a Regulatory
-        Authority, a Safety Institute, an Ombudsperson &mdash; but all of them sit <em>above</em> the machinery of
-        government, watching it. None are inside the departments rebuilding how decisions are actually made. Serious
+      <p>The Framework proposes many new bodies (an Ethics Board, a National AI Commission, a Regulatory Authority,
+        a Safety Institute, an Ombudsperson), yet all of them sit <em>above</em> the machinery of government,
+        watching it. None are inside the departments rebuilding how decisions are actually made. Serious
         AI-driven governance implies central digital services with real authority, data stewards embedded in
         ministries, rewritten procurement law, and new civil-service training. The document treats AI as a tool to
         procure rather than an occasion to reconstruct public capacity.</p>
@@ -831,8 +873,8 @@
       <div class="prose">
         <p>South Africa is actively engaging in policy creation, translating modern global AI governance discourse into
           its local institutional syntax. This constitutes a valuable but undeniably derivative enterprise.</p>
-        <p>The profound and particular realities of the nation—informal economics, profound energy deficits, structural
-          limits in fiscal policy, and immense bureaucratic stresses—must generate the shape of policy formulation.
+        <p>The profound and particular realities of the nation-informal economics, profound energy deficits, structural
+          limits in fiscal policy, and immense bureaucratic stresses-must generate the shape of policy formulation.
           Allowing core values like Ubuntu to manifest as concrete operational tools will begin defining a grounded,
           rather than merely annotated, national path forward.</p>
       </div>
@@ -860,13 +902,58 @@
     </div>
   </section>
 
+  <div class="share-bar" role="group" aria-label="Share this post">
+    <span class="share-label">Share</span>
+    <a class="share-btn" data-share="twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932Zm-1.29 19.49h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+    <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    </a>
+    <a class="share-btn" data-share="facebook" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+    </a>
+    <button type="button" class="share-btn" data-share="copy" aria-label="Copy link">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    </button>
+  </div>
+
   <footer class="article-footer" style="flex-direction:column;gap:0.5rem;text-align:center;">
     <div>Comparative Discourse Analysis &middot; Finalized April 2026</div>
     <div style="font-size:0.75rem;">Evaluating SA frameworks vs. AU Strategy, EU Act, and UN Models.</div>
-    <div style="margin-top:0.5rem;">Runtime State &middot; <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener noreferrer">@OfficialSethu</a></div>
+    <div style="margin-top:0.5rem;">Runtime State &middot; <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">@runtimestate</a></div>
   </footer>
 
   <!-- SCRIPTS -->
+  <script>
+  /* Episode MP3 player - replaces TTS for this post */
+  (function initEpisodePlayer() {
+    var btn = document.getElementById('playEpisodeBtn');
+    if (!btn) return;
+    var audio = new Audio('/episodes/ai-policy-discourse-analysis/Episode 3 AI-policy-discourse-analysis.mp3');
+    var isPlaying = false;
+
+    audio.addEventListener('ended', function () {
+      isPlaying = false;
+      btn.querySelector('span').textContent = 'Listen to Episode';
+      btn.querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+    });
+
+    btn.addEventListener('click', function () {
+      if (isPlaying) {
+        audio.pause();
+        isPlaying = false;
+        btn.querySelector('span').textContent = 'Listen to Episode';
+        btn.querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+      } else {
+        audio.play();
+        isPlaying = true;
+        btn.querySelector('span').textContent = 'Pause Episode';
+        btn.querySelector('svg').innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+      }
+    });
+  })();
+  </script>
   <script src="/js/main.js"></script>
   <script>
   /* Progressive WebGL + GSAP */
