@@ -1,0 +1,18 @@
+{
+  "name": "runtime-state",
+  "version": "1.0.0",
+  "description": "Runtime State — analysis and field notes on South African technology, policy, and governance.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "dependencies": {
+    "@vercel/kv": "^3.0.0",
+    "resend": "^4.0.1"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}

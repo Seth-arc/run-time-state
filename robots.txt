@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://runtimestate.com/sitemap.xml
+Sitemap: https://runtimestate.org/sitemap.xml

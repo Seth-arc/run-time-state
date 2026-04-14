@@ -8,10 +8,15 @@
   <meta property="og:title" content="The Slow Breach: Five Years of Cyber Incidents Inside South Africa's Government · Runtime State">
   <meta property="og:description" content="A visual analysis of publicly confirmed intrusions across ministries, state-owned entities, and critical infrastructure, 2021 to 2026.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://runtimestate.com/posts/government-cyber-breaches">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://runtimestate.org/posts/government-cyber-breaches">
+  <meta property="og:image" content="https://runtimestate.org/posts/government-cyber-breaches/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Runtime State — The Slow Breach: Five Years of Cyber Incidents Inside South Africa's Government">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@runtimestate">
-  <link rel="canonical" href="https://runtimestate.com/posts/government-cyber-breaches">
+  <meta name="twitter:image" content="https://runtimestate.org/posts/government-cyber-breaches/og.jpg">
+  <link rel="canonical" href="https://runtimestate.org/posts/government-cyber-breaches">
   <link rel="icon" href="/favicon.ico">
   <script>
     (function () {
@@ -73,6 +78,8 @@
       background-size: cover;
       background-position: center;
       filter: grayscale(0.3) brightness(0.55);
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.75) 93%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.75) 93%, transparent 100%);
       z-index: -2;
     }
 
@@ -80,16 +87,24 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(3, 3, 3, 0.55) 0%, rgba(3, 3, 3, 0.85) 100%);
+      background: linear-gradient(180deg,
+        rgba(3, 3, 3, 0.35) 0%,
+        rgba(3, 3, 3, 0.5) 60%,
+        rgba(3, 3, 3, 0.9) 93%,
+        rgba(3, 3, 3, 1) 100%);
       z-index: -1;
     }
 
     .light-mode header.article-header::before {
-      filter: grayscale(0.1) brightness(1);
+      filter: grayscale(0.08) brightness(0.95) contrast(1.05);
     }
 
     .light-mode header.article-header::after {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.78) 100%);
+      background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.22) 60%,
+        rgba(255, 255, 255, 0.88) 93%,
+        rgba(255, 255, 255, 1) 100%);
     }
 
     .light-mode .section {
@@ -1344,6 +1359,21 @@
       requires new legislation. POPIA and the Cybercrimes Act already carry most of the authority. What is missing is
       the operational will to use them as a system rather than as episodic instruments.</p>
   </section>
+
+  <aside class="subscribe-block">
+    <div class="subscribe-heading">The Dispatch</div>
+    <h3 class="subscribe-headline">Read the next one before it's everywhere.</h3>
+    <form class="subscribe" data-subscribe novalidate>
+      <label class="subscribe-label" for="sub-email-slow-breach">Email address</label>
+      <div class="subscribe-row">
+        <input type="email" id="sub-email-slow-breach" name="email" placeholder="you@example.com"
+          autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="subscribe-note">Double opt-in. One email per dispatch. Unsubscribe in one click.</p>
+      <p class="subscribe-status" aria-live="polite"></p>
+    </form>
+  </aside>
 
   <div class="share-bar" role="group" aria-label="Share this post">
     <span class="share-label">Share</span>

@@ -6,12 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SITA, Trapped Between Responsibility and Authority · Runtime State</title>
   <meta property="og:title" content="SITA, Trapped Between Responsibility and Authority · Runtime State">
-  <meta property="og:description" content="On South Africa's recurring state IT failures, the FDA–SAPS judgment, and what a reformed SITA mandate would actually need to look like.">
+  <meta property="og:description" content="A structural diagnosis of SITA: why a mandate designed for procurement produces rent without performance, and what a reformed mandate would need to look like.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://runtimestate.com/posts/sita-mandate-analysis">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://runtimestate.org/posts/sita-mandate-analysis">
+  <meta property="og:image" content="https://runtimestate.org/posts/sita-mandate-analysis/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Runtime State — SITA, Trapped Between Responsibility and Authority">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@runtimestate">
-  <link rel="canonical" href="https://runtimestate.com/posts/sita-mandate-analysis">
+  <meta name="twitter:image" content="https://runtimestate.org/posts/sita-mandate-analysis/og.jpg">
+  <link rel="canonical" href="https://runtimestate.org/posts/sita-mandate-analysis">
   <link rel="icon" href="/favicon.ico">
   <script>
     (function () {
@@ -95,19 +100,33 @@
     }
 
     .section {
-      padding: 15vh 10vw;
+      padding: 11vh 10vw;
       border-top: 1px solid var(--border);
-      border-bottom: none
+      border-bottom: none;
+    }
+
+    /* Every top-level block inside a section sits in one consistent column,
+       so the left edges line up cleanly across headings, prose, callouts and grids. */
+    .section > * {
+      max-width: 960px;
+    }
+
+    .section > .section-title {
+      max-width: none;
+    }
+
+    .section > .matrix-wrap,
+    .section > .diagnosis-grid {
+      max-width: 1040px;
     }
 
     .section-intro {
-      font-size: 2rem;
+      font-size: 1.45rem;
       font-weight: 300;
-      line-height: 1.4;
+      line-height: 1.5;
       color: var(--text-main);
-      margin-bottom: 4rem;
-      max-width: 900px;
-      letter-spacing: -.02em
+      margin-bottom: 3.5rem;
+      letter-spacing: -0.015em;
     }
 
     .matrix th {
@@ -138,14 +157,18 @@
     }
 
     .evidence-block {
-      padding: 0 0 0 1.75rem;
-      margin: 3rem 0;
+      padding: 0.25rem 0 0.25rem 1.85rem;
+      margin: 3.5rem 0 0;
       font-size: 1.3rem;
-      max-width: 900px
+      line-height: 1.5;
+      border-left: 2px solid var(--border-strong);
+      color: var(--text-main);
+      font-weight: 300;
+      letter-spacing: -0.01em;
     }
 
     .light-mode .evidence-block {
-      color: #555
+      color: #333
     }
 
     .reform-item {
@@ -188,108 +211,43 @@
     }
 
     .mandate-quote {
-      font-size: 1.4rem;
-      line-height: 1.6;
+      font-size: 1.3rem;
+      line-height: 1.55;
       color: var(--text-muted);
       font-weight: 300;
       font-style: italic;
       border-left: 2px solid var(--tag-imported);
-      padding: 0 0 0 1.75rem;
-      margin: 0 0 3rem;
-      max-width: 900px;
-      letter-spacing: -.01em
+      padding: 0.25rem 0 0.25rem 1.85rem;
+      margin: 0 0 2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .mandate-quote:last-of-type {
+      margin-bottom: 3.5rem;
     }
 
     .mandate-quote .src {
       display: block;
       margin-top: 1rem;
-      font-size: .75rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
-      letter-spacing: .15em;
+      letter-spacing: 0.22em;
       font-style: normal;
-      color: #555
-    }
-
-    .juxt {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-top: 1px solid var(--border);
-      margin-top: 3rem
-    }
-
-    .juxt-col {
-      padding: 2.5rem 2rem
-    }
-
-    .juxt-col:first-child {
-      border-right: 1px solid var(--border)
-    }
-
-    .juxt-head {
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      margin-bottom: 1.5rem;
-      font-weight: 500
-    }
-
-    .juxt-head.claim {
-      color: var(--tag-performative)
-    }
-
-    .juxt-head.reality {
-      color: var(--tag-imported)
-    }
-
-    .juxt-row {
-      padding: 1.75rem 0;
-      border-top: 1px solid var(--border)
-    }
-
-    .juxt-row:first-of-type {
-      border-top: none;
-      padding-top: 0
-    }
-
-    .juxt-label {
-      font-size: .65rem;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      color: #888;
-      margin-bottom: .5rem;
-      font-weight: 500
-    }
-
-    .juxt-text {
-      font-size: 1rem;
-      line-height: 1.6;
-      font-weight: 300;
-      color: #b3b3b3
-    }
-
-    .juxt-text strong {
-      color: var(--text-main);
-      font-weight: 500
-    }
-
-    .light-mode .juxt-text {
-      color: #555
+      color: #555;
     }
 
     .value-block {
       padding: 3.5rem 0;
       border-top: 1px solid var(--border);
-      max-width: 880px
     }
 
     .value-block:first-of-type {
       border-top: none;
-      padding-top: 2rem
+      padding-top: 1.5rem;
     }
 
     .value-block:last-of-type {
-      border-bottom: 1px solid var(--border)
+      border-bottom: 1px solid var(--border);
     }
 
     .value-tag {
@@ -349,12 +307,11 @@
     }
 
     .prose-lede {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       line-height: 1.75;
       color: #c4c4c4;
       font-weight: 300;
-      max-width: 880px;
-      margin: 2rem 0 3rem
+      margin: 0 0 4rem;
     }
 
     .prose-lede p {
@@ -368,119 +325,6 @@
 
     .light-mode .prose-lede {
       color: #333
-    }
-
-    .thread-wrap {
-      max-width: 720px;
-      margin: 2rem 0 0;
-      border-left: 1px solid var(--border-strong);
-      padding-left: 2rem;
-      position: relative
-    }
-
-    .thread-meta {
-      font-size: .7rem;
-      text-transform: uppercase;
-      letter-spacing: .2em;
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap
-    }
-
-    .thread-meta a {
-      color: var(--tag-ambiguous);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color .3s
-    }
-
-    .thread-meta a:hover {
-      border-bottom-color: var(--tag-ambiguous)
-    }
-
-    .thread-meta .dot {
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: var(--text-muted);
-      display: inline-block
-    }
-
-    .tweet {
-      position: relative;
-      padding: 0 0 2.25rem 0;
-      margin-bottom: 0
-    }
-
-    .tweet:last-child {
-      padding-bottom: 0
-    }
-
-    .tweet::before {
-      content: '';
-      position: absolute;
-      left: -2.45rem;
-      top: .55rem;
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 1px solid var(--tag-ambiguous)
-    }
-
-    .tweet.first::before {
-      background: var(--tag-ambiguous)
-    }
-
-    .tweet p {
-      font-size: 1.08rem;
-      line-height: 1.65;
-      color: var(--text-main);
-      font-weight: 300;
-      letter-spacing: -.005em
-    }
-
-    .tweet p+p {
-      margin-top: .85rem
-    }
-
-    .tweet .stamp {
-      font-size: .68rem;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      color: #555;
-      margin-top: .75rem;
-      font-weight: 500
-    }
-
-    .light-mode .tweet p {
-      color: #111
-    }
-
-    .light-mode .tweet .stamp {
-      color: #888
-    }
-
-    .thread-link {
-      display: inline-block;
-      margin-top: 2.5rem;
-      padding: .7rem 1.25rem;
-      border: 1px solid var(--border-strong);
-      color: var(--text-main);
-      text-decoration: none;
-      font-size: .72rem;
-      text-transform: uppercase;
-      letter-spacing: .15em;
-      border-radius: 2px;
-      transition: all .3s
-    }
-
-    .thread-link:hover {
-      background: var(--text-main);
-      color: var(--bg)
     }
 
     @media(max-width:900px) {
@@ -542,19 +386,6 @@
         width: 100%
       }
 
-      .juxt {
-        grid-template-columns: 1fr
-      }
-
-      .juxt-col:first-child {
-        border-right: none;
-        border-bottom: 1px solid var(--border)
-      }
-
-      .juxt-col {
-        padding: 2rem 0
-      }
-
       .mandate-quote {
         font-size: 1.15rem
       }
@@ -573,6 +404,8 @@
       background-size: cover;
       background-position: center;
       filter: grayscale(0.3) brightness(0.55);
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.75) 93%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.75) 93%, transparent 100%);
       z-index: -2;
     }
 
@@ -580,102 +413,75 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(3, 3, 3, 0.55) 0%, rgba(3, 3, 3, 0.85) 100%);
+      background: linear-gradient(180deg,
+        rgba(3, 3, 3, 0.35) 0%,
+        rgba(3, 3, 3, 0.5) 60%,
+        rgba(3, 3, 3, 0.9) 93%,
+        rgba(3, 3, 3, 1) 100%);
       z-index: -1;
     }
 
     .light-mode .article-header::before {
-      filter: grayscale(0.1) brightness(1);
+      filter: grayscale(0.08) brightness(0.95) contrast(1.05);
     }
 
     .light-mode .article-header::after {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.78) 100%);
+      background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.22) 60%,
+        rgba(255, 255, 255, 0.88) 93%,
+        rgba(255, 255, 255, 1) 100%);
     }
 
     /* ─── Structural Diagnosis ─── */
-    .rent-callout {
-      border: 1px solid var(--border-strong);
-      padding: 2.25rem 2.5rem;
-      margin: 2.5rem 0 3rem;
-      background: rgba(255, 255, 255, 0.015);
-      max-width: 900px;
-    }
-
-    .rent-callout .rent-label {
-      display: inline-block;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--tag-imported);
-      border: 1px solid var(--tag-imported);
-      padding: 0.3rem 0.7rem;
-      margin-bottom: 1.25rem;
-    }
-
-    .rent-callout h3 {
-      font-size: 1.55rem;
-      font-weight: 400;
-      color: var(--text-main);
-      margin-bottom: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    .rent-callout p {
-      font-size: 1rem;
-      color: #b3b3b3;
-      line-height: 1.7;
-      font-weight: 300;
-      max-width: 720px;
-    }
-
-    .rent-callout p + p {
-      margin-top: 0.85rem;
-    }
-
-    .light-mode .rent-callout {
-      background: rgba(0, 0, 0, 0.02);
-    }
-
-    .light-mode .rent-callout p {
-      color: #555;
-    }
-
     .diagnosis-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      margin: 2rem 0 3rem;
+      gap: 1px;
+      margin: 0 0 4rem;
+      background: var(--border-strong);
+      border: 1px solid var(--border-strong);
     }
 
     .diagnosis-card {
-      padding: 1.75rem 1.75rem 1.85rem;
-      border: 1px solid var(--border-strong);
+      padding: 2rem 1.85rem 2.1rem;
+      background: var(--bg);
       position: relative;
+      transition: background 0.3s;
+    }
+
+    .diagnosis-card:hover {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .light-mode .diagnosis-card:hover {
+      background: rgba(0, 0, 0, 0.015);
     }
 
     .diagnosis-card .dnum {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
       color: var(--tag-imported);
       font-weight: 500;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.1rem;
       display: block;
     }
 
     .diagnosis-card h4 {
-      font-size: 1.15rem;
-      font-weight: 400;
+      font-size: 1.1rem;
+      font-weight: 500;
       color: var(--text-main);
-      margin-bottom: 0.85rem;
-      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+      letter-spacing: -0.015em;
+      line-height: 1.3;
     }
 
     .diagnosis-card p {
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       color: #b3b3b3;
-      line-height: 1.65;
+      line-height: 1.7;
       font-weight: 300;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
     }
 
     .diagnosis-card p:last-child {
@@ -685,16 +491,16 @@
     .diagnosis-card ul {
       list-style: none;
       padding: 0;
-      margin: 0.5rem 0 0.5rem;
+      margin: 0.6rem 0 0.75rem;
     }
 
     .diagnosis-card li {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #b3b3b3;
-      line-height: 1.6;
-      padding-left: 1rem;
+      line-height: 1.65;
+      padding-left: 0.95rem;
       position: relative;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
       font-weight: 300;
     }
 
@@ -708,80 +514,43 @@
       background: var(--text-muted);
     }
 
+    .diagnosis-card strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .light-mode .diagnosis-card {
+      background: var(--bg);
+    }
+
     .light-mode .diagnosis-card p,
     .light-mode .diagnosis-card li {
       color: #555;
     }
 
-    .asymmetry-table {
-      width: 100%;
-      max-width: 900px;
-      margin: 2rem 0 3rem;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-    }
-
-    .asymmetry-table th,
-    .asymmetry-table td {
-      padding: 1rem 1.25rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    .asymmetry-table thead th {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      font-weight: 500;
-      border-bottom-color: var(--border-strong);
-    }
-
-    .asymmetry-table thead th:last-child {
-      color: var(--tag-imported);
-    }
-
-    .asymmetry-table td {
-      color: #b3b3b3;
-      line-height: 1.6;
-      font-weight: 300;
-    }
-
-    .asymmetry-table td:first-child {
-      color: var(--text-muted);
-    }
-
-    .light-mode .asymmetry-table td {
-      color: #555;
-    }
-
     .one-liner {
-      font-size: 1.35rem;
-      line-height: 1.55;
+      font-size: 1.45rem;
+      line-height: 1.5;
       color: var(--text-main);
       font-weight: 400;
       border-left: 2px solid var(--tag-imported);
-      padding: 0 0 0 1.75rem;
-      margin: 3rem 0 1rem;
-      max-width: 820px;
-      letter-spacing: -0.01em;
+      padding: 0.25rem 0 0.25rem 1.85rem;
+      margin: 0 0 0.85rem;
+      letter-spacing: -0.015em;
     }
 
     .one-liner-attr {
-      font-size: 0.7rem;
-      letter-spacing: 0.15em;
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-muted);
-      padding-left: 1.85rem;
+      padding-left: 1.95rem;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 720px) {
       .diagnosis-grid {
         grid-template-columns: 1fr;
-      }
-      .rent-callout {
-        padding: 1.75rem 1.5rem;
       }
     }
   </style>
@@ -796,10 +565,9 @@
   <header class="article-header">
     <div class="kicker">April 2026 &middot; Governance Note</div>
     <h1 class="hero-title">SITA, Trapped Between Responsibility and Authority.</h1>
-    <p class="subtitle">On South Africa's recurring state IT failures, the FDA&ndash;SAPS judgment, and what a reformed
-      SITA mandate would actually need to look like. Developed out of <a
-        href="https://x.com/OfficialSethu/status/2010832761989251360" target="_blank" rel="noopener">a January 2026
-        thread</a> by <a href="https://x.com/OfficialSethu" target="_blank" rel="noopener">@OfficialSethu</a>.</p>
+    <p class="subtitle">A structural diagnosis of South Africa's State Information Technology Agency: why a mandate
+      designed for procurement produces rent without performance, and what a reformed mandate would actually need to
+      look like.</p>
     <div class="audio-wrap"><button class="play-audio-btn" id="playEpisodeBtn"><svg viewBox="0 0 24 24">
           <polygon points="5 3 19 12 5 21 5 3"></polygon>
         </svg><span>Listen to Episode</span></button>
@@ -809,12 +577,13 @@
     <div class="scrolly-left">
       <div class="scrolly-left-inner">
         <div class="verdict-label">The Verdict</div>
-        <div class="verdict-word">A structural trap, not rogue behaviour.</div>
+        <div class="verdict-word">Structurally successful at avoiding accountability.</div>
         <div class="verdict-text">
-          <p>SITA is repeatedly asked to guarantee continuity for systems the state depends on, without being empowered
-            to lawfully <strong>own</strong>, <strong>resolve</strong>, or <strong>terminate</strong> them.</p>
-          <p>FDA&ndash;SAPS is not an aberration. It is the predictable endpoint of a mandate designed for procurement,
-            operating in a world that now runs on infrastructure.</p>
+          <p>SITA does not fail because it is incompetent. It fails because its mandate produces the outcomes the
+            mandate claims to prevent.</p>
+          <p>A <strong>monopoly integrator</strong> with no payment enforcement, no delivery liability, and no exit
+            for customers will always extract <strong>rent without performance</strong>. Every other symptom in the
+            state IT record is a consequence of those three missing constraints.</p>
         </div>
       </div>
     </div>
@@ -910,103 +679,56 @@
   </section>
 
   <section class="section">
-    <div class="section-title">The Case That Sits Underneath All of This</div>
-    <p class="section-intro">Before the generalisations, the specific case. The facts below are from a Gauteng High
-      Court judgment I walked through on X in January. The thread is the short-form version; everything else on this
-      page is what follows from it.</p>
+    <div class="section-title">The Structural Diagnosis</div>
+    <p class="section-intro">SITA is a <strong>monopoly integrator</strong> with no payment enforcement, no delivery
+      liability, and no exit for customers. Under those conditions the institution extracts <em>rent without
+        performance</em>: income protected by authority rather than earned through delivery. Four mechanisms hold
+      that equilibrium in place.</p>
 
-    <div class="thread-wrap">
-      <div class="thread-meta">
-        <span>Thread</span><span class="dot"></span>
-        <span>@OfficialSethu</span><span class="dot"></span>
-        <span>12 January 2026</span><span class="dot"></span>
-        <a href="https://x.com/OfficialSethu/status/2010832761989251360" target="_blank" rel="noopener">View on X</a>
+    <div class="diagnosis-grid">
+      <div class="diagnosis-card">
+        <span class="dnum">01 &middot; Mandate</span>
+        <h4>Mandate schizophrenia</h4>
+        <p>SITA is simultaneously <strong>regulator</strong> (standards, compliance), <strong>broker</strong>
+          (procurement middleman), <strong>operator</strong> (hosting, networks), and <strong>builder</strong>
+          (custom systems). These roles should never coexist inside the same entity. Their coexistence guarantees
+          conflicts of interest and guarantees that no single role can be held to account without the other three
+          being invoked in its defence.</p>
       </div>
 
-      <div class="tweet first">
-        <p>I recently read the Gauteng High Court judgement for the case between the SAPS National Commissioner and a
-          company called Forensic Data Analysts. It's a roller-coaster.</p>
-        <div class="stamp">01 &middot; Jan 12</div>
+      <div class="diagnosis-card">
+        <span class="dnum">02 &middot; Asymmetry</span>
+        <h4>No kill-switch symmetry</h4>
+        <p>In ordinary markets, if the buyer stops paying, the service degrades or stops. Inside SITA's arrangements,
+          the buyer can stop paying and the service continues, while the vendor who cuts service is punished. Payment
+          discipline is broken by design. That asymmetry alone explains most of the downstream dysfunction.</p>
       </div>
 
-      <div class="tweet">
-        <p><strong>Summary:</strong> The High Court found the oral agreement for the purchase of mission-critical police
-          systems from Forensic Data Analysts (FDA) by SAPS to be binding. That's a cool ~R644 million without the 12
-          months of unpaid license fees.</p>
-        <div class="stamp">02 &middot; Jan 12</div>
+      <div class="diagnosis-card">
+        <span class="dnum">03 &middot; Procurement</span>
+        <h4>Procurement theatre</h4>
+        <p>Compliance replaces competence. RFPs specify process, not outcomes. Delivery risk is transferred to
+          vendors while control remains with SITA. The predictable result is that the worst vendors survive longest,
+          because survival is rewarded by compliance documentation rather than by outcomes.</p>
       </div>
 
-      <div class="tweet">
-        <p>What are these systems? The Firearm Permit System, Property Control &amp; Exhibit Management System and a
-          Visual Analysis System. Custom built for SAPS and deployed nationally.</p>
-        <div class="stamp">03 &middot; Jan 12</div>
+      <div class="diagnosis-card">
+        <span class="dnum">04 &middot; Capability</span>
+        <h4>Capability decay</h4>
+        <p>Top-tier engineers avoid SITA for three rational reasons: no delivery authority, no technical prestige,
+          and high political risk. Over time, the organisation becomes administrative-heavy and engineering-light,
+          which makes it structurally dependent on the outside vendors it is simultaneously punishing.</p>
       </div>
-
-      <div class="tweet">
-        <p>They were in use for ~7 years when SCOPA intervened on the contract due to questions about irregularities. So
-          SAPS stops paying but keeps using the systems&hellip;</p>
-        <div class="stamp">04 &middot; Jan 12</div>
-      </div>
-
-      <div class="tweet">
-        <p>The license expired so FDA reached out to SAPS for payment and gets no response. They then reached out to
-          SITA bc they managed the systems but got no response. They then switched it off for non-payment and
-          <strong>SITA fiddled with the source code and switched it back on</strong>. Meanwhile&hellip;</p>
-        <div class="stamp">05 &middot; Jan 12</div>
-      </div>
-
-      <div class="tweet">
-        <p>FDA takes it to court and gets 2 judgements blocking SITA from fiddling with the copyrighted code. In these
-          judgements, evidence shows that <strong>SITA was trying to copy the systems while also holding off on
-            payment</strong>. SAPS/SITA continue to use the systems after these judgements.</p>
-        <div class="stamp">06 &middot; Jan 12</div>
-      </div>
-
-      <div class="tweet">
-        <p>FDA instructs the Sheriff to execute the order to remove the systems completely. Sydney Mufumadi (former
-          Minister and now FDA executive) is asked to meet the National Commissioner. He and the FDA CEO are rushed by
-          blue light motorcade to a Presidential lekgotla. <strong>A price to buy the systems is agreed on but SAPS
-            changes their mind 2 hours later.</strong></p>
-        <div class="stamp">07 &middot; Jan 12</div>
-      </div>
-
-      <div class="tweet">
-        <p>So we add SAPS to SASSA, Home Affairs, DoJ, RTMC and Eskom as institutions that SITA's mandate mismatch
-          (among other things) affected in a hardcore way.</p>
-        <div class="stamp">08 &middot; Jan 12</div>
-      </div>
-
-      <a class="thread-link"
-        href="https://media.lawlibrary.org.za/media/judgment/313928/source_file/8582220c3d1edef1/FORENSIC_DATA_ANALYSTS_PTY_LTD_ao_v_NATIONAL_COMMISIIONER_OF_THE_SOUTH_AFRICAN_POLICE_SERVICE_ao-32643.2021-J_POTTERILL.pdf"
-        target="_blank" rel="noopener">Read the full judgment &rarr;</a>
     </div>
 
-    <div class="prose-lede" style="margin-top:5rem">
-      <p>Read that sequence twice. Seven years of custom-built mission-critical police infrastructure. A SCOPA
-        intervention. A unilateral decision to stop paying while continuing to use the software. A vendor ignored by
-        both SAPS and SITA when it wrote asking to be paid. A system switched off for non-payment and then
-        <strong>switched back on, by SITA, after SITA modified the source code it had no licence to touch</strong>. Two
-        court interdicts forbidding exactly that conduct. Continued use in defiance of both. A shadow replacement
-        project running in parallel the whole time. A sheriff dispatched to physically remove the systems. A former
-        minister summoned into a blue-light motorcade. A price agreed at a Presidential lekgotla and reversed inside two
-        hours.</p>
-
-      <p>This is not a story about one bad contract or one awkward vendor dispute. It is the organisational reality the
-        About page on the SITA website does not, and structurally cannot, describe. Nothing in the mandate paragraph
-        (<em>consolidate, coordinate, manage the procurement and delivery process, achieve cost savings through
-          scale</em>) gives an employee reading it any instrument for dealing with the situation above. There is
-        no clause that says what to do when a system you do not own has been keeping the police force running for seven
-        years and the paperwork has just quietly stopped matching reality. There is no doctrine for the sheriff at the
-        door. There is no protocol for the blue-light motorcade. And so the sequence that unfolds in the judgment is the
-        sequence an organisation improvises when its published self-description has no language for the situation it is
-        actually in.</p>
-    </div>
+    <p class="one-liner">When access control is guaranteed and exit is forbidden, performance becomes optional.</p>
+    <span class="one-liner-attr">The systems insight</span>
   </section>
 
   <section class="section">
     <div class="section-title">How SITA Describes Itself</div>
-    <p class="section-intro">Read alongside the FDA&ndash;SAPS record, SITA's own &ldquo;About&rdquo; page reads less
-      like a mandate and more like a document written by an organisation that does not know what it is for.</p>
+    <p class="section-intro">Read against the structural mechanisms above, SITA's own &ldquo;About&rdquo; page reads
+      less like a mandate and more like a document written by an organisation that does not know what it is for.</p>
 
     <div class="mandate-quote">&ldquo;SITA's role is to consolidate and coordinate the State's information technology
       resources to achieve cost savings through scale, increase delivery capabilities and enhance
@@ -1030,9 +752,9 @@
       <p>That is not a tone problem or a writing problem. It is a <strong>self-understanding</strong> problem. An
         organisation that describes itself only in the language of acquisition will, when dependency crises arrive,
         reach for the only instruments it believes it possesses: more procurement, more coordination, more delivery
-        management. None of those instruments resolve the FDA&ndash;SAPS situation. None of them resolve HANIS. None of
-        them resolve eNaTIS. The vocabulary itself forecloses the possibility of a different kind of action, because
-        there is no word for it in the brochure.</p>
+        management. None of those instruments resolve HANIS. None of them resolve eNaTIS. None of them resolve the
+        recurring court cases against the state's own operators. The vocabulary itself forecloses the possibility of
+        a different kind of action, because there is no word for it in the brochure.</p>
 
       <p>The values published alongside the mandate make the diagnosis sharper, not softer. Each one of them, set
         against the operational record, reveals a specific way the organisation has quietly stopped being able to
@@ -1065,13 +787,12 @@
       <div class="value-claim">&ldquo;Pursue innovation by demonstrating thought leadership and proactive behaviour on
         the use of ICT to enhance public service delivery.&rdquo;</div>
       <div class="value-prose">
-        <p>The FDA&ndash;SAPS judgment sits at the exact opposite end of the word &ldquo;innovation&rdquo; from where
-          SITA's About page places it. What the court describes, and what the thread above walks through tweet by tweet,
-          is an organisation whose instinctive answer, when a dependency becomes uncomfortable, is to <strong>modify
-            copyrighted source code it has no licence to touch, switch the system back on in defiance of a vendor
-            cut-off, and then pursue a shadow replacement while denying that the original agreement existed at
-            all</strong>. That is not innovation. It is improvisation under legal duress, dressed up as a roadmap, and
-          it ends with a sheriff at the door and a minister in a motorcade.</p>
+        <p>The judicial record sits at the exact opposite end of the word &ldquo;innovation&rdquo; from where SITA's
+          About page places it. What the courts describe is an organisation whose instinctive answer, when a
+          dependency becomes uncomfortable, is to <strong>modify copyrighted source code it has no licence to touch,
+            switch the system back on in defiance of a vendor cut-off, and then pursue a shadow replacement while
+            denying that the original agreement existed at all</strong>. That is not innovation. It is improvisation
+          under legal duress, dressed up as a roadmap.</p>
         <p>Real innovation in state IT, in the current moment, would look like things SITA has never publicly proposed.
           A classification doctrine that distinguishes commodity IT from sovereign infrastructure. A standing escrow
           regime for any system that crosses the critical threshold. A formal sunset protocol with legal cover for the
@@ -1088,20 +809,19 @@
       <div class="value-claim">&ldquo;Conduct our business with integrity at all times to inculcate a culture of
         honesty, respect and accountability among all our employees.&rdquo;</div>
       <div class="value-prose">
-        <p>There is a specific and uncomfortable sentence in the FDA judgment, and in the judgments that preceded it,
-          where the court makes a finding of <strong>mala fides</strong>, bad faith, against the state's
-          conduct in the matter. That is not a procedural irregularity finding. It is not &ldquo;the paperwork was
-          wrong.&rdquo; It is a judge, looking at the record, and saying that over a period of years the state denied
-          arrangements it knew existed, used software it knew it had no lawful right to run, and reactivated systems
-          that had been placed under interdict. Integrity, in the sense the About page uses the word, is a
-          culture-building aspiration. Integrity, in the sense the court uses the word, is a finding about what actually
-          happened.</p>
-        <p>A values statement and a judgment cannot both be true in the same way at the same time. The honest thing to
-          do, if SITA believed its own published value, would be to treat the FDA finding as a constitutional event and
-          rewrite the organisation around preventing it. Instead, the more characteristic response has been to argue
-          that this was one unusual case, one unusual vendor, one unusual set of circumstances. It was not. It is the
-          only case in which a vendor had the resources to litigate far enough for the pattern to become visible on the
-          record.</p>
+        <p>Gauteng High Court judgments have made explicit findings of <strong>mala fides</strong>, bad faith,
+          against the state's conduct in IT disputes. That is not a procedural irregularity finding. It is not
+          &ldquo;the paperwork was wrong.&rdquo; It is a judge, looking at the record, and saying that over a period
+          of years the state denied arrangements it knew existed, used software it knew it had no lawful right to
+          run, and reactivated systems that had been placed under interdict. Integrity, in the sense the About page
+          uses the word, is a culture-building aspiration. Integrity, in the sense the court uses the word, is a
+          finding about what actually happened.</p>
+        <p>A values statement and a court judgment cannot both be true in the same way at the same time. The honest
+          thing to do, if SITA believed its own published value, would be to treat those findings as a constitutional
+          event and rewrite the organisation around preventing them. Instead, the more characteristic response has
+          been to argue that each one was an unusual case, an unusual vendor, an unusual set of circumstances. They
+          are not. They are the cases in which a vendor had the resources to litigate far enough for the pattern to
+          become visible on the public record.</p>
       </div>
     </div>
 
@@ -1132,11 +852,11 @@
       <div class="value-claim">&ldquo;Cooperate and support each other in pursuit of our shared goals to achieve
         synergies and greater productivity.&rdquo;</div>
       <div class="value-prose">
-        <p>The collaboration value, read against the FDA record, is the one that stings. The court record describes a
-          situation in which the state was actively running a proprietary system under a contractual arrangement it was
-          simultaneously denying in writing, while in parallel commissioning work on a replacement intended to displace
-          the same vendor whose software was still keeping the lights on. That is not collaboration. It is, in the
-          plainest possible terms, <strong>the opposite of collaboration conducted under the heading of
+        <p>The collaboration value, read against the court record, is the one that stings. Judgments describe
+          situations in which the state was actively running a proprietary system under a contractual arrangement it
+          was simultaneously denying in writing, while in parallel commissioning work on a replacement intended to
+          displace the same vendor whose software was still keeping the lights on. That is not collaboration. It is,
+          in the plainest possible terms, <strong>the opposite of collaboration conducted under the heading of
             collaboration</strong>.</p>
         <p>The difficult question the value raises is not whether SITA collaborates with its staff, with its
           board, or with other departments. It plainly does. The question is whether it can collaborate with the outside
@@ -1236,151 +956,9 @@
         </tbody>
       </table>
     </div>
-    <div class="evidence-block">FDA&ndash;SAPS fits a national pattern: South Africa repeatedly lets mission-critical IT
+    <div class="evidence-block">The national pattern is consistent: South Africa repeatedly lets mission-critical IT
       become infrastructure, then pretends it's still a procurement problem, until courts or failure intervene.
     </div>
-  </section>
-
-  <section class="section">
-    <div class="section-title">The Structural Diagnosis</div>
-    <p class="section-intro">The FDA record and the eight cases above are symptoms. The pattern repeats not because
-      SITA is incompetent, but because the mandate itself produces the outcomes the mandate claims to prevent. Nine
-      mechanisms hold the dysfunction in place, and together they describe an institution that is structurally
-      successful at the thing it was not supposed to do.</p>
-
-    <div class="rent-callout">
-      <span class="rent-label">The Core Concept</span>
-      <h3>Rent without performance</h3>
-      <p><strong>Rent</strong>, in the economic sense, is income earned not by creating value but by controlling
-        access. <strong>Performance</strong> is delivery tied to outcomes: uptime, functionality, user value.
-        <em>Rent without performance</em> is the extraction of fees, authority, or control without having to deliver
-        commensurate outcomes.</p>
-      <p>Departments must route IT procurement through SITA. That control itself becomes the revenue source. SITA
-        earns brokerage fees, hosting charges, and coordination budgets even when delivery is late, degraded, or
-        absent. There is no automatic clawback, no switching option for the customer, and no shutdown option for the
-        vendor. Revenue persists independent of performance.</p>
-      <p>This is worse than corruption, which is an illegal deviation from the rules. Rent without performance is
-        <strong>legal extraction</strong>. It survives audits, court cases, and parliamentary outrage because the
-        mandate itself produces the income. Rent without performance is income protected by authority rather than
-        earned through delivery.</p>
-    </div>
-
-    <div class="diagnosis-grid">
-      <div class="diagnosis-card">
-        <span class="dnum">01 &middot; Mandate</span>
-        <h4>Mandate schizophrenia</h4>
-        <p>SITA is simultaneously four institutions in one:</p>
-        <ul>
-          <li><strong>Regulator</strong> (standards, compliance)</li>
-          <li><strong>Broker</strong> (procurement middleman)</li>
-          <li><strong>Operator</strong> (hosting, networks)</li>
-          <li><strong>Builder</strong> (custom systems)</li>
-        </ul>
-        <p>These roles should never coexist inside the same entity. Their coexistence guarantees conflicts of
-          interest and guarantees that no one role can be held to account without the other three being invoked in
-          its defence.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">02 &middot; Coercion</span>
-        <h4>Structural coercion, not corruption</h4>
-        <p>Departments cannot bypass SITA, even when SITA lacks the capacity to serve them. That creates forced
-          dependence, and forced dependence creates rent without performance. This is the reason failures repeat
-          without consequences: the customer has nowhere else to go, so the institution has no reason to change.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">03 &middot; Payment</span>
-        <h4>Payment discipline broken by design</h4>
-        <p>Systems stay live after contracts lapse. Vendors cannot shut them down without being publicly accused of
-          harming the state. SITA knows this, and extracts value first and regularises later, if ever.</p>
-        <p>This is not accidental. It is a game-theoretic equilibrium in which the party with the power to stop the
-          music is always the party that will be blamed for the silence.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">04 &middot; Procurement</span>
-        <h4>Procurement theatre</h4>
-        <p>Compliance replaces competence. RFPs specify process, not outcomes. Delivery risk is transferred to
-          vendors while control remains with SITA. The predictable result is that the worst vendors survive
-          longest, because survival is rewarded by compliance documentation rather than by outcomes.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">05 &middot; Asymmetry</span>
-        <h4>No kill-switch symmetry</h4>
-        <p>In ordinary markets, if the buyer stops paying, the service degrades or stops. In SITA-world, the
-          asymmetry is total:</p>
-        <ul>
-          <li>Buyer doesn't pay, service continues.</li>
-          <li>Vendor stops service, vendor is punished.</li>
-        </ul>
-        <p>That asymmetry alone explains roughly 80% of the downstream dysfunction documented in this record.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">06 &middot; Insulation</span>
-        <h4>Political insulation</h4>
-        <p>Parliamentary oversight (SCOPA) is retrospective. Executives rotate before consequences land. Operational
-          decisions are diffused across enough desks that there is no single throat to choke. Accountability has to
-          be assembled by an outsider, and the window to assemble it closes faster than the audit cycle.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">07 &middot; Capability</span>
-        <h4>Capability decay</h4>
-        <p>Top-tier engineers avoid SITA for three rational reasons: no delivery authority, no technical prestige,
-          and high political risk. Over time, the organisation becomes administrative-heavy and engineering-light,
-          which makes it structurally dependent on the outside vendors it is simultaneously punishing.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">08 &middot; Equilibrium</span>
-        <h4>Why this keeps happening</h4>
-        <p>SITA does not fail because it is incompetent. It fails because it is <strong>structurally successful at
-            avoiding accountability</strong>. The outcomes that look like breakdown from the outside are the
-          outcomes the current mandate produces reliably from the inside.</p>
-      </div>
-
-      <div class="diagnosis-card">
-        <span class="dnum">09 &middot; Diagnosis</span>
-        <h4>One sentence</h4>
-        <p>SITA is a <strong>monopoly integrator</strong> with no payment enforcement, no delivery liability, and
-          no exit for customers. Every other symptom in this record is a consequence of those three missing
-          constraints.</p>
-      </div>
-    </div>
-
-    <table class="asymmetry-table" aria-label="Market IT compared to SITA IT">
-      <thead>
-        <tr>
-          <th scope="col">Condition</th>
-          <th scope="col">Market IT</th>
-          <th scope="col">SITA IT</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Failure to deliver</td>
-          <td>Don't deliver, don't get paid.</td>
-          <td>Don't deliver, stay indispensable.</td>
-        </tr>
-        <tr>
-          <td>Customer recourse</td>
-          <td>Lose customers to competitors.</td>
-          <td>Customers trapped inside the mandate.</td>
-        </tr>
-        <tr>
-          <td>What earns revenue</td>
-          <td>Uptime and measurable outcomes.</td>
-          <td>The mandate itself. Authority earns the fee.</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <p class="one-liner">When access control is guaranteed and exit is forbidden, performance becomes optional. That
-      is the disease.</p>
-    <span class="one-liner-attr">The systems insight</span>
   </section>
 
   <section class="section">
@@ -1454,6 +1032,21 @@
     <div class="evidence-block">Procurement &rarr; Infrastructure &rarr; Sovereignty. Each phase has different rules.
       SITA currently pretends they are the same.</div>
   </section>
+  <aside class="subscribe-block">
+    <div class="subscribe-heading">The Dispatch</div>
+    <h3 class="subscribe-headline">Read the next one before it's everywhere.</h3>
+    <form class="subscribe" data-subscribe novalidate>
+      <label class="subscribe-label" for="sub-email-sita">Email address</label>
+      <div class="subscribe-row">
+        <input type="email" id="sub-email-sita" name="email" placeholder="you@example.com"
+          autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="subscribe-note">Double opt-in. One email per dispatch. Unsubscribe in one click.</p>
+      <p class="subscribe-status" aria-live="polite"></p>
+    </form>
+  </aside>
+
   <div class="share-bar" role="group" aria-label="Share this post">
     <span class="share-label">Share</span>
     <a class="share-btn" data-share="twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">

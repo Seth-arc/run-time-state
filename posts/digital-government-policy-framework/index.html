@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Digital Government Policy Framework · Runtime State</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="canonical" href="https://runtimestate.com/posts/digital-government-policy-framework">
+  <link rel="canonical" href="https://runtimestate.org/posts/digital-government-policy-framework">
   <meta property="og:title" content="Culture, Coordination, and Capability in South Africa's Draft Digital Government Policy Framework · Runtime State">
   <meta property="og:description" content="A capable technical blueprint missing the cultural and behavioural scaffolding digital transformation actually requires.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://runtimestate.com/posts/digital-government-policy-framework">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://runtimestate.org/posts/digital-government-policy-framework">
+  <meta property="og:image" content="https://runtimestate.org/posts/digital-government-policy-framework/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Runtime State — Culture, Coordination, and Capability in SA's Draft Digital Government Policy Framework">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@runtimestate">
+  <meta name="twitter:image" content="https://runtimestate.org/posts/digital-government-policy-framework/og.jpg">
   <script>
     (function () {
       try {
@@ -351,8 +356,6 @@
     <div class="kicker">September 2024</div>
     <h1 class="hero-title">Culture, Coordination, and Capability in South Africa's Draft Digital Government Policy
       Framework</h1>
-    <p class="subtitle">Developed by <a href="https://x.com/runtimestate" target="_blank"
-        rel="noopener noreferrer">@runtimestate</a></p>
     <div style="position: relative;">
       <button class="play-audio-btn" id="playEpisodeBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
@@ -532,6 +535,21 @@
     </div>
   </section>
 
+  <aside class="subscribe-block">
+    <div class="subscribe-heading">The Dispatch</div>
+    <h3 class="subscribe-headline">Read the next one before it's everywhere.</h3>
+    <form class="subscribe" data-subscribe novalidate>
+      <label class="subscribe-label" for="sub-email-dgpf">Email address</label>
+      <div class="subscribe-row">
+        <input type="email" id="sub-email-dgpf" name="email" placeholder="you@example.com"
+          autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="subscribe-note">Double opt-in. One email per dispatch. Unsubscribe in one click.</p>
+      <p class="subscribe-status" aria-live="polite"></p>
+    </form>
+  </aside>
+
   <div class="share-bar" role="group" aria-label="Share this post">
     <span class="share-label">Share</span>
     <a class="share-btn" data-share="twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
@@ -649,9 +667,7 @@
     gsap.ticker.lagSmoothing(0);
     gsap.registerPlugin(ScrollTrigger);
 
-    // 3. SECTION ANIMATIONS
-    gsap.from(".hero-title", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.2 });
-    gsap.from(".subtitle", { y: 30, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.5 });
+    // Hero entrance is handled by CSS choreography in article.css
 
     // Scrolly Pinning
     ScrollTrigger.create({

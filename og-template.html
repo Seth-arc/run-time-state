@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Runtime State · Share Template</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --accent: #e86a4a;
+      --text: #fafafa;
+      --muted: #8a8a8a;
+      --rule: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: #1a1a1a;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 2.5rem 2rem;
+    }
+
+    .toolbar {
+      max-width: 1200px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: #bfbfbf;
+    }
+
+    .toolbar-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #777;
+      margin-right: -0.5rem;
+    }
+
+    .toolbar select,
+    .toolbar input {
+      background: #111;
+      border: 1px solid #2a2a2a;
+      color: #fafafa;
+      padding: 0.55rem 0.85rem;
+      font-family: inherit;
+      font-size: 0.85rem;
+      min-width: 240px;
+      border-radius: 2px;
+    }
+
+    .toolbar input {
+      min-width: 360px;
+    }
+
+    .toolbar-hint {
+      font-size: 0.7rem;
+      color: #666;
+      letter-spacing: 0.02em;
+      margin-left: auto;
+      font-style: italic;
+    }
+
+    .stage {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    /* ─── OG CARD · 1200 × 630 ─── */
+    .card {
+      width: 1200px;
+      height: 630px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 64px 72px;
+      color: var(--text);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Subtle off-axis warm glow + vertical finish */
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 8% 12%, rgba(232, 106, 74, 0.10), transparent 55%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 45%, rgba(0, 0, 0, 0.35) 100%);
+      pointer-events: none;
+    }
+
+    /* Fine grid texture */
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── TOP · accent dot ─── */
+    .card-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 22px rgba(232, 106, 74, 0.55);
+    }
+
+    .dot-label {
+      font-size: 12px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    /* ─── MIDDLE · title ─── */
+    .card-middle {
+      align-self: center;
+      max-width: 1000px;
+    }
+
+    .card-eyebrow {
+      font-size: 15px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 26px;
+      font-weight: 500;
+    }
+
+    .card-title {
+      font-size: 58px;
+      font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+
+    /* ─── BOTTOM · masthead + url ─── */
+    .card-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-top: 1px solid var(--rule);
+      padding-top: 28px;
+      gap: 24px;
+    }
+
+    .masthead {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .masthead .accent {
+      color: var(--accent);
+    }
+
+    .masthead-tag {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .card-url {
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+      align-self: flex-end;
+      padding-bottom: 3px;
+    }
+
+    /* ─── Tip below the card ─── */
+    .tip {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      padding: 1.5rem 1.75rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid #222;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      line-height: 1.7;
+      color: #aaa;
+    }
+
+    .tip code {
+      background: #111;
+      color: #e0e0e0;
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+      font-size: 0.8rem;
+      font-family: 'SF Mono', Menlo, Consolas, monospace;
+    }
+
+    .tip strong {
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="toolbar">
+    <span class="toolbar-label">Preset</span>
+    <select id="preset" aria-label="Choose a post preset">
+      <option value="custom">Custom (edit below)</option>
+      <option value="ai-policy-discourse-analysis">AI Policy Discourse Analysis</option>
+      <option value="psaa-capacity-capability">Capacity vs. Capability (PSAA)</option>
+      <option value="government-cyber-breaches">The Slow Breach</option>
+      <option value="sita-mandate-analysis">SITA, Trapped Between Responsibility and Authority</option>
+      <option value="digital-government-policy-framework">Digital Government Policy Framework</option>
+      <option value="governance-in-crisis">Governance in Crisis</option>
+    </select>
+
+    <span class="toolbar-label">Eyebrow</span>
+    <input type="text" id="eyebrow-input" placeholder="Discourse Analysis">
+
+    <span class="toolbar-hint">Select a preset, then screenshot the card at 1200 × 630.</span>
+  </div>
+
+  <div class="stage">
+    <article class="card" id="card">
+      <div class="card-top">
+        <span class="dot"></span>
+        <span class="dot-label">Dispatch</span>
+      </div>
+
+      <div class="card-middle">
+        <div class="card-eyebrow" id="eyebrow">Discourse Analysis</div>
+        <h1 class="card-title" id="title">Citizens, Infrastructure, and Knowledge in South Africa's Draft AI
+          Policy</h1>
+      </div>
+
+      <div class="card-bottom">
+        <div>
+          <div class="masthead">Runtime <span class="accent">State</span></div>
+          <span class="masthead-tag" id="date">April 2026</span>
+        </div>
+        <div class="card-url">runtimestate.org</div>
+      </div>
+    </article>
+  </div>
+
+  <aside class="tip">
+    <strong>How to use this:</strong> pick a preset from the dropdown, open this page in Chrome,
+    right-click the card and choose <code>Inspect</code>, then in DevTools use the Elements panel to
+    right-click the <code>&lt;article class="card"&gt;</code> node and select <strong>Capture node
+      screenshot</strong>. Save the resulting PNG as <code>og.jpg</code> inside the relevant post
+    folder (e.g. <code>posts/ai-policy-discourse-analysis/og.jpg</code>).
+    The meta tags in each post's <code>&lt;head&gt;</code> already point at that path, so previews
+    light up on X, LinkedIn, Slack, and Discord the moment the file exists.
+  </aside>
+
+  <script>
+    var PRESETS = {
+      'custom': null,
+      'ai-policy-discourse-analysis': {
+        title: "Citizens, Infrastructure, and Knowledge in South Africa's Draft AI Policy",
+        eyebrow: "Discourse Analysis",
+        date: "April 2026"
+      },
+      'psaa-capacity-capability': {
+        title: "Capacity vs. Capability: Reading the Public Service Amendment Act Against the Auditor-General's Books",
+        eyebrow: "Policy Analysis",
+        date: "April 2026"
+      },
+      'government-cyber-breaches': {
+        title: "The Slow Breach: Five Years of Cyber Incidents Inside South Africa's Government",
+        eyebrow: "Field Note",
+        date: "March 2026"
+      },
+      'sita-mandate-analysis': {
+        title: "SITA, Trapped Between Responsibility and Authority",
+        eyebrow: "Governance Note",
+        date: "January 2026"
+      },
+      'digital-government-policy-framework': {
+        title: "Culture, Coordination, and Capability in South Africa's Draft Digital Government Policy Framework",
+        eyebrow: "Policy Analysis",
+        date: "September 2024"
+      },
+      'governance-in-crisis': {
+        title: "Governance in Crisis: Why I Started Runtime State",
+        eyebrow: "Founding Note",
+        date: "December 2025"
+      }
+    };
+
+    var titleEl = document.getElementById('title');
+    var eyebrowEl = document.getElementById('eyebrow');
+    var dateEl = document.getElementById('date');
+    var eyebrowInput = document.getElementById('eyebrow-input');
+    var presetSel = document.getElementById('preset');
+
+    function apply(slug) {
+      var data = PRESETS[slug];
+      if (!data) return;
+      titleEl.textContent = data.title;
+      eyebrowEl.textContent = data.eyebrow;
+      dateEl.textContent = data.date;
+      eyebrowInput.value = data.eyebrow;
+    }
+
+    presetSel.addEventListener('change', function (e) {
+      apply(e.target.value);
+    });
+
+    eyebrowInput.addEventListener('input', function (e) {
+      eyebrowEl.textContent = e.target.value || '';
+    });
+
+    /* Auto-apply from URL: /og-template.html?slug=... */
+    var params = new URLSearchParams(location.search);
+    var slug = params.get('slug');
+    if (slug && PRESETS[slug]) {
+      presetSel.value = slug;
+      apply(slug);
+    } else {
+      eyebrowInput.value = eyebrowEl.textContent;
+    }
+  </script>
+</body>
+
+</html>

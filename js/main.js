@@ -153,6 +153,69 @@
   });
 })();
 
+/* Subscribe form — POSTs to /api/subscribe and surfaces a status line
+   on any page with one or more <form class="subscribe" data-subscribe>. */
+(function initSubscribe() {
+  var forms = document.querySelectorAll('form.subscribe[data-subscribe]');
+  if (!forms.length) return;
+
+  Array.prototype.forEach.call(forms, function (form) {
+    var emailInput = form.querySelector('input[type="email"]');
+    var button = form.querySelector('button[type="submit"]');
+    var status = form.querySelector('.subscribe-status');
+    var defaultButtonText = button ? button.textContent : 'Subscribe';
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!emailInput || !button) return;
+
+      var email = emailInput.value.trim();
+      form.classList.remove('is-ok', 'is-error');
+      if (!email) {
+        setStatus('Please enter an email address.', 'error');
+        return;
+      }
+
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      setStatus('');
+
+      fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+        .then(function (res) {
+          return res.json().then(function (data) {
+            return { ok: res.ok, data: data };
+          });
+        })
+        .then(function (result) {
+          if (result.ok) {
+            form.classList.add('is-ok');
+            setStatus(result.data.message || 'Check your email.', 'ok');
+            emailInput.value = '';
+          } else {
+            form.classList.add('is-error');
+            setStatus(result.data.error || 'Something went wrong. Try again.', 'error');
+          }
+        })
+        .catch(function () {
+          form.classList.add('is-error');
+          setStatus('Network error. Try again in a moment.', 'error');
+        })
+        .then(function () {
+          button.disabled = false;
+          button.textContent = defaultButtonText;
+        });
+    });
+
+    function setStatus(message) {
+      if (status) status.textContent = message || '';
+    }
+  });
+})();
+
 /* TTS — works on any page with #playAudioBtn + #tts-subtitles + #blogpost .prose p */
 (function initTTS() {
   var playBtn = document.getElementById('playAudioBtn');

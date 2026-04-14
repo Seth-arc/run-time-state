@@ -126,6 +126,179 @@
   color: var(--bg);
 }
 
+/* ─── SUBSCRIBE FORM ─── */
+.subscribe {
+  display: block;
+  max-width: 640px;
+}
+
+.subscribe-label {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim, #777);
+  margin-bottom: 0.9rem;
+  font-weight: 400;
+}
+
+.subscribe-row {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--faint, #3a3a3a);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.3s;
+}
+
+.subscribe-row:focus-within {
+  border-color: var(--accent, #e86a4a);
+}
+
+.subscribe-row input[type="email"] {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text, #e0e0e0);
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 300;
+  padding: 0.95rem 1.15rem;
+  letter-spacing: -0.005em;
+}
+
+.subscribe-row input[type="email"]::placeholder {
+  color: var(--faint, #3a3a3a);
+}
+
+.subscribe-row button {
+  background: var(--text, #e0e0e0);
+  color: var(--bg, #0c0c0c);
+  border: none;
+  font-family: inherit;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0 1.5rem;
+  transition: background 0.3s, color 0.3s;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.subscribe-row button:hover {
+  background: var(--accent, #e86a4a);
+  color: #0c0c0c;
+}
+
+.subscribe-row button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subscribe-note {
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: var(--faint, #3a3a3a);
+  margin-top: 0.85rem;
+  line-height: 1.55;
+  font-weight: 300;
+}
+
+.subscribe-status {
+  font-size: 0.78rem;
+  color: var(--dim, #777);
+  margin-top: 0.85rem;
+  line-height: 1.55;
+  font-weight: 300;
+  min-height: 1.2em;
+}
+
+.subscribe.is-ok .subscribe-status {
+  color: var(--tag-grounded, #5fc490);
+}
+
+.subscribe.is-error .subscribe-status {
+  color: var(--accent, #e86a4a);
+}
+
+/* Inline variant used inside post bodies — slightly more restrained */
+.subscribe-block {
+  margin: 5rem 10vw 3rem;
+  padding: 2.5rem 0 0;
+  border-top: 1px solid var(--rule, #1a1a1a);
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+
+.subscribe-block .subscribe-heading {
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--dim, #777);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.subscribe-block .subscribe-headline {
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  line-height: 1.35;
+  color: var(--text, #e0e0e0);
+  margin-bottom: 1.5rem;
+  max-width: 32ch;
+}
+
+.subscribe-block .subscribe { max-width: 560px; }
+
+/* Light-mode overrides */
+.light-mode .subscribe-row {
+  border-color: #E8E8E8;
+}
+
+.light-mode .subscribe-row:focus-within {
+  border-color: var(--accent, #e86a4a);
+}
+
+.light-mode .subscribe-row input[type="email"] {
+  color: #000;
+}
+
+.light-mode .subscribe-row input[type="email"]::placeholder {
+  color: #aaa;
+}
+
+.light-mode .subscribe-row button {
+  background: #000;
+  color: #fff;
+}
+
+.light-mode .subscribe-row button:hover {
+  background: var(--accent, #e86a4a);
+  color: #fff;
+}
+
+.light-mode .subscribe-note {
+  color: #888;
+}
+
+.light-mode .subscribe-label,
+.light-mode .subscribe-block .subscribe-heading {
+  color: #666;
+}
+
+.light-mode .subscribe-block .subscribe-headline {
+  color: #000;
+}
+
+.light-mode .subscribe-block {
+  border-color: #E8E8E8;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 600px) {
   .page {
@@ -134,5 +307,33 @@
 
   .site-nav {
     padding: 1.5rem;
+  }
+
+  .subscribe-row {
+    flex-direction: column;
+    border: none;
+  }
+
+  .subscribe-row input[type="email"] {
+    border: 1px solid var(--faint, #3a3a3a);
+    padding: 0.9rem 1rem;
+    border-radius: 2px;
+  }
+
+  .light-mode .subscribe-row input[type="email"] {
+    border-color: #E8E8E8;
+  }
+
+  .subscribe-row button {
+    margin-top: 0.6rem;
+    padding: 0.95rem 1rem;
+    border-radius: 2px;
+  }
+}
+
+@media (max-width: 768px) {
+  .subscribe-block {
+    margin-left: 5vw;
+    margin-right: 5vw;
   }
 }

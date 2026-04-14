@@ -12,14 +12,19 @@
   <meta property="og:description"
     content="Analysis and field notes on South African technology, policy, and governance.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://runtimestate.com/">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://runtimestate.org/">
+  <meta property="og:image" content="https://runtimestate.org/og-default.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Runtime State — Analysis and field notes on South African technology, policy, and governance.">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@runtimestate">
   <meta name="twitter:title" content="Runtime State">
   <meta name="twitter:description"
     content="Analysis and field notes on South African technology, policy, and governance.">
+  <meta name="twitter:image" content="https://runtimestate.org/og-default.jpg">
 
-  <link rel="canonical" href="https://runtimestate.com/">
+  <link rel="canonical" href="https://runtimestate.org/">
   <link rel="icon" href="/favicon.ico">
   <script>
     (function () {
@@ -35,6 +40,90 @@
   <link rel="stylesheet" href="/css/shell.css">
   <style>
     /* ─── HOME - MAGAZINE LAYOUT ─── */
+
+    /* ─── Page-load choreography ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes imageReveal {
+      from {
+        opacity: 0;
+        filter: grayscale(0.6) brightness(0.5) blur(12px);
+        transform: scale(1.04);
+      }
+      to {
+        opacity: 1;
+        filter: grayscale(0.2) brightness(0.9) blur(0);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes entryImageReveal {
+      from {
+        opacity: 0;
+        filter: grayscale(0.6) brightness(0.5) blur(10px);
+        transform: scale(1.04);
+      }
+      to {
+        opacity: 1;
+        filter: grayscale(0.35) brightness(0.85) blur(0);
+        transform: scale(1);
+      }
+    }
+
+    @keyframes ruleSweep {
+      from {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    header.masthead,
+    .feature,
+    .entry {
+      opacity: 0;
+      animation: fadeUp 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    header.masthead { animation-delay: 0.05s; }
+
+    .divider {
+      opacity: 0;
+      transform-origin: left center;
+      animation: ruleSweep 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards;
+    }
+
+    .feature { animation-delay: 0.45s; }
+    .secondary .entry:nth-child(1) { animation-delay: 0.6s; }
+    .secondary .entry:nth-child(2) { animation-delay: 0.7s; }
+    .secondary .entry:nth-child(3) { animation-delay: 0.8s; }
+    .secondary .entry:nth-child(4) { animation-delay: 0.9s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      header.masthead,
+      .divider,
+      .feature,
+      .entry,
+      .feature-image,
+      .entry-image {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
     header.masthead {
       padding: 16vh 0 4rem;
     }
@@ -89,6 +178,7 @@
       margin-bottom: 2rem;
       filter: grayscale(0.2) brightness(0.9);
       transition: filter 0.5s;
+      animation: imageReveal 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s both;
     }
 
     .feature:hover .feature-image {
@@ -158,7 +248,13 @@
       margin-bottom: 1.25rem;
       filter: grayscale(0.35) brightness(0.85);
       transition: filter 0.4s;
+      animation: entryImageReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
     }
+
+    .secondary .entry:nth-child(1) .entry-image { animation-delay: 0.7s; }
+    .secondary .entry:nth-child(2) .entry-image { animation-delay: 0.8s; }
+    .secondary .entry:nth-child(3) .entry-image { animation-delay: 0.9s; }
+    .secondary .entry:nth-child(4) .entry-image { animation-delay: 1s; }
 
     .entry:hover .entry-image {
       filter: grayscale(0) brightness(1);
@@ -288,6 +384,21 @@
           why it's worth keeping.</p>
       </a>
     </main>
+
+    <aside class="subscribe-block">
+      <div class="subscribe-heading">The Dispatch</div>
+      <h3 class="subscribe-headline">New dispatches, delivered when they are ready.</h3>
+      <form class="subscribe" data-subscribe novalidate>
+        <label class="subscribe-label" for="sub-email-home">Email address</label>
+        <div class="subscribe-row">
+          <input type="email" id="sub-email-home" name="email" placeholder="you@example.com"
+            autocomplete="email" required>
+          <button type="submit">Subscribe</button>
+        </div>
+        <p class="subscribe-note">Double opt-in. One email per dispatch. Unsubscribe in one click.</p>
+        <p class="subscribe-status" aria-live="polite"></p>
+      </form>
+    </aside>
 
     <footer class="site-footer">
       <span>Runtime State &middot; 2026</span>

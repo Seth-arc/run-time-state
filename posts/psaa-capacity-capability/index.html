@@ -6,13 +6,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Capacity vs. Capability: Reading the Public Service Amendment Act · Runtime State</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="canonical" href="https://runtimestate.com/posts/psaa-capacity-capability">
+  <link rel="canonical" href="https://runtimestate.org/posts/psaa-capacity-capability">
   <meta property="og:title" content="Capacity vs. Capability: Reading the Public Service Amendment Act · Runtime State">
   <meta property="og:description" content="The Act builds new plumbing. The Auditor-General's numbers describe the pressure the plumbing must survive.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://runtimestate.com/posts/psaa-capacity-capability">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:url" content="https://runtimestate.org/posts/psaa-capacity-capability">
+  <meta property="og:image" content="https://runtimestate.org/posts/psaa-capacity-capability/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Runtime State — Capacity vs. Capability: Reading the Public Service Amendment Act Against the Auditor-General's Books">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@runtimestate">
+  <meta name="twitter:image" content="https://runtimestate.org/posts/psaa-capacity-capability/og.jpg">
   <script>
     (function () {
       try {
@@ -158,6 +163,8 @@
       background-size: cover;
       background-position: center;
       filter: grayscale(0.3) brightness(0.55);
+      -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.75) 93%, transparent 100%);
+      mask-image: linear-gradient(180deg, #000 0%, #000 82%, rgba(0, 0, 0, 0.75) 93%, transparent 100%);
       z-index: -2;
     }
 
@@ -165,16 +172,24 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(3, 3, 3, 0.55) 0%, rgba(3, 3, 3, 0.85) 100%);
+      background: linear-gradient(180deg,
+        rgba(3, 3, 3, 0.35) 0%,
+        rgba(3, 3, 3, 0.5) 60%,
+        rgba(3, 3, 3, 0.9) 93%,
+        rgba(3, 3, 3, 1) 100%);
       z-index: -1;
     }
 
     .light-mode .article-header::before {
-      filter: grayscale(0.1) brightness(1);
+      filter: grayscale(0.08) brightness(0.95) contrast(1.05);
     }
 
     .light-mode .article-header::after {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.78) 100%);
+      background: linear-gradient(180deg,
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.22) 60%,
+        rgba(255, 255, 255, 0.88) 93%,
+        rgba(255, 255, 255, 1) 100%);
     }
 
     /* Play audio button solid-background override */
@@ -855,8 +870,6 @@
   <header class="article-header">
     <div class="kicker">April 2026</div>
     <h1 class="hero-title">Capacity vs. Capability: Reading the Public Service Amendment Act Against the Auditor-General's Books</h1>
-    <p class="subtitle">Developed by <a href="https://x.com/runtimestate" target="_blank"
-        rel="noopener noreferrer">@runtimestate</a></p>
     <div style="position: relative;">
       <button class="play-audio-btn" id="playEpisodeBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"
@@ -1865,6 +1878,21 @@
     </div>
   </section>
 
+  <aside class="subscribe-block">
+    <div class="subscribe-heading">The Dispatch</div>
+    <h3 class="subscribe-headline">Read the next one before it's everywhere.</h3>
+    <form class="subscribe" data-subscribe novalidate>
+      <label class="subscribe-label" for="sub-email-capacity">Email address</label>
+      <div class="subscribe-row">
+        <input type="email" id="sub-email-capacity" name="email" placeholder="you@example.com"
+          autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="subscribe-note">Double opt-in. One email per dispatch. Unsubscribe in one click.</p>
+      <p class="subscribe-status" aria-live="polite"></p>
+    </form>
+  </aside>
+
   <div class="share-bar" role="group" aria-label="Share this post">
     <span class="share-label">Share</span>
     <a class="share-btn" data-share="twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
@@ -1989,9 +2017,7 @@
     // GSAP ANIMATIONS
     gsap.registerPlugin(ScrollTrigger);
 
-    // Hero entrance
-    gsap.from(".hero-title", { y: 50, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.2 });
-    gsap.from(".subtitle", { y: 30, opacity: 0, duration: 1.5, ease: "power4.out", delay: 0.5 });
+    // Hero entrance is handled by CSS choreography in article.css
 
     // Scrolly Pinning
     ScrollTrigger.create({

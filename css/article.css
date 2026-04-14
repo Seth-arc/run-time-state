@@ -685,6 +685,68 @@ h1.hero-title {
   }
 }
 
+/* ─── PAGE-LOAD CHOREOGRAPHY (shared across all posts) ─── */
+@keyframes articleFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroBgReveal {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.article-header .kicker,
+.article-header h1.hero-title,
+.article-header .subtitle,
+.article-header .audio-wrap,
+.article-header .play-audio-btn,
+.article-header #playEpisodeBtn,
+.article-header #playAudioBtn {
+  opacity: 0;
+  animation: articleFadeUp 0.95s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.article-header .kicker { animation-delay: 0.15s; }
+.article-header h1.hero-title { animation-delay: 0.3s; }
+.article-header .subtitle { animation-delay: 0.5s; }
+.article-header .audio-wrap,
+.article-header .play-audio-btn,
+.article-header #playEpisodeBtn,
+.article-header #playAudioBtn { animation-delay: 0.7s; }
+
+.article-header::before {
+  animation: heroBgReveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .article-header .kicker,
+  .article-header h1.hero-title,
+  .article-header .subtitle,
+  .article-header .audio-wrap,
+  .article-header .play-audio-btn,
+  .article-header #playEpisodeBtn,
+  .article-header #playAudioBtn,
+  .article-header::before {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* ─── LIGHT MODE — shared article header ─── */
 .light-mode h1.hero-title {
   color: #000;

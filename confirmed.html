@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Confirmed · Runtime State</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="/favicon.ico">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var light = stored ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        if (light) document.documentElement.classList.add('light-mode');
+      } catch (e) { }
+    })();
+  </script>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <style>
+    .panel {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 12vh 0 6rem;
+      max-width: 720px;
+    }
+
+    .status-line {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent);
+    }
+
+    .headline {
+      font-size: clamp(2rem, 4.6vw, 3.2rem);
+      font-weight: 500;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      color: var(--text, #e0e0e0);
+      margin-bottom: 1.5rem;
+      max-width: 22ch;
+    }
+
+    .lede {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--dim, #777);
+      font-weight: 300;
+      max-width: 58ch;
+      margin-bottom: 2.75rem;
+    }
+
+    .lede strong {
+      color: var(--text, #e0e0e0);
+      font-weight: 400;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      padding: 0.85rem 1.35rem;
+      border: 1px solid var(--faint, #3a3a3a);
+      color: var(--text, #e0e0e0);
+      border-radius: 2px;
+      transition: border-color 0.3s, color 0.3s, background 0.3s;
+    }
+
+    .btn.primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0c0c0c;
+    }
+
+    .btn.primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .light-mode .headline { color: #000; }
+    .light-mode .lede strong { color: #000; }
+
+    [data-state] { display: none; }
+    [data-state].is-active { display: block; }
+  </style>
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <ul class="site-nav-links">
+      <li><a href="/">Archive</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <section class="panel">
+
+      <div class="status-line">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="status-word">Subscription Confirmed</span>
+      </div>
+
+      <div data-state="ok" class="is-active">
+        <h1 class="headline">You are in. Thank you.</h1>
+        <p class="lede">Your address is confirmed. New dispatches will arrive from
+          <strong>dispatch@runtimestate.org</strong> when a policy draft or incident warrants a
+          closer read. No filler, no schedule filler, no anything else.</p>
+        <div class="actions">
+          <a href="/" class="btn primary">Back to Archive</a>
+          <a href="/about.html" class="btn">About the Project</a>
+        </div>
+      </div>
+
+      <div data-state="expired">
+        <h1 class="headline">This link has expired.</h1>
+        <p class="lede">Confirmation links are valid for 24 hours. Request a fresh one from the
+          subscribe form on the home page and we will send it again.</p>
+        <div class="actions">
+          <a href="/" class="btn primary">Back to Subscribe</a>
+        </div>
+      </div>
+
+      <div data-state="invalid">
+        <h1 class="headline">That link is not valid.</h1>
+        <p class="lede">The token in the URL is malformed. If you followed a link from an email,
+          make sure the whole URL pasted correctly, or request a new confirmation from the home
+          page.</p>
+        <div class="actions">
+          <a href="/" class="btn primary">Back to Subscribe</a>
+        </div>
+      </div>
+
+      <div data-state="error">
+        <h1 class="headline">Something went wrong on our side.</h1>
+        <p class="lede">The confirmation could not be recorded just now. Please try the link again
+          in a minute, or email <strong>dispatch@runtimestate.org</strong> if the problem
+          persists.</p>
+        <div class="actions">
+          <a href="/" class="btn primary">Back to Archive</a>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var state = params.get('state') || 'ok';
+      var wordEl = document.getElementById('status-word');
+      var map = {
+        ok: 'Subscription Confirmed',
+        expired: 'Link Expired',
+        invalid: 'Invalid Link',
+        error: 'Error'
+      };
+      wordEl.textContent = map[state] || map.ok;
+      var targets = document.querySelectorAll('[data-state]');
+      targets.forEach(function (el) {
+        el.classList.toggle('is-active', el.getAttribute('data-state') === state);
+      });
+    })();
+  </script>
+</body>
+
+</html>
