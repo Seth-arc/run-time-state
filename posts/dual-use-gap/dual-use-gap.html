@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Dual-Use Gap · Runtime State</title>
+  <meta property="og:title" content="The Dual-Use Gap · Runtime State">
+  <meta property="og:description" content="South Africa built nuclear weapons, guided missiles, and world-class artillery under sanctions. It produced no civilian tech sector from any of it. The question is not capability. It is institutional design.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://runtimestate.org/posts/dual-use-gap">
+  <link rel="canonical" href="https://runtimestate.org/posts/dual-use-gap">
+  <link rel="icon" href="/favicon.ico">
+  <script>
+    (function(){try{var s=localStorage.getItem('theme');var l=s?s==='light':window.matchMedia('(prefers-color-scheme: light)').matches;if(l)document.documentElement.classList.add('light-mode');}catch(e){}})();
+  </script>
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/article.css">
+  <style>
+    :root{--bg:#030303;--text-main:#FAFAFA;--text-muted:#666;--border:#1A1A1A;--border-strong:#333;--tag-imported:#e86a4a;--tag-adapted:#e8a03a;--tag-grounded:#5fc490;--tag-performative:#c088e0;--tag-ambiguous:#6aa8e0;--tag-unsaid:#8a8579}
+    body{overflow-x:hidden}
+    .light-mode{--bg:#FAFAFA;--text-main:#030303;--text-muted:#777;--border:#E5E5E5;--border-strong:#CCC}
+    #webgl-canvas{opacity:.4}
+    .scrolly-left-inner{position:sticky;top:10vh}
+    .verdict-word{margin-bottom:1.5rem;line-height:1.2}
+    .verdict-text{font-size:1.15vw;line-height:1.6}
+    .verdict-text p{margin-bottom:1.25rem}
+    .pillar-card{padding:12vh 0;opacity:.35;transition:opacity .8s,transform .8s}
+    .pillar-levels{grid-template-columns:140px 1fr}
+    .pillar-levels dt{font-size:.72rem}
+    .light-mode .pillar-levels dt{color:#444}
+    .section{padding:11vh 10vw;border-top:1px solid var(--border);border-bottom:none}
+    .section>*{max-width:960px}
+    .section>.section-title{max-width:none}
+    .section>.matrix-wrap,.section>.diagnosis-grid,.section>.compare-grid{max-width:1040px}
+    .section-intro{font-size:1.45rem;font-weight:300;line-height:1.5;color:var(--text-main);margin-bottom:3.5rem;letter-spacing:-.015em}
+    .matrix th{font-size:.72rem}
+    .matrix td.case-name{color:var(--text-main);font-weight:400;width:20%}
+    .matrix td.case-period{width:10%;font-size:.8rem;letter-spacing:.05em;color:var(--text-muted)}
+    .matrix td strong{color:var(--text-main);font-weight:500}
+    .light-mode .matrix th,.light-mode .matrix td{color:#444}
+    .evidence-block{padding:.25rem 0 .25rem 1.85rem;margin:3.5rem 0 0;font-size:1.3rem;line-height:1.5;border-left:2px solid var(--border-strong);color:var(--text-main);font-weight:300;letter-spacing:-.01em}
+    .light-mode .evidence-block{color:#333}
+    .reform-item{display:grid;grid-template-columns:80px 1fr;gap:2rem;padding:3rem 0;border-top:1px solid var(--border);align-items:start}
+    .reform-item:last-child{border-bottom:1px solid var(--border)}
+    .reform-num{font-size:1.1rem;color:var(--tag-grounded);font-weight:500}
+    .reform-item h4{font-size:1.4rem;font-weight:400;color:var(--text-main);margin-bottom:.75rem;letter-spacing:-.01em}
+    .reform-item p{font-size:1rem;color:#b3b3b3;line-height:1.7;font-weight:300;max-width:700px}
+    .light-mode .reform-item p{color:#555}
+    .mandate-quote{font-size:1.3rem;line-height:1.55;color:var(--text-muted);font-weight:300;font-style:italic;border-left:2px solid var(--tag-imported);padding:.25rem 0 .25rem 1.85rem;margin:0 0 2rem;letter-spacing:-.01em}
+    .mandate-quote:last-of-type{margin-bottom:3.5rem}
+    .mandate-quote .src{display:block;margin-top:1rem;font-size:.65rem;text-transform:uppercase;letter-spacing:.22em;font-style:normal;color:#555}
+    .prose-lede{font-size:1.15rem;line-height:1.75;color:#c4c4c4;font-weight:300;margin:0 0 4rem}
+    .prose-lede p{margin-bottom:1.5rem}
+    .prose-lede strong{color:var(--text-main);font-weight:500}
+    .light-mode .prose-lede{color:#333}
+    .diagnosis-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin:0 0 4rem;background:var(--border-strong);border:1px solid var(--border-strong)}
+    .diagnosis-card{padding:2rem 1.85rem 2.1rem;background:var(--bg);position:relative;transition:background .3s}
+    .diagnosis-card:hover{background:rgba(255,255,255,.015)}
+    .light-mode .diagnosis-card:hover{background:rgba(0,0,0,.015)}
+    .diagnosis-card .dnum{font-size:.62rem;letter-spacing:.22em;color:var(--tag-imported);font-weight:500;margin-bottom:1.1rem;display:block}
+    .diagnosis-card h4{font-size:1.1rem;font-weight:500;color:var(--text-main);margin-bottom:1rem;letter-spacing:-.015em;line-height:1.3}
+    .diagnosis-card p{font-size:.88rem;color:#b3b3b3;line-height:1.7;font-weight:300;margin-bottom:.75rem}
+    .diagnosis-card p:last-child{margin-bottom:0}
+    .diagnosis-card strong{color:var(--text-main);font-weight:500}
+    .light-mode .diagnosis-card{background:var(--bg)}
+    .light-mode .diagnosis-card p{color:#555}
+    .one-liner{font-size:1.45rem;line-height:1.5;color:var(--text-main);font-weight:400;border-left:2px solid var(--tag-imported);padding:.25rem 0 .25rem 1.85rem;margin:0 0 .85rem;letter-spacing:-.015em}
+    .one-liner-attr{display:block;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-muted);padding-left:1.95rem}
+    /* Article image component */
+    .article-img{margin:3.5rem 0;position:relative}
+    .article-img img{width:100%;display:block;filter:grayscale(.3) brightness(.8);border:1px solid var(--border-strong);transition:filter .4s}
+    .article-img:hover img{filter:grayscale(.05) brightness(.92)}
+    .article-img-caption{display:flex;align-items:flex-start;gap:1.25rem;margin-top:.85rem}
+    .article-img-caption-text{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:var(--text-muted);line-height:1.6;font-weight:400}
+    .article-img-caption-line{flex-shrink:0;width:24px;height:1px;background:var(--border-strong);margin-top:.55rem}
+    /* Compare grid for DARPA/Unit 8200/POSCO */
+    .compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:0 0 4rem;background:var(--border-strong);border:1px solid var(--border-strong)}
+    .compare-card{padding:2rem 1.65rem 2.1rem;background:var(--bg)}
+    .compare-card .c-label{font-size:.6rem;letter-spacing:.24em;color:var(--tag-ambiguous);font-weight:600;margin-bottom:.85rem;display:block;text-transform:uppercase}
+    .compare-card h4{font-size:1rem;font-weight:500;color:var(--text-main);margin-bottom:.85rem;letter-spacing:-.01em;line-height:1.3}
+    .compare-card p{font-size:.84rem;color:#b3b3b3;line-height:1.65;font-weight:300;margin-bottom:.65rem}
+    .compare-card p:last-child{margin-bottom:0}
+    .compare-card .c-result{margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.75rem;color:var(--tag-grounded);letter-spacing:.1em;font-weight:500;text-transform:uppercase}
+    .compare-card strong{color:var(--text-main);font-weight:500}
+    .light-mode .compare-card{background:var(--bg)}
+    .light-mode .compare-card p{color:#555}
+    /* SA counter-card */
+    .sa-counter{padding:2rem 1.85rem 2.1rem;background:rgba(232,106,74,.04);border:1px solid rgba(232,106,74,.25);margin:0 0 4rem;position:relative}
+    .sa-counter::before{content:"SOUTH AFRICA — COUNTERFACTUAL";position:absolute;top:-.55rem;left:1.85rem;font-size:.55rem;letter-spacing:.28em;color:var(--tag-imported);background:var(--bg);padding:0 .5rem;font-weight:600}
+    .sa-counter h4{font-size:1.05rem;font-weight:500;color:var(--text-main);margin-bottom:.85rem;letter-spacing:-.01em}
+    .sa-counter p{font-size:.9rem;color:#b3b3b3;line-height:1.7;font-weight:300;margin-bottom:.75rem}
+    .sa-counter p:last-child{margin-bottom:0}
+    .sa-counter strong{color:var(--text-main);font-weight:500}
+    .light-mode .sa-counter{background:rgba(232,106,74,.04)}
+    .light-mode .sa-counter::before{background:var(--bg)}
+    .light-mode .sa-counter p{color:#444}
+    .img-pair{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin:3.5rem 0;background:var(--border-strong);border:1px solid var(--border-strong)}
+    .img-pair .article-img{margin:0}
+    .img-pair .article-img img{height:320px;object-fit:cover}
+    .img-pair .article-img-caption{padding:.85rem 1rem}
+    @media(max-width:900px){h1.hero-title{font-size:9vw}.verdict-word{font-size:4.5vw}.verdict-text{font-size:1rem}.scrolly-container{flex-direction:column;padding:0 6vw}.scrolly-left,.scrolly-right{width:100%;padding:8vh 0;border-right:none}.scrolly-left{border-bottom:1px solid var(--border)}.scrolly-left-inner{position:static}.section{padding:12vh 6vw}.section-intro{font-size:1.5rem}.pillar-card p{font-size:1.25rem}.pillar-levels{grid-template-columns:1fr}.reform-item{grid-template-columns:1fr;gap:.5rem}.mandate-quote{font-size:1.15rem}.compare-grid{grid-template-columns:1fr}.img-pair{grid-template-columns:1fr}}
+    @media(max-width:720px){.diagnosis-grid{grid-template-columns:1fr}}
+    .article-header{position:relative;isolation:isolate}
+    .article-header::before{content:"";position:absolute;inset:0;background-image:url("hero.jpg");background-size:cover;background-position:center 30%;filter:grayscale(.2) brightness(.5);-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 82%,rgba(0,0,0,.75) 93%,transparent 100%);mask-image:linear-gradient(180deg,#000 0%,#000 82%,rgba(0,0,0,.75) 93%,transparent 100%);z-index:-2}
+    .article-header::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,3,3,.35) 0%,rgba(3,3,3,.5) 60%,rgba(3,3,3,.9) 93%,rgba(3,3,3,1) 100%);z-index:-1}
+    .light-mode .article-header::before{filter:grayscale(.08) brightness(.95) contrast(1.05)}
+    .light-mode .article-header::after{background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.22) 60%,rgba(255,255,255,.88) 93%,rgba(255,255,255,1) 100%)}
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="/" class="site-logo">Runtime <span class="accent">State</span></a>
+    <button class="theme-toggle" id="themeToggle">Light Mode</button>
+  </nav>
+  <canvas id="webgl-canvas"></canvas>
+  <header class="article-header">
+    <div class="kicker">May 2026 &middot; Industrial Strategy Note</div>
+    <h1 class="hero-title">The Dual-Use Gap.</h1>
+    <p class="subtitle">South Africa built nuclear weapons, guided missiles, and world-class self-propelled artillery under sanctions. It produced no civilian technology sector from any of it. The question is not capability. It is institutional design &mdash; and specifically, the absence of the mechanisms that converted defence research into economic compounding everywhere else this has been attempted.</p>
+    <div class="audio-wrap"><button class="play-audio-btn" id="playEpisodeBtn"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg><span>Listen to Episode</span></button></div>
+  </header>
+
+  <section class="scrolly-container">
+    <div class="scrolly-left">
+      <div class="scrolly-left-inner">
+        <div class="verdict-label">The Verdict</div>
+        <div class="verdict-word">Built the capability. Designed no mechanism to compound it.</div>
+        <div class="verdict-text">
+          <p>The sanctions-era industrial record is not a story about what South Africa could have been. It is a story about <strong>what South Africa already was</strong> &mdash; and then deliberately dismantled, without designing anything to capture the civilian spillover.</p>
+          <p>Every economy that has converted strategic defence R&amp;D into a technology sector did so through deliberate institutional design: <strong>technology transfer mandates, commercialisation pipelines, alumni networks, and a standing expectation that strategic R&amp;D should produce civilian economic benefit</strong>. South Africa had the R&amp;D. It never designed the mechanism.</p>
+        </div>
+      </div>
+    </div>
+    <div class="scrolly-right">
+      <div class="pillar-card">
+        <h3>01 &middot; The Sanctions Paradox</h3>
+        <p>The arms embargo that was supposed to cripple South Africa&rsquo;s military capacity produced, in practice, genuinely world-class indigenous innovation. Necessity created a mandate that no policy document could have written. The embargo lifted. The mandate dissolved. The institutions survived without purpose.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>Capability built under constraint became liability after it. The Rooivalk: 12 airframes, no production line, no export customer.</dd><dt>Pattern</dt><dd>Strategic necessity is the best innovation policy. Its removal is not planned for.</dd></dl>
+      </div>
+      <div class="pillar-card">
+        <h3>02 &middot; No Transfer Mechanism</h3>
+        <p>DARPA funded university research that became the internet. Unit 8200 veterans founded the Israeli private tech sector. POSCO alumni ran South Korea&rsquo;s steel and shipbuilding industry. In each case, deliberate institutional design captured the spillover from strategic R&amp;D. South Africa designed nothing equivalent.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>Armscor and Denel engineers retired or emigrated. The capability left with them.</dd><dt>Pattern</dt><dd>Spillover requires a channel. Without design, it evaporates.</dd></dl>
+      </div>
+      <div class="pillar-card">
+        <h3>03 &middot; The Mandate Dissolution</h3>
+        <p>Post-1994, Denel and CSIR&rsquo;s defence divisions inherited assets &mdash; land, equipment, expertise, government relationships &mdash; without a revised mandate for what those assets were now supposed to produce. Strategic R&amp;D without strategic direction is not neutral. It is available.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>Available assets attract political capture more reliably than they attract technological productivity.</dd><dt>Pattern</dt><dd>The Gupta-linked Denel Asia joint venture is the clearest expression of what &ldquo;available&rdquo; means.</dd></dl>
+      </div>
+      <div class="pillar-card">
+        <h3>04 &middot; Classified Enclosure</h3>
+        <p>South Africa&rsquo;s sanctions-era defence R&amp;D was, by necessity, classified. Classification is the enemy of civilian spillover. Knowledge that cannot be published cannot seed university research. Technology that cannot be disclosed cannot become a startup. The knowledge stayed secret long after the strategic rationale for secrecy had ended.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>Declassification without a commercialisation framework is not spillover. It is release into a vacuum.</dd><dt>Pattern</dt><dd>The Israeli model declassified and organised simultaneously. South Africa did not organise.</dd></dl>
+      </div>
+      <div class="pillar-card">
+        <h3>05 &middot; Export Failure as Diagnostic</h3>
+        <p>The Rooivalk&rsquo;s export campaign came close to sales in Turkey, Malaysia, and South Africa&rsquo;s UN peacekeeping operations. Each sale fell through for a different stated reason. The pattern is diagnostic: an aircraft without a robust industrial supply chain, an uncertain manufacturer, and a state that could not guarantee long-term support is not a credible export platform regardless of its technical merits.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>Defence exports require the buyer to trust the seller&rsquo;s institutional continuity. Denel has never been able to offer that credibly.</dd><dt>Pattern</dt><dd>The product was sufficient. The institution behind the product was not.</dd></dl>
+      </div>
+      <div class="pillar-card">
+        <h3>06 &middot; The Nuclear Disarmament Non-Dividend</h3>
+        <p>South Africa dismantled six nuclear weapons and partially dismantled a seventh in 1989&ndash;1991, becoming the first and only country to independently develop and then voluntarily disarm its nuclear capability. The moral and political significance of that act is real. Its economic consequence was zero: no civilian nuclear energy programme, no nuclear technology transfer, no indigenous nuclear fuel cycle.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>The engineering capability developed for the weapons programme was not redirected. It was ended.</dd><dt>Pattern</dt><dd>Strategic disarmament without economic strategy is capability destruction, not capability conversion.</dd></dl>
+      </div>
+      <div class="pillar-card">
+        <h3>07 &middot; The Skills Diaspora</h3>
+        <p>The engineers, physicists, and systems specialists who built South Africa&rsquo;s sanctions-era defence capability did not stay at Denel and CSIR when the budgets were cut. They went to BAE Systems, Airbus, MBDA, Thales, and dozens of other European and American defence contractors who were happy to hire people with rare skills and unusual operational experience.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>South Africa funded the training. The international defence industry captured the return.</dd><dt>Pattern</dt><dd>Skills diaspora is the human equivalent of the dual-use gap.</dd></dl>
+      </div>
+      <div class="pillar-card">
+        <h3>08 &middot; The Denel Capture Sequence</h3>
+        <p>Denel&rsquo;s Gupta-linked joint ventures, salary payment failures, and R6.9 billion in irregular transactions did not happen because Denel was strategically important. They happened because Denel was strategically adrift: high-asset, politically connected, technically credible on paper, without the operational mandate to generate accountability. Available institutions are capturable institutions.</p>
+        <dl class="pillar-levels"><dt>Consequence</dt><dd>By 2017, an institution that had built nuclear-capable delivery systems could not pay its workers&rsquo; salaries.</dd><dt>Pattern</dt><dd>Capture is the market solution to mandate vacancy.</dd></dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">The Capability Record</div>
+    <p class="section-intro">What South Africa actually built under sanctions. The record is not mythology. It is documented, in some cases still-classified, and in most cases no longer reproducible.</p>
+
+    <div class="article-img">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Rooivalk_Ysterplaat.JPG"
+           onerror="this.src='';this.parentElement.style.background='var(--border)';this.parentElement.style.minHeight='320px'"
+           alt="Denel Rooivalk AH-2 attack helicopter at Ysterplaat Air Force Base" loading="lazy">
+      <div class="article-img-caption">
+        <div class="article-img-caption-line"></div>
+        <div class="article-img-caption-text">Denel AH-2 Rooivalk at Ysterplaat AFB. Development began 1984 under the Atlas Aircraft Corporation. First flight 1990. IOC 2011. 12 airframes produced. Production line mothballed 2007. The 27-year span from design to operational service is itself a diagnosis.</div>
+      </div>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix">
+        <thead>
+          <tr><th>System</th><th>Period</th><th>Classification</th><th>Current Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="case-name">Nuclear weapons programme</td>
+            <td class="case-period">1974&ndash;1989</td>
+            <td>Six gun-type devices. Only state to independently develop and voluntarily dismantle.</td>
+            <td>Dismantled 1989&ndash;91. Capability not converted. Engineering skills diaspora ensued.</td>
+          </tr>
+          <tr>
+            <td class="case-name">G5 / G6 howitzer</td>
+            <td class="case-period">1976&ndash;1999</td>
+            <td>155mm self-propelled howitzer. <strong>76km range with V-LAP</strong> ammunition. World-class on export market. UAE and Oman purchased 102 units.</td>
+            <td>15 SANDF G6s in repair under Project Muhali. Upgrade delays attributed to Denel&rsquo;s inability to procure spares. The weapon that outranges most competitors cannot source its own parts.</td>
+          </tr>
+          <tr>
+            <td class="case-name">Rooivalk AH-2</td>
+            <td class="case-period">1984&ndash;2007</td>
+            <td>Attack helicopter. Indigenous airframe, avionics, weapons suite. Lost Turkey export to Italian A129 Mangusta. Lost other export campaigns to Denel&rsquo;s institutional instability.</td>
+            <td>11 operational airframes with 16 Sqn at AFB Bloemspruit. Production line closed 2007. Upgrade negotiations ongoing with Aselsan (Turkey) since 2023.</td>
+          </tr>
+          <tr>
+            <td class="case-name">Umkhonto surface-to-air missile</td>
+            <td class="case-period">1990s&ndash;2005</td>
+            <td>Vertical-launch SAM system. Exported to Finland and Algeria. Indigenous guidance, seeker, and propulsion development.</td>
+            <td>Still in Denel Dynamics portfolio. Production intermittent. The one Denel programme with a viable export record.</td>
+          </tr>
+          <tr>
+            <td class="case-name">Mokopa anti-armour missile</td>
+            <td class="case-period">1996&ndash;present</td>
+            <td>Semi-active laser-homing ATGM. Tandem warhead. Designed specifically for Rooivalk integration and multi-platform launch.</td>
+            <td>In service with SAAF. No export sales confirmed. Dependent on Rooivalk programme survival.</td>
+          </tr>
+          <tr>
+            <td class="case-name">Civilian spillover</td>
+            <td class="case-period">1994&ndash;2026</td>
+            <td>No classified-to-civilian technology transfer programme. No commercialisation framework for sanctions-era IP. No structured alumni network connecting defence engineers to private economy.</td>
+            <td><strong>Zero documented instances</strong> of sanctions-era defence R&amp;D producing a South African private technology company at scale.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="evidence-block">The capability record is real. The compounding record is empty. These are not separate observations &mdash; they are the same observation stated twice.</div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">How It Was Done Elsewhere</div>
+    <p class="section-intro">Three economies that converted strategic R&amp;D investment into civilian technology sectors. The mechanism in each case was deliberate institutional design, not incidental spillover.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <span class="c-label">Case 01 &middot; United States</span>
+        <h4>DARPA and the university pipeline</h4>
+        <p>The Advanced Research Projects Agency funded university research with deliberately loose specifications and long time horizons. The research produced the internet (ARPANET), GPS, stealth aircraft, and the foundational computing science on which Silicon Valley was built.</p>
+        <p>The mechanism: <strong>universities, not Lockheed Martin</strong>. By routing defence R&amp;D through academic institutions, DARPA created a commercialisation pathway in which every PhD student was a potential startup founder. The knowledge was public-domain the moment it was published.</p>
+        <p>The dual-use result was not accidental. It was the designed output of a funding model that required recipients to publish rather than classify, and that hired young academics rather than established defence contractors.</p>
+        <div class="c-result">Output: Internet, GPS, UNIX, semiconductor research, stealth. Commercialised within one academic generation.</div>
+      </div>
+      <div class="compare-card">
+        <span class="c-label">Case 02 &middot; Israel</span>
+        <h4>Unit 8200 and the military-startup pipeline</h4>
+        <p>Israel&rsquo;s military intelligence Unit 8200 is explicitly cited by researchers, investors, and founders as the single most important institutional source of Israel&rsquo;s private technology sector. The unit trains elite engineers and cybersecurity specialists at state expense in an environment of genuine operational urgency.</p>
+        <p>The mechanism: <strong>alumni network and tacit knowledge transfer</strong>. Unit 8200 veterans founded Check Point, CyberArk, Waze, and dozens of other companies. The military service created operational capability, the alumni network provided capital and co-founder matching, and a specific cultural norm of post-service entrepreneurship converted the capability into economic activity.</p>
+        <p>The dual-use result was partly designed (the IDF actively encouraged post-service entrepreneurship) and partly emergent (the alumni network self-organised). Both elements required deliberate permission from the state.</p>
+        <div class="c-result">Output: Check Point, CyberArk, NSO Group, Waze, dozens of unicorns. Military service as startup accelerator.</div>
+      </div>
+      <div class="compare-card">
+        <span class="c-label">Case 03 &middot; South Korea</span>
+        <h4>POSCO and the state-industrial compounding</h4>
+        <p>South Korea&rsquo;s Cold War industrialisation programme was explicitly strategic: Park Chung-hee needed a steel industry because a modern military required steel. POSCO was built with Japanese reparations funding and a mandate to make South Korea self-sufficient in strategic materials. The military rationale was the original justification. The economic compound was the actual outcome.</p>
+        <p>The mechanism: <strong>state ownership, performance mandates, and deliberate technology transfer from POSCO to downstream industry</strong>. Samsung entered electronics partly because POSCO-grade steel made consumer electronics manufacturing viable domestically. The state mandated the supply chain. The private sector built on it.</p>
+        <p>The dual-use result was designed at the policy level. Park Chung-hee understood that strategic industrial capacity and civilian economic development were the same investment at different timescales.</p>
+        <div class="c-result">Output: POSCO, Samsung Electronics, Hyundai Motor, LG. Strategic industrial base as civilian economy foundation.</div>
+      </div>
+    </div>
+
+    <div class="article-img">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Arpanet_sep_1974.jpg"
+           onerror="this.src='';this.parentElement.style.background='var(--border)';this.parentElement.style.minHeight='240px'"
+           alt="ARPANET network map September 1974" loading="lazy">
+      <div class="article-img-caption">
+        <div class="article-img-caption-line"></div>
+        <div class="article-img-caption-text">ARPANET logical map, September 1974. 46 nodes. US Defence Department-funded. The civilian internet that emerged from this network was not an accident. It was the designed output of a funding model that required publication and academic routing. South Africa&rsquo;s defence R&amp;D was classified, contracted, and routed away from universities.</div>
+      </div>
+    </div>
+
+    <div class="sa-counter">
+      <h4>South Africa: The Counterfactual</h4>
+      <p>South Africa had a defence R&amp;D base, under Armscor and CSIR, that was producing genuinely world-class systems in the 1980s. The skills, the infrastructure, and the institutional knowledge were present. What was absent was the mechanism: there was no DARPA-equivalent routing defence R&amp;D through universities, no Unit 8200-equivalent alumni network converting military capability into private enterprise, and no POSCO-equivalent mandate to build downstream civilian industry on the back of strategic capacity.</p>
+      <p>Post-1994, the government had a choice: design the mechanism retroactively, converting Armscor&rsquo;s capabilities into a dual-use technology base, or let the institutions drift. The Arms Deal of 1999 &mdash; R43 billion in imported defence procurement from European manufacturers, with offset agreements that produced almost nothing durable &mdash; was the definitive answer to that choice. <strong>South Africa spent R43 billion buying the capability it had already built, from the countries whose industries it could have competed with.</strong></p>
+      <p>The offset agreements required European manufacturers to invest in South African industry as a condition of the sale. BAE Systems, Thales, SAAB, and others made commitments that were largely unfulfilled, investigated for corruption, and never converted into lasting industrial capacity. The National Prosecuting Authority&rsquo;s Arms Deal investigation ran for 25 years. The industrial development never materialised regardless.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">The Structural Diagnosis</div>
+    <p class="section-intro">Four mechanisms explain why South Africa&rsquo;s defence capability did not compound into a civilian technology sector. None of them required active sabotage. All of them required institutional design that was never attempted.</p>
+
+    <div class="diagnosis-grid">
+      <div class="diagnosis-card">
+        <span class="dnum">01 &middot; Classification</span>
+        <h4>Secrecy without sunset</h4>
+        <p>Sanctions-era defence R&amp;D was classified by necessity. Post-1994, the classification did not end systematically; it lapsed unevenly, institution by institution, programme by programme. Knowledge that could not be published could not seed universities. Technology that could not be disclosed could not become a startup. The DARPA model requires publication as a condition of funding. The Armscor model required secrecy as a condition of survival.</p>
+        <p>The two models produce different civilisations. One builds on itself. The other ends with the programme that produced it.</p>
+      </div>
+      <div class="diagnosis-card">
+        <span class="dnum">02 &middot; Routing</span>
+        <h4>Contractors, not universities</h4>
+        <p>DARPA routed most of its funding through universities. Universities are permeable institutions: knowledge flows out through graduates, publications, and spinouts without requiring institutional permission. South Africa&rsquo;s defence R&amp;D was routed through Armscor subsidiaries and CSIR contracts. These are closed institutions. Knowledge that enters them does not leave without deliberate extraction.</p>
+        <p>The routing decision was not primarily about secrecy. It was about procurement control. The consequence, unintended or not, was that civilian spillover had no natural pathway.</p>
+      </div>
+      <div class="diagnosis-card">
+        <span class="dnum">03 &middot; Network</span>
+        <h4>No alumni architecture</h4>
+        <p>Unit 8200&rsquo;s civilian productivity is partly explained by an alumni network that was informally organised but culturally mandated: leaving the unit and starting a company was a normal and celebrated trajectory. Armscor and Denel engineers who retired or emigrated had no equivalent network, no cultural mandate for entrepreneurship, and no state-facilitated pathway from defence capability to private venture.</p>
+        <p>The knowledge left with them. The economic activity materialised in the UK, Germany, France, and the US defence supply chains that hired them. South Africa bore the training cost. Other economies captured the return.</p>
+      </div>
+      <div class="diagnosis-card">
+        <span class="dnum">04 &middot; Mandate</span>
+        <h4>No dual-use doctrine</h4>
+        <p>South Korea&rsquo;s industrialisation was explicitly designed to serve both military and civilian purposes. The steel that POSCO produced served both the defence programme and the automotive and shipbuilding industries. There was no institutional separation between strategic capacity and civilian economic benefit because the government treated them as the same investment.</p>
+        <p>South Africa treated defence R&amp;D and civilian industrial development as separate policy domains. Armscor/Denel served the defence cluster. CSIR served the industrial and scientific development cluster. The two institutions operated in different ministry silos and were never required to produce joint civilian-industrial outcomes. The gap between them was not technical. It was constitutional.</p>
+      </div>
+    </div>
+
+    <p class="one-liner">South Africa built the capability at the frontier. It designed no mechanism to hold any of it.</p>
+    <span class="one-liner-attr">The dual-use structural argument</span>
+  </section>
+
+  <section class="section">
+    <div class="section-title">The Rooivalk as Complete Diagnostic</div>
+    <p class="section-intro">One programme, the complete argument. The Rooivalk contains every element of the dual-use gap in a single, fully-documented case.</p>
+
+    <div class="img-pair">
+      <div class="article-img">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Rooivalk_Ysterplaat.JPG"
+             onerror="this.src='';this.parentElement.style.background='var(--border)';this.parentElement.style.minHeight='320px'"
+             alt="Rooivalk at Ysterplaat" loading="lazy">
+        <div class="article-img-caption">
+          <div class="article-img-caption-line"></div>
+          <div class="article-img-caption-text">Rooivalk at Ysterplaat AFB &mdash; one of 11 operational airframes</div>
+        </div>
+      </div>
+      <div class="article-img">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/UAE_Army_G6_howitzer_demo_at_IDEX_2015.jpg"
+             onerror="this.src='';this.parentElement.style.background='var(--border)';this.parentElement.style.minHeight='320px'"
+             alt="G6 howitzer UAE Army IDEX 2015" loading="lazy">
+        <div class="article-img-caption">
+          <div class="article-img-caption-line"></div>
+          <div class="article-img-caption-text">G6 Rhino, UAE Army demonstration IDEX 2015 &mdash; 78 units exported to UAE, 24 to Oman. The export customer purchased more than the manufacturer&rsquo;s own army operates.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose-lede">
+      <p>The Rooivalk programme ran from 1984 to 2007 as an active production programme. The first prototype flew in 1990. Initial operational capability was achieved in 2011 &mdash; twenty-seven years from design start to operational status. During those twenty-seven years: two procurement cancellations, a near-death of the programme in the mid-1990s, revival under political pressure from defence advocates, a sustained export campaign that came close to sales in Turkey and Malaysia and succeeded nowhere, and a final production run of 12 airframes before the production line was mothballed.</p>
+      <p>The engineering achievement is genuine. The Rooivalk was designed for the Angolan theatre: hot, humid, dusty, operating without sophisticated logistical support. Its four design pillars &mdash; not to be seen, if seen not to be hit, if hit to sustain flight, if unable to sustain flight then the pilots survive &mdash; reflected real operational learning from the Border War. <strong>The helicopter that resulted was aerodynamically sound, tactically capable, and combat-proven in UN operations in the DRC. It was also produced in a quantity that makes no operational sense and is now maintained by an organisation that struggles to source its own spare parts.</strong></p>
+      <p>The civilian technology that could have compounded from the Rooivalk programme includes: composite materials expertise, advanced avionics integration, human-machine interface design for high-stress environments, embedded systems for real-time targeting, and rotorcraft aerodynamics research. None of it was captured in a form that produced South African civilian companies. The engineers who built it retired, emigrated, or work for European defence contractors. The IP is in Denel&rsquo;s portfolio and produces no economic activity.</p>
+      <p>The Rooivalk is not a failed programme. It is a succeeded programme that produced no compound. The distinction is the entire argument.</p>
+    </div>
+
+    <div class="evidence-block">The Arms Deal bought from BAE, Thales, and SAAB what South Africa could have produced itself. The offsets that were supposed to compensate for that choice were never enforced. The institutional capability that would have enforced them had already been dismantled.</div>
+  </section>
+
+  <section class="section">
+    <div class="section-title">What a Dual-Use Architecture Would Require</div>
+    <p class="section-intro">The mechanism is well-documented in the international record. The question is not whether it is possible. It is whether South Africa has the institutional will to design it.</p>
+
+    <div class="reform-item">
+      <div class="reform-num">01</div>
+      <div>
+        <h4>Declassification with Commercialisation Framework</h4>
+        <p>A systematic review of Armscor and Denel IP from the sanctions era, with a mandate to declassify everything whose strategic sensitivity is no longer current, paired with a commercialisation assessment for each declassified technology. Declassification without commercialisation architecture is release into a vacuum. The framework converts release into opportunity.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">02</div>
+      <div>
+        <h4>University Routing Mandate</h4>
+        <p>A minimum of 30% of CSIR defence and security research funding should be routed through South African universities, with publication requirements and PhD student involvement. This is not a research quality requirement. It is a spillover architecture requirement. Knowledge that lives in university researchers is knowledge that can compound into the civilian economy. Knowledge that lives in CSIR contracts cannot.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">03</div>
+      <div>
+        <h4>Denel/CSIR Alumni Entrepreneurship Programme</h4>
+        <p>A structured programme, modelled explicitly on the Unit 8200 alumni network, connecting current and former Denel and CSIR engineers to venture capital, co-founder matching, and commercialisation support. The skills are present, dispersed across South Africa and international defence industry. The network does not exist. It can be created.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">04</div>
+      <div>
+        <h4>Dual-Use Doctrine in the Defence Industrial Policy</h4>
+        <p>A formal dual-use clause in South Africa&rsquo;s Defence Industrial Participation policy: every state-funded defence R&amp;D programme above a defined budget threshold must produce a civilian applications assessment. Not a paper exercise &mdash; a funded assessment with a commercialisation pathway attached. The doctrine makes civilian spillover a performance requirement, not an incidental outcome.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">05</div>
+      <div>
+        <h4>Arms Deal Offset Enforcement Retrospective</h4>
+        <p>The Arms Deal offsets were legally binding obligations that were largely unfulfilled. A retrospective enforcement action &mdash; not necessarily criminal, but commercial &mdash; against the European defence companies that collected the contracts and failed to deliver the industrial investment would send the signal that South Africa&rsquo;s offset commitments are real. More importantly, it would generate the political conversation about what industrial development South Africa should actually require from future defence procurement.</p>
+      </div>
+    </div>
+    <div class="reform-item">
+      <div class="reform-num">06</div>
+      <div>
+        <h4>Rooivalk Technology Transfer as Test Case</h4>
+        <p>The Rooivalk programme contains composites, avionics, and rotorcraft engineering IP that has civilian applications in commercial aerospace, advanced manufacturing, and embedded systems. A pilot technology transfer programme &mdash; extracting that IP, partnering with South African universities and startups, and tracking what compounds over five years &mdash; would be the first test of whether a dual-use architecture can be retrofitted to existing capability. If it works, it provides the model. If it does not, the diagnosis is complete.</p>
+      </div>
+    </div>
+
+    <div class="evidence-block">The question is no longer whether South Africa has the technical capability. It clearly did, and in some domains still does. The question is whether it will design the mechanism to hold what it builds. So far the answer has been no, and the result is a sanctions-era capability record and a 2026 technology economy with no structural connection between them.</div>
+  </section>
+
+  <aside class="subscribe-block">
+    <div class="subscribe-heading">The Dispatch</div>
+    <h3 class="subscribe-headline">Read the next one before it&rsquo;s everywhere.</h3>
+    <form class="subscribe" data-subscribe novalidate>
+      <label class="subscribe-label" for="sub-email-dual">Email address</label>
+      <div class="subscribe-row">
+        <input type="email" id="sub-email-dual" name="email" placeholder="you@example.com" autocomplete="email" required>
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="subscribe-note">Double opt-in. One email per dispatch. Unsubscribe in one click.</p>
+      <p class="subscribe-status" aria-live="polite"></p>
+    </form>
+  </aside>
+
+  <div class="share-bar" role="group" aria-label="Share this post">
+    <span class="share-label">Share</span>
+    <a class="share-btn" data-share="twitter" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932Zm-1.29 19.49h2.039L6.486 3.24H4.298Z"/></svg>
+    </a>
+    <a class="share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    </a>
+    <button type="button" class="share-btn" data-share="copy" aria-label="Copy link">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+    </button>
+  </div>
+
+  <footer class="article-footer">
+    <span>Runtime State &middot; 2026</span>
+    <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">@runtimestate</a>
+  </footer>
+
+  <script>
+  window.__TTS_TEXT = "South Africa built nuclear weapons, guided missiles, and world-class self-propelled artillery under sanctions. It produced no civilian technology sector from any of it. The question is not capability. It is institutional design. Every economy that has converted strategic defence R&D into a technology sector did so through deliberate institutional design: technology transfer mandates, commercialisation pipelines, alumni networks, and a standing expectation that strategic R&D should produce civilian economic benefit. South Africa had the R&D. It never designed the mechanism. The arms embargo that was supposed to cripple South Africa's military capacity produced, in practice, genuinely world-class indigenous innovation. The Rooivalk attack helicopter. The G5 and G6 howitzers, which were exported to the UAE and Oman and are still among the most capable wheeled artillery systems in the world. The Umkhonto surface-to-air missile. The nuclear weapons programme. These were not imported and assembled. They were designed and built domestically, under isolation, because there was no other option. Then the embargo lifted. The mandate dissolved. The institutions survived without purpose. DARPA funded university research with deliberately loose specifications and long time horizons. The research produced the internet, GPS, and the foundational computing science on which Silicon Valley was built. The mechanism was routing: by putting defence R&D money through universities rather than defence contractors, DARPA created a commercialisation pathway in which every PhD student was a potential startup founder. Israel's Unit 8200 created an alumni network that founded Check Point, CyberArk, Waze, and dozens of other companies. The military service created operational capability. The alumni network converted it into economic activity. South Korea's POSCO was built with a strategic mandate that explicitly connected military industrial capacity to civilian economic development. The steel that served the defence programme also served Samsung and Hyundai. South Africa had none of these mechanisms. Armscor routed its R&D through closed defence contractors, not universities. Denel engineers retired or emigrated to European defence companies with no network to convert their skills into South African companies. The institutional separation between defence R&D and civilian economic development was constitutional rather than incidental. And then came the Arms Deal. R43 billion in imported defence procurement from BAE, Thales, SAAB, and others, in 1999. South Africa spent R43 billion buying from European manufacturers the capability it had already built domestically. The offsets that were supposed to compensate for that choice were legally binding and largely unfulfilled. The Rooivalk is the complete diagnostic. Development started in 1984. First flight 1990. Operational capability 2011. Twenty-seven years. Twelve airframes. Production line mothballed in 2007. Eleven remain operational, maintained by an institution that struggles to source its own spare parts. The civilian technology that could have compounded from the programme includes composite materials expertise, advanced avionics integration, and embedded systems for real-time targeting. None of it was captured in a form that produced South African civilian companies. The engineers who built it work for European defence contractors. The question is no longer whether South Africa has the technical capability. The question is whether it will design the mechanism to hold what it builds. So far the answer has been no.";
+  </script>
+  <script>
+  (function initEpisodePlayer(){var btn=document.getElementById('playEpisodeBtn');if(!btn)return;var audio=new Audio('/episodes/dual-use-gap/episode.mp3');var isPlaying=false;audio.addEventListener('ended',function(){isPlaying=false;btn.querySelector('span').textContent='Listen to Episode';btn.querySelector('svg').innerHTML='<polygon points="5 3 19 12 5 21 5 3"></polygon>';});btn.addEventListener('click',function(){if(isPlaying){audio.pause();isPlaying=false;btn.querySelector('span').textContent='Listen to Episode';btn.querySelector('svg').innerHTML='<polygon points="5 3 19 12 5 21 5 3"></polygon>';}else{audio.play();isPlaying=true;btn.querySelector('span').textContent='Pause Episode';btn.querySelector('svg').innerHTML='<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';}});})();
+  </script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
