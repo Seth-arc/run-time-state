@@ -553,6 +553,101 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .doc-record-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      margin: 0 0 4rem;
+      background: var(--border-strong);
+      border: 1px solid var(--border-strong);
+    }
+
+    .doc-record-card {
+      padding: 2rem 1.85rem 2.1rem;
+      background: var(--bg);
+    }
+
+    .doc-record-card .doc-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      color: var(--tag-grounded);
+      font-weight: 500;
+      margin-bottom: 1.1rem;
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .doc-record-card h4 {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-main);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+    }
+
+    .doc-record-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .doc-record-card li {
+      font-size: 0.88rem;
+      color: #b3b3b3;
+      line-height: 1.7;
+      padding-left: 0.95rem;
+      position: relative;
+      margin-bottom: 0.65rem;
+      font-weight: 300;
+    }
+
+    .doc-record-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.65rem;
+      width: 6px;
+      height: 1px;
+      background: var(--text-muted);
+    }
+
+    .doc-record-card strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .doc-record-card em {
+      color: #c4c4c4;
+      font-style: italic;
+    }
+
+    .doc-record-card .doc-cite {
+      display: block;
+      margin-top: 1.5rem;
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 0.85rem;
+    }
+
+    .light-mode .doc-record-card {
+      background: var(--bg);
+    }
+
+    .light-mode .doc-record-card li,
+    .light-mode .doc-record-card em {
+      color: #555;
+    }
+
+    @media (max-width: 720px) {
+      .doc-record-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 
@@ -694,6 +789,10 @@
           (custom systems). These roles should never coexist inside the same entity. Their coexistence guarantees
           conflicts of interest and guarantees that no single role can be held to account without the other three
           being invoked in its defence.</p>
+        <ul>
+          <li>Three separate Boards governed SITA during the 2024/25 financial year. A new Board was constituted in February 2025 after the second interim Board dissolved in January.</li>
+          <li>The Parliamentary Committee found Board members were actively &ldquo;acting like executives, frustrating the technical and executive processes&rdquo; &mdash; the regulator and operator roles collapsed into each other at governance level.</li>
+        </ul>
       </div>
 
       <div class="diagnosis-card">
@@ -702,6 +801,9 @@
         <p>In ordinary markets, if the buyer stops paying, the service degrades or stops. Inside SITA's arrangements,
           the buyer can stop paying and the service continues, while the vendor who cuts service is punished. Payment
           discipline is broken by design. That asymmetry alone explains most of the downstream dysfunction.</p>
+        <ul>
+          <li>The Departments of Home Affairs, Police Services, Basic Education, and Human Settlements all presented evidence to Parliament in December 2024 on the operational damage caused by SITA&rsquo;s service failures &mdash; departments dependent on systems they cannot exit and cannot compel SITA to fix.</li>
+        </ul>
       </div>
 
       <div class="diagnosis-card">
@@ -710,6 +812,10 @@
         <p>Compliance replaces competence. RFPs specify process, not outcomes. Delivery risk is transferred to
           vendors while control remains with SITA. The predictable result is that the worst vendors survive longest,
           because survival is rewarded by compliance documentation rather than by outcomes.</p>
+        <ul>
+          <li>Capital expenditure for 2024/25: <strong>R380.9 million spent against a R1 billion allocation</strong> &mdash; a 62% underspend attributed directly to procurement delays in SITA&rsquo;s own annual report.</li>
+          <li>A <strong>R1.2 billion tender</strong> for the Western Cape Education Department, approved through SITA&rsquo;s supply chain processes, was referred to the Special Investigating Unit after Parliamentary committee intervention.</li>
+        </ul>
       </div>
 
       <div class="diagnosis-card">
@@ -718,6 +824,10 @@
         <p>Top-tier engineers avoid SITA for three rational reasons: no delivery authority, no technical prestige,
           and high political risk. Over time, the organisation becomes administrative-heavy and engineering-light,
           which makes it structurally dependent on the outside vendors it is simultaneously punishing.</p>
+        <ul>
+          <li>Vacancy rate at year-end 2024/25: <strong>57%</strong>. The annual report describes delivery capacity as &ldquo;constrained by high vacancy rates&hellip; and a shortage of critical ICT skills.&rdquo;</li>
+          <li>Three consecutive executive positions vacated in rapid succession: Managing Director Dr Bongani Mabaso (8 months); Company Secretary Bridgete Laka (under 2 months); Company Secretary June Cornelius (under 2 months).</li>
+        </ul>
       </div>
     </div>
 
@@ -740,14 +850,22 @@
     <div class="mandate-quote">&ldquo;To be the leading information and communications technology (ICT) agency in public
       service delivery.&rdquo;<span class="src">Vision &middot; sita.co.za/page/about</span></div>
 
+    <div class="mandate-quote">&ldquo;To improve service delivery to the public through the provision of information
+      technology, information systems and related services in a maintained information systems security environment to
+      departments and public bodies; and to promote the efficiency of departments and public bodies through the use of
+      information technology.&rdquo;<span class="src">Statutory Mandate &middot; SITA Act, Act No. 88 of 1998 &middot; Section 7.1</span></div>
+
     <div class="prose-lede">
-      <p>Every verb in that copy belongs to a procurement agent. <em>Consolidate. Coordinate. Manage the procurement and
-          delivery process. Achieve cost savings through scale.</em> None of them describe the stewardship of
-        infrastructure the state cannot turn off. The word <strong>ownership</strong> does not appear anywhere on the
-        page. Neither does <em>continuity</em>, <em>escrow</em>, <em>sovereignty</em>, <em>lifecycle</em>,
+      <p>Every verb in all three of those statements belongs to a procurement agent. <em>Consolidate. Coordinate. Manage the procurement and
+          delivery process. Achieve cost savings through scale. Improve service delivery through the provision of
+          information technology.</em> None of them describe the stewardship of
+        infrastructure the state cannot turn off. The word <strong>ownership</strong> does not appear in any of them.
+        Neither does <em>continuity</em>, <em>escrow</em>, <em>sovereignty</em>, <em>lifecycle</em>,
         <em>sunset</em>, or <em>resolution</em>. The copy is written as if the job ends at the tender award: once
         the contract is signed and the servers are humming, SITA's work is done and the rest is someone else's
-        problem.</p>
+        problem. And notably, this framing is not only on the website. It is in the Act of Parliament that created
+        the organisation. The procurement-agent vocabulary was baked in at the founding. It has never been
+        revised.</p>
 
       <p>That is not a tone problem or a writing problem. It is a <strong>self-understanding</strong> problem. An
         organisation that describes itself only in the language of acquisition will, when dependency crises arrive,
@@ -897,6 +1015,42 @@
   </section>
 
   <section class="section">
+    <div class="section-title">The Official Record</div>
+    <p class="section-intro">The structural diagnosis is not a reading between the lines. It is visible in SITA&rsquo;s own audited annual report and in the findings of a Parliamentary Portfolio Committee oversight visit conducted in December 2024. These are primary documents. They confirm the pattern from the inside.</p>
+
+    <div class="doc-record-grid">
+      <div class="doc-record-card">
+        <span class="doc-label">Primary Source 01</span>
+        <h4>SITA Annual Report 2024&ndash;2025</h4>
+        <ul>
+          <li>Audited performance: <strong>42.86%</strong> target achievement for 2024/25 &mdash; a sharp regression from 61.9% the prior year, and well below the threshold at which an agency can claim its mandate is being met.</li>
+          <li>Vacancy rate: <strong>57%</strong>. The Acting Managing Director describes delivery capacity as &ldquo;constrained by high vacancy rates&hellip; and a shortage of critical ICT skills.&rdquo;</li>
+          <li>Capital expenditure: <strong>R380.9 million spent against a R1 billion allocation</strong>. The stated cause is procurement delays. A 62% underspend in infrastructure capital is not a budget problem; it is a process problem wearing a budget number.</li>
+          <li>Service revenue growth: <strong>4%</strong> against a planned 10%, attributed to project delays, reduced client budgets, and &ldquo;a shift in some portfolios towards non-traditional revenue models.&rdquo;</li>
+          <li>EBITDA margin exceeded target at 10.26% &mdash; meaning the organisation was financially viable while failing to deliver. Rent without performance, confirmed by the agency&rsquo;s own audited numbers.</li>
+          <li>The statutory mandate in the SITA Act (Act No. 88 of 1998) uses exclusively service-provision and efficiency language. No ownership. No lifecycle authority. No sovereign continuity. The procurement-agent framing is not an interpretation: <em>it is the founding legislation</em>.</li>
+        </ul>
+        <span class="doc-cite">State Information Technology Agency SOC Ltd &mdash; Annual Report 2024&ndash;2025</span>
+      </div>
+      <div class="doc-record-card">
+        <span class="doc-label">Primary Source 02</span>
+        <h4>Portfolio Committee Oversight Report, 12 February 2025</h4>
+        <ul>
+          <li>The Portfolio Committee on Communications and Digital Technologies conducted an urgent oversight visit to SITA on 11 December 2024, describing the purpose as addressing &ldquo;significant governance and executive management challenges&rdquo; following a performance regression that left the Committee unable to wait for ordinary scheduling.</li>
+          <li>The Committee found &ldquo;<strong>the lack of service delivery was due to the encroachment of the Board on the executive duties</strong>&rdquo; &mdash; not vendor failures, not technology complexity, but a structural governance failure in which the organisation could not keep its own roles separated.</li>
+          <li>The Departments of Home Affairs, Police Services, Basic Education, and Human Settlements each presented separately to Parliament on failures attributable to SITA. Outdated infrastructure, persistent system downtimes, and network outages were named specifically.</li>
+          <li>A <strong>R1.2 billion tender</strong> approved through SITA&rsquo;s supply chain for the Western Cape Education Department was referred to the Special Investigating Unit. The Committee found SITA&rsquo;s supply chain management practices &ldquo;weak.&rdquo;</li>
+          <li>The Committee recommended Parliament seek legal advice on establishing an <strong>Ad Hoc Committee</strong> to investigate governance, operations, and criminal conduct at SITA &mdash; a signal that ordinary oversight is no longer considered sufficient.</li>
+          <li>Parliament requested a <strong>five-year mandate impact assessment</strong> from SITA: an implicit acknowledgment that the question is no longer only whether execution was poor, but whether the mandate itself has produced the outcomes it was designed to prevent.</li>
+        </ul>
+        <span class="doc-cite">Portfolio Committee on Communications and Digital Technologies &mdash; Oversight Visit Report, 12 February 2025</span>
+      </div>
+    </div>
+
+    <div class="evidence-block">When Parliament asks an agency to account for its mandate across five years of declining performance, that is not a governance event. That is a structural one. The question being asked is whether the organisation is capable of fulfilling the mandate it was given &mdash; or whether the mandate itself produced the failure.</div>
+  </section>
+
+  <section class="section">
     <div class="section-title">The Recurring Pattern</div>
     <p class="section-intro">Across eight documented cases the same sequence plays out: a mission-critical system
       becomes infrastructure, procurement logic fails, and litigation or collapse forces resolution.</p>
@@ -951,7 +1105,7 @@
           <tr>
             <td class="case-name">SITA (cross-cutting)</td>
             <td class="case-period">Ongoing</td>
-            <td>Central procurement without lifecycle governance. Access without ownership clarity.</td>
+            <td>Central procurement without lifecycle governance. Access without ownership clarity. Audited target achievement: <strong>42.86%</strong> in 2024/25; 61.9% the year prior.</td>
           </tr>
         </tbody>
       </table>
@@ -1068,7 +1222,7 @@
     <a href="https://x.com/runtimestate" target="_blank" rel="noopener noreferrer">@runtimestate</a>
   </footer>
   <script>
-  window.__TTS_TEXT = "SITA, the State Information Technology Agency, keeps ending up in court for the same reason every time. And it is not because anyone at SITA is acting in bad faith. The pattern is structural. A system gets procured as ordinary IT. Years pass. It quietly becomes national infrastructure. The state cannot function without it. But the paperwork still treats it as a vendor contract. Then something breaks. A contract lapses. A payment freezes. An audit gets nervous. And suddenly the state is using software it no longer has a lawful right to run, because turning it off would mean grants stop, or identity documents stop, or police forensic systems stop. This has happened with SASSA grants. With Home Affairs biometrics. With SARS investigative tools. With eNaTIS licensing. With PRASA signalling. With court recording systems. With Eskom billing. The FDA SAPS judgment is not an anomaly. It is the one case where a vendor had the resources to litigate all the way to a finding. That judgment is worth pausing on, because it is the case the rest of this argument rests on. A company called Forensic Data Analysts built three mission-critical systems for the South African Police Service. A firearm permit system. A property control and exhibit management system. A visual analysis system. Custom built, deployed nationally, in use for about seven years. Then SCOPA raised questions about contract irregularities. SAPS stopped paying. But it kept using the systems. The vendor wrote to SAPS asking to be paid. No response. It wrote to SITA, which was managing the systems. No response. So the vendor switched the systems off for non-payment. And SITA modified the source code it had no licence to touch, and switched them back on. The vendor went to court and won two interdicts forbidding exactly that conduct. The evidence in those judgments showed that SITA had also been trying to copy the systems while still holding off on payment. And after the interdicts, SAPS and SITA continued to use the systems anyway. Eventually the vendor sent a sheriff to physically remove them. A former minister, Sydney Mufumadi, now an executive at the company, was asked to meet the National Commissioner. He and the CEO were rushed by blue-light motorcade to a Presidential lekgotla, where a price was agreed to buy the systems outright. SAPS reversed that decision inside two hours. SITA sits in the middle of all of this. It hosts the servers, administers the systems, holds the keys. But it does not own the intellectual property, does not control the budgets, and does not decide procurement outcomes. It is an operator without ownership. Read SITA's own About page and the problem becomes impossible to miss. Its stated role is to consolidate and coordinate the state's IT resources, to manage the procurement and delivery process, to achieve cost savings through scale. Every single verb is a procurement verb. The word ownership does not appear. Neither does continuity, escrow, sovereignty or lifecycle. Its vision is to be the leading ICT agency in public service delivery, as if delivery were a moment rather than a decade. The values read the same way. Customer-centricity, where the customers are departments and the citizens are the people whose grants stop. Innovation, in an organisation whose instinctive response to every dependency crisis is, we will build a replacement, a phrase the courts now read as bad faith. Integrity, in an institution against which courts have made explicit findings of mala fides. Agility, in an organisation that spends a decade in eNaTIS and HANIS limbo. Collaboration, in a record that shows parallel shadow replacement while vendors were still under contract. The problem is not that SITA fails to live up to its stated values. The problem is that its stated values describe a procurement agent while its actual job is infrastructure stewardship. That gap is where the unlawfulness accumulates. And because SITA's own framing collapses the category the reform depends on, reform has to begin by rewriting how the organisation describes itself. You cannot be the steward of something you still classify as a purchase. The reform is not complicated to describe. SITA needs the authority to formally classify certain systems as critical national infrastructure. Once classified, the state must either own the code or hold it in escrow. SITA needs real lifecycle authority, including the power to sunset systems. It also needs shutdown authority with legal protection for the official who uses it. And a Treasury resolution escalator for the moments when a dispute has frozen everything and no one wants to be the first to move. The underlying shift is a sentence. SITA must move from being a central IT procurement agent to being a steward of state digital infrastructure. Procurement, infrastructure and sovereignty are three different things with three different rule sets. SITA currently pretends they are the same. The courts are starting to say that pretence is no longer available.";
+  window.__TTS_TEXT = "SITA, the State Information Technology Agency, keeps ending up in court for the same reason every time. And it is not because anyone at SITA is acting in bad faith. The pattern is structural. A system gets procured as ordinary IT. Years pass. It quietly becomes national infrastructure. The state cannot function without it. But the paperwork still treats it as a vendor contract. Then something breaks. A contract lapses. A payment freezes. An audit gets nervous. And suddenly the state is using software it no longer has a lawful right to run, because turning it off would mean grants stop, or identity documents stop, or police forensic systems stop. This has happened with SASSA grants. With Home Affairs biometrics. With SARS investigative tools. With eNaTIS licensing. With PRASA signalling. With court recording systems. With Eskom billing. The FDA SAPS judgment is not an anomaly. It is the one case where a vendor had the resources to litigate all the way to a finding. That judgment is worth pausing on, because it is the case the rest of this argument rests on. A company called Forensic Data Analysts built three mission-critical systems for the South African Police Service. A firearm permit system. A property control and exhibit management system. A visual analysis system. Custom built, deployed nationally, in use for about seven years. Then SCOPA raised questions about contract irregularities. SAPS stopped paying. But it kept using the systems. The vendor wrote to SAPS asking to be paid. No response. It wrote to SITA, which was managing the systems. No response. So the vendor switched the systems off for non-payment. And SITA modified the source code it had no licence to touch, and switched them back on. The vendor went to court and won two interdicts forbidding exactly that conduct. The evidence in those judgments showed that SITA had also been trying to copy the systems while still holding off on payment. And after the interdicts, SAPS and SITA continued to use the systems anyway. Eventually the vendor sent a sheriff to physically remove them. A former minister, Sydney Mufumadi, now an executive at the company, was asked to meet the National Commissioner. He and the CEO were rushed by blue-light motorcade to a Presidential lekgotla, where a price was agreed to buy the systems outright. SAPS reversed that decision inside two hours. SITA sits in the middle of all of this. It hosts the servers, administers the systems, holds the keys. But it does not own the intellectual property, does not control the budgets, and does not decide procurement outcomes. It is an operator without ownership. The structural diagnosis is confirmed by two official documents from 2024 and 2025. SITA's own audited annual report records target achievement of 42.86 percent in 2024 to 2025, down from 61.9 percent the year before, against a vacancy rate of 57 percent and capital expenditure of R380.9 million against a one billion rand allocation. The organisation exceeded its EBITDA target, meaning it was financially viable while failing to deliver. Rent without performance, confirmed by SITA's own auditors. A Parliamentary Portfolio Committee oversight report from February 2025 found that the lack of service delivery was due to the encroachment of the Board on the executive duties. Not vendor failures. Not technology complexity. A governance structure that could not keep its own roles separated. The Departments of Home Affairs, Police Services, Basic Education, and Human Settlements each presented evidence of operational damage to Parliament. A R1.2 billion tender approved through SITA's supply chain was referred to the Special Investigating Unit. Parliament requested a five-year mandate impact assessment, which is not a governance request. It is a structural one. Read SITA's own About page and the statutory mandate in the SITA Act of 1998 and the problem becomes impossible to miss. Its stated role is to consolidate and coordinate the state's IT resources, to manage the procurement and delivery process, to achieve cost savings through scale. The founding Act uses the same language. Every single verb is a procurement verb. The word ownership does not appear. Neither does continuity, escrow, sovereignty or lifecycle. Its vision is to be the leading ICT agency in public service delivery, as if delivery were a moment rather than a decade. The values read the same way. Customer-centricity, where the customers are departments and the citizens are the people whose grants stop. Innovation, in an organisation whose instinctive response to every dependency crisis is, we will build a replacement, a phrase the courts now read as bad faith. Integrity, in an institution against which courts have made explicit findings of mala fides. Agility, in an organisation that spends a decade in eNaTIS and HANIS limbo. Collaboration, in a record that shows parallel shadow replacement while vendors were still under contract. The problem is not that SITA fails to live up to its stated values. The problem is that its stated values describe a procurement agent while its actual job is infrastructure stewardship. That gap is where the unlawfulness accumulates. And because SITA's own framing collapses the category the reform depends on, reform has to begin by rewriting how the organisation describes itself. You cannot be the steward of something you still classify as a purchase. The reform is not complicated to describe. SITA needs the authority to formally classify certain systems as critical national infrastructure. Once classified, the state must either own the code or hold it in escrow. SITA needs real lifecycle authority, including the power to sunset systems. It also needs shutdown authority with legal protection for the official who uses it. And a Treasury resolution escalator for the moments when a dispute has frozen everything and no one wants to be the first to move. The underlying shift is a sentence. SITA must move from being a central IT procurement agent to being a steward of state digital infrastructure. Procurement, infrastructure and sovereignty are three different things with three different rule sets. SITA currently pretends they are the same. The courts are starting to say that pretence is no longer available.";
   </script>
   <script>
   /* Episode MP3 player - replaces TTS for this post */
