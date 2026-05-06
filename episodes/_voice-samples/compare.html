@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voice Samples — Runtime State</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 640px; margin: 4rem auto; padding: 0 1.5rem; background: #111; color: #eee; }
+  h1 { font-weight: 500; letter-spacing: -0.02em; }
+  .voice { padding: 1.5rem 0; border-bottom: 1px solid #333; }
+  .voice h2 { margin: 0 0 0.5rem; font-size: 1.1rem; }
+  .voice p { margin: 0 0 0.75rem; color: #888; font-size: 0.9rem; }
+  audio { width: 100%; }
+</style>
+</head>
+<body>
+  <h1>Voice samples</h1>
+  <p style="color:#888">Same paragraph, three voices. Pick the one that fits the tone you want.</p>
+
+  <div class="voice">
+    <h2>Ava — warm, female, US</h2>
+    <p>Conversational, slightly softer prosody. Reads like an essayist.</p>
+    <audio controls src="ava.mp3"></audio>
+  </div>
+
+  <div class="voice">
+    <h2>Andrew — calm, male, US</h2>
+    <p>Measured, lower register. Reads like a documentary narrator.</p>
+    <audio controls src="andrew.mp3"></audio>
+  </div>
+
+  <div class="voice">
+    <h2>Emma — crisper, female, US</h2>
+    <p>Slightly faster pace, brighter timbre. Reads like a podcast host.</p>
+    <audio controls src="emma.mp3"></audio>
+  </div>
+</body>
+</html>
